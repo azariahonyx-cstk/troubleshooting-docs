@@ -1,0 +1,19 @@
+{
+  "title": "Cannot Receive 2FA SMS Code \u2013 Maximum Verification Attempts Reached",
+  "slug": "cannot-receive-2fa-sms-code-maximum-verification-attempts-reached",
+  "pod": "CMS - UI",
+  "section": "Authentication & Login",
+  "order": 1,
+  "status": "published-in-drive",
+  "source_case_id": null,
+  "contentstack_entry_uid": null,
+  "confidence_score": null,
+  "keywords": [],
+  "alternate_search_terms": [],
+  "related_articles": [],
+  "traceability": {
+    "migrated_from": "CMS - UI Additions (Jun 28 2026)",
+    "migrated_on": "2026-07-08",
+    "pipeline": "gdocs-migration-v1"
+  }
+}

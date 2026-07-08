@@ -1,0 +1,19 @@
+{
+  "title": "Entry with a Large Number of Group Field Instances Loads Slowly",
+  "slug": "entry-with-a-large-number-of-group-field-instances-loads-slowly",
+  "pod": "CMS - UI",
+  "section": "Content Editing & UI Workflows",
+  "order": 3,
+  "status": "published-in-drive",
+  "source_case_id": null,
+  "contentstack_entry_uid": null,
+  "confidence_score": null,
+  "keywords": [],
+  "alternate_search_terms": [],
+  "related_articles": [],
+  "traceability": {
+    "migrated_from": "CMS - UI (main, Jun 21 2026)",
+    "migrated_on": "2026-07-08",
+    "pipeline": "gdocs-migration-v1"
+  }
+}

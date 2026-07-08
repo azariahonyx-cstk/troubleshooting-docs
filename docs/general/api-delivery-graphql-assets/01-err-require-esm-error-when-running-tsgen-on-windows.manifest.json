@@ -1,0 +1,19 @@
+{
+  "title": "ERR_REQUIRE_ESM Error When Running tsgen on Windows",
+  "slug": "err-require-esm-error-when-running-tsgen-on-windows",
+  "pod": "General",
+  "section": "API Delivery, GraphQL & Assets",
+  "order": 1,
+  "status": "published-in-drive",
+  "source_case_id": null,
+  "contentstack_entry_uid": null,
+  "confidence_score": null,
+  "keywords": [],
+  "alternate_search_terms": [],
+  "related_articles": [],
+  "traceability": {
+    "migrated_from": "General (main, Jun 21 2026)",
+    "migrated_on": "2026-07-08",
+    "pipeline": "gdocs-migration-v1"
+  }
+}

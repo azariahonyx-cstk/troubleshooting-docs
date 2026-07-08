@@ -1,0 +1,19 @@
+{
+  "title": "Live Preview Fails After Implementing Contentstack Live Preview with a CloudFront Failover Configuration",
+  "slug": "live-preview-fails-after-implementing-contentstack-live-preview-with-a-cloudfron",
+  "pod": "Launch",
+  "section": "Custom Extensions, Live Preview & Analytics",
+  "order": 1,
+  "status": "published-in-drive",
+  "source_case_id": null,
+  "contentstack_entry_uid": null,
+  "confidence_score": null,
+  "keywords": [],
+  "alternate_search_terms": [],
+  "related_articles": [],
+  "traceability": {
+    "migrated_from": "Launch (main, Jun 21 2026)",
+    "migrated_on": "2026-07-08",
+    "pipeline": "gdocs-migration-v1"
+  }
+}

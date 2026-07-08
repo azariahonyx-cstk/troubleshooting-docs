@@ -1,0 +1,19 @@
+{
+  "title": "Preview Fails When Target Stack Lacks a Matching Environment Name",
+  "slug": "preview-fails-when-target-stack-lacks-a-matching-environment-name",
+  "pod": "CMS - UI",
+  "section": "Publishing, Releases & Environments",
+  "order": 1,
+  "status": "published-in-drive",
+  "source_case_id": null,
+  "contentstack_entry_uid": null,
+  "confidence_score": null,
+  "keywords": [],
+  "alternate_search_terms": [],
+  "related_articles": [],
+  "traceability": {
+    "migrated_from": "CMS - UI (main, Jun 21 2026)",
+    "migrated_on": "2026-07-08",
+    "pipeline": "gdocs-migration-v1"
+  }
+}

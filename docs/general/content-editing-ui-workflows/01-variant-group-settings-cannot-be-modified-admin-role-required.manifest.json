@@ -1,0 +1,19 @@
+{
+  "title": "Variant Group Settings Cannot Be Modified \u2014 Admin Role Required",
+  "slug": "variant-group-settings-cannot-be-modified-admin-role-required",
+  "pod": "General",
+  "section": "Content Editing & UI Workflows",
+  "order": 1,
+  "status": "published-in-drive",
+  "source_case_id": null,
+  "contentstack_entry_uid": null,
+  "confidence_score": null,
+  "keywords": [],
+  "alternate_search_terms": [],
+  "related_articles": [],
+  "traceability": {
+    "migrated_from": "General (main, Jun 21 2026)",
+    "migrated_on": "2026-07-08",
+    "pipeline": "gdocs-migration-v1"
+  }
+}

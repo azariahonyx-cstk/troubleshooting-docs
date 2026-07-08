@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Troubleshooting article manifest",
+  "type": "object",
+  "required": ["title", "slug", "pod", "section", "order", "status"],
+  "properties": {
+    "title": { "type": "string", "minLength": 10 },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "pod": {
+      "type": "string",
+      "enum": [
+        "CMS - UI",
+        "CMS - CDA(Rest)",
+        "CMS - CMA",
+        "AUTH",
+        "Launch",
+        "General",
+        "Marketplace - Public Apps",
+        "AgentOS - Automate"
+      ]
+    },
+    "section": { "type": "string", "minLength": 3 },
+    "order": { "type": "integer", "minimum": 1 },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "in-review", "approved", "published-in-drive", "published"]
+    },
+    "source_case_id": { "type": ["string", "null"], "pattern": "^000[0-9]{5}$" },
+    "contentstack_entry_uid": { "type": ["string", "null"] },
+    "confidence_score": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "keywords": { "type": "array", "items": { "type": "string" } },
+    "alternate_search_terms": { "type": "array", "items": { "type": "string" } },
+    "related_articles": { "type": "array", "items": { "type": "string" } },
+    "traceability": {
+      "type": "object",
+      "properties": {
+        "migrated_from": { "type": ["string", "null"] },
+        "migrated_on": { "type": ["string", "null"] },
+        "generated_on": { "type": ["string", "null"] },
+        "pipeline": { "type": "string" }
+      }
+    }
+  }
+}

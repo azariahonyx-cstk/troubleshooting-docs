@@ -1,0 +1,19 @@
+{
+  "title": "File Upload Deployments on Contentstack Launch Fail Instantly with Logs Stuck on Loading",
+  "slug": "file-upload-deployments-on-contentstack-launch-fail-instantly-with-logs-stuck-on",
+  "pod": "Launch",
+  "section": "Publishing, Releases & Environments",
+  "order": 1,
+  "status": "published-in-drive",
+  "source_case_id": null,
+  "contentstack_entry_uid": null,
+  "confidence_score": null,
+  "keywords": [],
+  "alternate_search_terms": [],
+  "related_articles": [],
+  "traceability": {
+    "migrated_from": "Launch (main, Jun 21 2026)",
+    "migrated_on": "2026-07-08",
+    "pipeline": "gdocs-migration-v1"
+  }
+}

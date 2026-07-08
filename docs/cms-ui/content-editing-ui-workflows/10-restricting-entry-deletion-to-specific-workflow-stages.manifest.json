@@ -1,0 +1,19 @@
+{
+  "title": "Restricting Entry Deletion to Specific Workflow Stages",
+  "slug": "restricting-entry-deletion-to-specific-workflow-stages",
+  "pod": "CMS - UI",
+  "section": "Content Editing & UI Workflows",
+  "order": 10,
+  "status": "published-in-drive",
+  "source_case_id": null,
+  "contentstack_entry_uid": null,
+  "confidence_score": null,
+  "keywords": [],
+  "alternate_search_terms": [],
+  "related_articles": [],
+  "traceability": {
+    "migrated_from": "CMS - UI Additions (Jun 28 2026)",
+    "migrated_on": "2026-07-08",
+    "pipeline": "gdocs-migration-v1"
+  }
+}

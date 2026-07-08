@@ -1,0 +1,68 @@
+name: Publish to Contentstack
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**/*.md"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Collect changed articles
+        id: changed
+        run: |
+          git diff --name-only HEAD^ HEAD -- 'docs/**/*.md' > changed.txt
+          echo "count=$(wc -l < changed.txt)" >> "$GITHUB_OUTPUT"
+          cat changed.txt
+
+      - name: Publish changed articles
+        if: steps.changed.outputs.count != '0'
+        env:
+          CS_API_KEY: ${{ secrets.CS_API_KEY }}
+          CS_MGMT_TOKEN: ${{ secrets.CS_MGMT_TOKEN }}
+          CS_REGION_HOST: ${{ vars.CS_REGION_HOST || 'api.contentstack.io' }}
+          CS_CONTENT_TYPE: ${{ vars.CS_CONTENT_TYPE || 'troubleshooting_faq' }}
+          CS_ENVIRONMENT: ${{ vars.CS_ENVIRONMENT || 'production' }}
+          # Safety default: dry-run until the CMA token secret is configured
+          # and the FAQ field mapping in scripts/publish_to_contentstack.py is
+          # confirmed against the real content type. Set repo variable
+          # PUBLISH_LIVE=1 to go live.
+          DRY_RUN: ${{ vars.PUBLISH_LIVE == '1' && '0' || '1' }}
+        run: xargs -a changed.txt python3 scripts/publish_to_contentstack.py
+
+      - name: Write back entry UIDs
+        if: steps.changed.outputs.count != '0' && hashFiles('publish-report.jsonl') != ''
+        run: |
+          python3 - << 'EOF'
+          import json, re
+          from pathlib import Path
+          for line in Path("publish-report.jsonl").read_text().splitlines():
+              rec = json.loads(line)
+              p = Path(rec["file"])
+              text = p.read_text()
+              text = re.sub(r'(?m)^contentstack_entry_uid: null$',
+                            f'contentstack_entry_uid: "{rec["uid"]}"', text)
+              text = re.sub(r'(?m)^status: "(published-in-drive|approved|in-review|draft)"$',
+                            'status: "published"', text)
+              p.write_text(text)
+              m = p.parent / (p.stem + ".manifest.json")
+              if m.exists():
+                  data = json.loads(m.read_text())
+                  data["contentstack_entry_uid"] = rec["uid"]
+                  data["status"] = "published"
+                  m.write_text(json.dumps(data, indent=2) + "\n")
+          EOF
+          rm -f publish-report.jsonl changed.txt
+          git config user.name "docs-pipeline-bot"
+          git config user.email "docs-pipeline@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "chore: write back Contentstack entry UIDs [skip ci]"
+          git push

@@ -1,0 +1,19 @@
+{
+  "title": "Multiple Users Experience Forced Logouts with 502 Errors During Re-authentication",
+  "slug": "multiple-users-experience-forced-logouts-with-502-errors-during-re-authenticatio",
+  "pod": "General",
+  "section": "Authentication & Login",
+  "order": 3,
+  "status": "published-in-drive",
+  "source_case_id": null,
+  "contentstack_entry_uid": null,
+  "confidence_score": null,
+  "keywords": [],
+  "alternate_search_terms": [],
+  "related_articles": [],
+  "traceability": {
+    "migrated_from": "General (main, Jun 21 2026)",
+    "migrated_on": "2026-07-08",
+    "pipeline": "gdocs-migration-v1"
+  }
+}
