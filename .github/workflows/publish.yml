@@ -19,7 +19,11 @@ jobs:
       - name: Collect changed articles
         id: changed
         run: |
-          git diff --name-only HEAD^ HEAD -- 'docs/**/*.md' > changed.txt
+          if git rev-parse -q --verify HEAD^ >/dev/null; then
+            git diff --name-only HEAD^ HEAD -- 'docs/**/*.md' > changed.txt
+          else
+            git ls-files -- 'docs/**/*.md' > changed.txt
+          fi
           echo "count=$(wc -l < changed.txt)" >> "$GITHUB_OUTPUT"
           cat changed.txt
 
