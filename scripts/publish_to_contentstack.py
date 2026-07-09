@@ -200,9 +200,11 @@ def main(changed_files):
                 {"entry": {"environments": [ENVIRONMENT], "locales": ["en-us"]}},
             )
             print(f"OK {f} -> entry {uid} published to {ENVIRONMENT}")
-            # emit uid mapping for the workflow to write back
-            with open(ROOT / "publish-report.jsonl", "a") as out:
-                out.write(json.dumps({"file": f, "uid": uid}) + "\n")
+            # emit uid mapping for the workflow to write back (never in dry-run:
+            # a placeholder uid must not be committed into article frontmatter)
+            if not DRY_RUN:
+                with open(ROOT / "publish-report.jsonl", "a") as out:
+                    out.write(json.dumps({"file": f, "uid": uid}) + "\n")
         except Exception as e:
             failures += 1
             print(f"::error file={f}::publish failed: {e}")
