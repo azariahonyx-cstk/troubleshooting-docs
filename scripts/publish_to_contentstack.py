@@ -143,6 +143,19 @@ def md_to_json_rte(markdown_text):
     return {"type": "doc", "attrs": {}, "children": children or [{"type": "p", "attrs": {}, "children": [{"text": ""}]}]}
 
 
+def to_site_format(body):
+    """Repo format -> docs site format (per the docs editorial standard):
+    drop the H1 title (the question field already carries it), remove the
+    '## Verification' heading but keep its sentence untitled after the last
+    step, and demote '## See also' to an inline lead-in. Only 'Root cause'
+    and 'Resolution' remain as titled sections.
+    """
+    body = re.sub(r"(?m)^# .+\n", "", body, count=1)
+    body = re.sub(r"(?m)^## Verification\s*\n", "", body)
+    body = re.sub(r"(?m)^## See also\s*\n", "**See also:** ", body)
+    return body.strip()
+
+
 def build_entry(fm, body):
     """Map article frontmatter + body to the product_faqs_2026 content type.
 
@@ -165,7 +178,7 @@ def build_entry(fm, body):
                     "faqs": [
                         {
                             "question": fm["title"],
-                            "answer": md_to_json_rte(body),
+                            "answer": md_to_json_rte(to_site_format(body)),
                         }
                     ],
                 }
