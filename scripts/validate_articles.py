@@ -29,7 +29,20 @@ SECRET_PATTERNS = [
     (re.compile(r"blt[a-f0-9]{16,}", re.I), "possible Contentstack UID/token in body"),
     (re.compile(r"\b000\d{5}\b"), "Salesforce case number in body"),
     (re.compile(r"[a-zA-Z0-9._%+-]+@(?!contentstack\.com)[a-zA-Z0-9.-]+\.[a-z]{2,}"), "customer email address"),
+    (re.compile(r"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b"), "IP address in body"),
+    (re.compile(r"\b(?!your-app-domain)[a-z0-9-]+\.contentstackapps\.com\b", re.I), "customer app domain"),
 ]
+
+# Editorial policy (from the docs fact-checking standard):
+# problem statements describe the problem, not the reporter.
+BANNED_FIRST_WORDS = re.compile(
+    r"^(Users\b|User\b|A user\b|The user\b|The customer\b|Customers\b|Some users\b|When users\b)",
+    re.I,
+)
+# resolution steps are instructions to the reader, not CSE action reports
+CSE_VOICE = re.compile(
+    r"^\s*\d+\.\s+(Informed|Advised|Validated|Shared|Explained|Instructed)\b", re.M
+)
 
 
 def parse_frontmatter(text: str):
@@ -94,6 +107,21 @@ def main():
         for pattern, label in SECRET_PATTERNS:
             if pattern.search(body):
                 ERRORS.append(f"{rel}: sanitization failure — {label}")
+
+        # editorial policy checks
+        # problem statement = first prose block after the H1 title
+        m = re.search(r"(?s)^# .+?\n\n(.+?)(?=\n\n|\Z)", body.strip())
+        if m and BANNED_FIRST_WORDS.match(m.group(1).strip()):
+            word = BANNED_FIRST_WORDS.match(m.group(1).strip()).group(1)
+            ERRORS.append(
+                f"{rel}: problem statement starts with people-first language ('{word}') — describe the problem, not the reporter"
+            )
+        res = re.search(r"(?s)## Resolution\n(.*?)(?=\n## |\Z)", body)
+        if res:
+            for bad in CSE_VOICE.finditer(res.group(1)):
+                ERRORS.append(
+                    f"{rel}: resolution step written as CSE action ('{bad.group(1)}') — rewrite as reader instruction"
+                )
 
         slug, title = fm.get("slug"), fm.get("title", "").strip().lower()
         key = (fm.get("pod"), fm.get("section"), slug)
