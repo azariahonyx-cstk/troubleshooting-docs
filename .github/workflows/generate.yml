@@ -1,0 +1,139 @@
+name: Generate articles
+
+on:
+  workflow_dispatch:
+    inputs:
+      days_back:
+        description: "How many days of #feed-salesforce-docs to scan"
+        default: "7"
+      max_articles:
+        description: "Max articles to draft this run"
+        default: "10"
+  schedule:
+    - cron: "30 3 * * 6"   # Saturdays 03:30 UTC = 09:00 IST
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: generate
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate + verify articles
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SLACK_FEED_CHANNEL: ${{ vars.SLACK_FEED_CHANNEL || 'C0B0U9175PS' }}
+          DAYS_BACK: ${{ github.event.inputs.days_back || '7' }}
+          MAX_ARTICLES: ${{ github.event.inputs.max_articles || '10' }}
+        run: python3 scripts/generate_articles.py
+
+      - name: Validate generated articles
+        id: validate
+        run: |
+          python3 scripts/validate_articles.py && echo "clean=1" >> "$GITHUB_OUTPUT" \
+            || echo "clean=0" >> "$GITHUB_OUTPUT"
+
+      - name: Decide outcome
+        id: decide
+        run: |
+          python3 - << 'EOF' >> "$GITHUB_OUTPUT"
+          import json
+          r = json.load(open("run-report.json"))
+          changes = bool(r["drafted"] or r["flagged"])
+          automerge = not r["flagged"]
+          print(f"changes={'1' if changes else '0'}")
+          print(f"automerge={'1' if automerge else '0'}")
+          summary = [f"Run {r['run_date']}: {r['new_cases']} new cases · {len(r['drafted'])} approved · {len(r['flagged'])} flagged · {len(r['rejected'])} rejected · {len(r['errors'])} errors"]
+          for a in r["drafted"]:
+              summary.append(f"  APPROVED {a['case']} — {a['title']} (accuracy {a['accuracy']}/10)")
+          for a in r["flagged"]:
+              summary.append(f"  FLAGGED {a['case']} — {a['title']} ({a['verdict']})")
+          for a in r["rejected"]:
+              summary.append(f"  rejected {a['case']}: {a['reason']}")
+          for e in r["errors"]:
+              summary.append(f"  error: {e}")
+          open("run-summary.txt", "w").write("\n".join(summary))
+          EOF
+
+      - name: Commit, push branch, open PR
+        if: steps.decide.outputs.changes == '1' || hashFiles('pipeline/processed_cases.json') != ''
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BRANCH="articles/run-$(date -u +%Y-%m-%d-%H%M)"
+          git config user.name "docs-pipeline-bot"
+          git config user.email "docs-pipeline@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add docs/ pipeline/
+          git diff --cached --quiet && { echo "opened=0" >> "$GITHUB_OUTPUT"; exit 0; }
+          git commit -m "Articles: run $(date -u +%Y-%m-%d) ($(python3 -c "import json;r=json.load(open('run-report.json'));print(len(r['drafted'])+len(r['flagged']))") articles)"
+          git push origin "$BRANCH"
+          PR_URL=$(gh pr create --base main --head "$BRANCH" \
+            --title "Articles: run $(date -u +%Y-%m-%d)" \
+            --body-file run-summary.txt)
+          echo "opened=1" >> "$GITHUB_OUTPUT"
+          echo "url=$PR_URL" >> "$GITHUB_OUTPUT"
+
+      - name: Auto-merge (all articles verifier-approved + validation clean)
+        if: steps.pr.outputs.opened == '1' && steps.decide.outputs.automerge == '1' && steps.validate.outputs.clean == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh pr merge "${{ steps.pr.outputs.url }}" --squash --delete-branch
+
+      - name: Comment verifier findings on flagged PR
+        if: steps.pr.outputs.opened == '1' && (steps.decide.outputs.automerge == '0' || steps.validate.outputs.clean == '0')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - << 'EOF'
+          import json, subprocess
+          r = json.load(open("run-report.json"))
+          lines = ["## Verifier findings — human review required\n"]
+          for a in r["flagged"]:
+              lines.append(f"### {a['path']} — verdict: **{a['verdict']}**")
+              m = json.load(open(a["path"].replace(".md", ".manifest.json")))
+              v = m["verification"]
+              for h in v["hallucinations"]:
+                  lines.append(f"- HALLUCINATION: \"{h['claim']}\" — {h['problem']}")
+              for s in v["sensitive_data"]:
+                  lines.append(f"- SENSITIVE: {s['found']} -> {s['replace_with']}")
+              for n in v["revision_notes"]:
+                  lines.append(f"- fix: {n}")
+              lines.append("")
+          open("pr-comment.md", "w").write("\n".join(lines))
+          subprocess.run(["gh", "pr", "comment", "${{ steps.pr.outputs.url }}",
+                          "--body-file", "pr-comment.md"], check=True)
+          EOF
+
+      - name: Post run report to Slack
+        if: always()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          REPORT_CHANNEL: ${{ vars.SLACK_REPORT_CHANNEL || 'C0BBZP581T2' }}
+        run: |
+          python3 - << 'EOF'
+          import json, os, urllib.request
+          try:
+              text = open("run-summary.txt").read()
+          except FileNotFoundError:
+              text = "Generate articles run finished with no report (check Actions logs)."
+          url = "${{ steps.pr.outputs.url }}"
+          if url:
+              text += f"\nPR: {url}"
+          req = urllib.request.Request(
+              "https://slack.com/api/chat.postMessage",
+              data=json.dumps({"channel": os.environ["REPORT_CHANNEL"],
+                               "text": f"*Docs pipeline — generate run*\n```{text}```"}).encode(),
+              headers={"Authorization": f"Bearer {os.environ['SLACK_BOT_TOKEN']}",
+                       "Content-Type": "application/json; charset=utf-8"})
+          urllib.request.urlopen(req, timeout=30)
+          EOF

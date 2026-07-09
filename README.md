@@ -49,3 +49,9 @@ Change only the output target: instead of writing Google Docs, for each run crea
 ## Provenance
 
 42 articles migrated on 2026-07-08 from the Drive folder (mains + "Additions" side-docs merged). Known review item: AUTH article 07 and General/Authentication article 03 describe the same forced-logout 502 incident from two different case angles — candidates for consolidation.
+
+## Generation (Phase: full automation, sandbox)
+
+`generate.yml` (manual: Actions -> Generate articles -> Run workflow; cron: Sat 09:00 IST) runs `scripts/generate_articles.py`: reads #feed-salesforce-docs, dedups against manifests + `pipeline/processed_cases.json`, drafts via Claude (`prompts/generator.md`), fact-checks adversarially via Claude (`prompts/verifier.md`, verdict written into each manifest), opens one PR per run. PR auto-merges when every article is verifier-approved AND validation passes; otherwise it stays open with the verifier's findings posted as a PR comment. Run reports post to #article-generator-updates.
+
+Required secrets: `SLACK_BOT_TOKEN` (channels:history + chat:write), `ANTHROPIC_API_KEY`. Optional vars: `SLACK_FEED_CHANNEL`, `SLACK_REPORT_CHANNEL`.
