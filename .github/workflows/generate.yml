@@ -26,10 +26,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install Claude Code CLI (subscription auth)
+        if: ${{ !vars.USE_API_KEY }}
+        run: npm install -g @anthropic-ai/claude-code
+
       - name: Generate + verify articles
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           SLACK_FEED_CHANNEL: ${{ vars.SLACK_FEED_CHANNEL || 'C0B0U9175PS' }}
           DAYS_BACK: ${{ github.event.inputs.days_back || '7' }}
           MAX_ARTICLES: ${{ github.event.inputs.max_articles || '10' }}

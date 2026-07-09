@@ -32,7 +32,10 @@ STATE_FILE = ROOT / "pipeline" / "processed_cases.json"
 REPORT_FILE = ROOT / "run-report.json"
 
 SLACK_TOKEN = os.environ["SLACK_BOT_TOKEN"]
-ANTHROPIC_KEY = os.environ["ANTHROPIC_API_KEY"]
+ANTHROPIC_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+OAUTH_TOKEN = os.environ.get("CLAUDE_CODE_OAUTH_TOKEN", "")
+if not ANTHROPIC_KEY and not OAUTH_TOKEN:
+    sys.exit("Need ANTHROPIC_API_KEY or CLAUDE_CODE_OAUTH_TOKEN (from `claude setup-token`)")
 FEED_CHANNEL = os.environ.get("SLACK_FEED_CHANNEL", "C0B0U9175PS")
 DAYS_BACK = int(os.environ.get("DAYS_BACK", "7"))
 MAX_ARTICLES = int(os.environ.get("MAX_ARTICLES", "10"))
@@ -59,6 +62,28 @@ def slack(method, params):
 
 
 def claude(system, user, max_tokens=4000, retries=3):
+    """Call Claude via API key if present, else via Claude Code CLI using the
+    subscription OAuth token (CLAUDE_CODE_OAUTH_TOKEN from `claude setup-token`)."""
+    for attempt in range(retries):
+        try:
+            if ANTHROPIC_KEY:
+                text = _claude_api(system, user, max_tokens)
+            else:
+                text = _claude_cli(system, user)
+            text = re.sub(r"^```(json)?|```$", "", text.strip(), flags=re.M).strip()
+            # tolerate prose around the JSON object
+            if not text.startswith("{"):
+                m = re.search(r"(?s)\{.*\}", text)
+                if m:
+                    text = m.group(0)
+            return json.loads(text)
+        except Exception:  # noqa: BLE001 — retry then surface
+            if attempt == retries - 1:
+                raise
+            time.sleep(5 * (attempt + 1))
+
+
+def _claude_api(system, user, max_tokens):
     payload = {
         "model": MODEL, "max_tokens": max_tokens,
         "system": system,
@@ -71,17 +96,24 @@ def claude(system, user, max_tokens=4000, retries=3):
                  "anthropic-version": "2023-06-01",
                  "content-type": "application/json"},
     )
-    for attempt in range(retries):
-        try:
-            with urllib.request.urlopen(req, timeout=120) as r:
-                out = json.loads(r.read().decode())
-            text = "".join(b.get("text", "") for b in out.get("content", []))
-            text = re.sub(r"^```(json)?|```$", "", text.strip(), flags=re.M).strip()
-            return json.loads(text)
-        except Exception as e:  # noqa: BLE001 — retry then surface
-            if attempt == retries - 1:
-                raise
-            time.sleep(5 * (attempt + 1))
+    with urllib.request.urlopen(req, timeout=120) as r:
+        out = json.loads(r.read().decode())
+    return "".join(b.get("text", "") for b in out.get("content", []))
+
+
+def _claude_cli(system, user):
+    import subprocess
+    env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
+    env["CLAUDE_CODE_OAUTH_TOKEN"] = OAUTH_TOKEN
+    proc = subprocess.run(
+        ["claude", "-p", "--output-format", "json",
+         "--model", MODEL, "--system-prompt", system],
+        input=user, capture_output=True, text=True, timeout=300, env=env,
+    )
+    if proc.returncode != 0:
+        raise RuntimeError(f"claude CLI failed: {proc.stderr[:500]}")
+    out = json.loads(proc.stdout)
+    return out.get("result", "")
 
 
 def fetch_cases():
