@@ -30,8 +30,8 @@ jobs:
       - name: Publish changed articles
         if: steps.changed.outputs.count != '0'
         env:
-          CS_API_KEY: ${{ secrets.CS_API_KEY }}
-          CS_MGMT_TOKEN: ${{ secrets.CS_MGMT_TOKEN }}
+          CS_API_KEY: ${{ secrets.SANDBOX_CS_API_KEY }}
+          CS_MGMT_TOKEN: ${{ secrets.SANDBOX_CS_MGMT_TOKEN }}
           CS_REGION_HOST: ${{ vars.CS_REGION_HOST || 'api.contentstack.io' }}
           CS_CONTENT_TYPE: ${{ vars.CS_CONTENT_TYPE || 'troubleshooting_faq' }}
           CS_ENVIRONMENT: ${{ vars.CS_ENVIRONMENT || 'production' }}
