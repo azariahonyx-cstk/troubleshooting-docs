@@ -4,11 +4,14 @@
   "pod": "General",
   "section": "Pipeline Tests",
   "order": 99,
-  "status": "draft",
+  "status": "published",
   "source_case_id": null,
-  "contentstack_entry_uid": null,
+  "contentstack_entry_uid": "dry-run-uid",
   "confidence_score": 1.0,
-  "keywords": ["pipeline", "smoke test"],
+  "keywords": [
+    "pipeline",
+    "smoke test"
+  ],
   "alternate_search_terms": [],
   "related_articles": [],
   "traceability": {

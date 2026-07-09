@@ -6,9 +6,9 @@ section: "Pipeline Tests"
 order: 99
 meta_title: "Pipeline Smoke Test | Contentstack"
 meta_description: "Dummy article used to verify the docs publishing pipeline end to end. Not customer content."
-status: "draft"
+status: "published"
 source_case_id: null
-contentstack_entry_uid: null
+contentstack_entry_uid: "dry-run-uid"
 migrated_from: null
 migrated_on: null
 ---
