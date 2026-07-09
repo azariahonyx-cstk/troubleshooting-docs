@@ -30,6 +30,18 @@ jobs:
         if: ${{ !vars.USE_API_KEY }}
         run: npm install -g @anthropic-ai/claude-code
 
+      - name: Smoke-test Claude CLI auth
+        if: ${{ !vars.USE_API_KEY }}
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          set +e
+          OUT=$(claude -p "Reply with exactly: OK" --output-format json --model sonnet 2>&1)
+          RC=$?
+          echo "rc=$RC"
+          echo "$OUT" | head -c 1000
+          exit $RC
+
       - name: Generate + verify articles
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}

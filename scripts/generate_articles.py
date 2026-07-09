@@ -105,14 +105,20 @@ def _claude_cli(system, user):
     import subprocess
     env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
     env["CLAUDE_CODE_OAUTH_TOKEN"] = OAUTH_TOKEN
+    # single combined prompt via -p arg; avoids flag drift across CLI versions
+    prompt = f"{system}\n\n====\n\n{user}"
     proc = subprocess.run(
-        ["claude", "-p", "--output-format", "json",
-         "--model", MODEL, "--system-prompt", system],
-        input=user, capture_output=True, text=True, timeout=300, env=env,
+        ["claude", "-p", prompt, "--output-format", "json",
+         "--model", os.environ.get("CLAUDE_CLI_MODEL", "sonnet")],
+        capture_output=True, text=True, timeout=300, env=env,
     )
     if proc.returncode != 0:
-        raise RuntimeError(f"claude CLI failed: {proc.stderr[:500]}")
+        raise RuntimeError(
+            f"claude CLI rc={proc.returncode} stderr={proc.stderr[:300]!r} stdout={proc.stdout[:300]!r}"
+        )
     out = json.loads(proc.stdout)
+    if out.get("is_error"):
+        raise RuntimeError(f"claude CLI error result: {str(out)[:300]}")
     return out.get("result", "")
 
 
