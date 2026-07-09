@@ -33,8 +33,8 @@ jobs:
           CS_API_KEY: ${{ secrets.SANDBOX_CS_API_KEY }}
           CS_MGMT_TOKEN: ${{ secrets.SANDBOX_CS_MGMT_TOKEN }}
           CS_REGION_HOST: ${{ vars.CS_REGION_HOST || 'api.contentstack.io' }}
-          CS_CONTENT_TYPE: ${{ vars.CS_CONTENT_TYPE || 'troubleshooting_faq' }}
-          CS_ENVIRONMENT: ${{ vars.CS_ENVIRONMENT || 'production' }}
+          CS_CONTENT_TYPE: ${{ vars.CS_CONTENT_TYPE || 'product_faqs_2026' }}
+          CS_ENVIRONMENT: ${{ vars.CS_ENVIRONMENT || 'staging' }}
           # Safety default: dry-run until the CMA token secret is configured
           # and the FAQ field mapping in scripts/publish_to_contentstack.py is
           # confirmed against the real content type. Set repo variable

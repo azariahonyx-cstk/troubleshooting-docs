@@ -8,7 +8,7 @@ meta_title: "Pipeline Smoke Test | Contentstack"
 meta_description: "Dummy article used to verify the docs publishing pipeline end to end. Not customer content."
 status: "published"
 source_case_id: null
-contentstack_entry_uid: "dry-run-uid"
+contentstack_entry_uid: "blt6a5fe9b34f83b766"
 migrated_from: null
 migrated_on: null
 ---
