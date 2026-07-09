@@ -1,0 +1,18 @@
+{
+  "title": "Pipeline Smoke Test Article - Safe to Delete",
+  "slug": "pipeline-smoke-test-safe-to-delete",
+  "pod": "General",
+  "section": "Pipeline Tests",
+  "order": 99,
+  "status": "draft",
+  "source_case_id": null,
+  "contentstack_entry_uid": null,
+  "confidence_score": 1.0,
+  "keywords": ["pipeline", "smoke test"],
+  "alternate_search_terms": [],
+  "related_articles": [],
+  "traceability": {
+    "generated_on": "2026-07-09",
+    "pipeline": "smoke-test-v1"
+  }
+}
