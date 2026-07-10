@@ -39,6 +39,7 @@ if not ANTHROPIC_KEY and not OAUTH_TOKEN:
 FEED_CHANNEL = os.environ.get("SLACK_FEED_CHANNEL", "C0B0U9175PS")
 DAYS_BACK = int(os.environ.get("DAYS_BACK", "7"))
 MAX_ARTICLES = int(os.environ.get("MAX_ARTICLES", "10"))
+MAX_REVISION_ROUNDS = int(os.environ.get("MAX_REVISION_ROUNDS", "2"))
 MODEL = os.environ.get("CLAUDE_MODEL", "claude-sonnet-4-6")
 TODAY = date.today().isoformat()
 
@@ -178,7 +179,7 @@ def next_order(folder):
     return max(orders, default=0) + 1
 
 
-def write_article(gen, ver, case):
+def write_article(gen, ver, case, history=None):
     pod = gen["pod"] if gen["pod"] in PODS else "General"
     folder = DOCS / slugify(pod) / slugify(gen["section"])
     folder.mkdir(parents=True, exist_ok=True)
@@ -216,16 +217,80 @@ def write_article(gen, ver, case):
             "sensitive_data": ver.get("sensitive_data", []),
             "revision_notes": ver.get("revision_notes", []),
             "verified_on": TODAY, "verifier_model": MODEL,
+            "revisions": max(len(history) - 1, 0) if history else 0,
         },
+        "verification_history": history or [],
         "traceability": {"generated_on": TODAY, "pipeline": "generate-v1"},
     }
     (folder / f"{base}.manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     return str((folder / f"{base}.md").relative_to(ROOT))
 
 
+def revise(rev_prompt, case, gen, ver):
+    """Ask Claude to surgically correct the draft per the verifier's findings.
+    Returns a new gen dict (same metadata, corrected body_markdown)."""
+    findings = {
+        "hallucinations": ver.get("hallucinations", []),
+        "missing_info": ver.get("missing_info", []),
+        "sensitive_data": ver.get("sensitive_data", []),
+        "revision_notes": ver.get("revision_notes", []),
+    }
+    user = (
+        f"RAW SOURCE CASE:\n\n{case['raw']}\n\n---\n\n"
+        f"CURRENT DRAFT:\n\n{gen['body_markdown']}\n\n---\n\n"
+        f"VERIFIER FINDINGS:\n\n{json.dumps(findings, indent=2)}"
+    )
+    result = claude(rev_prompt, user)
+    new_gen = dict(gen)
+    new_gen["body_markdown"] = result["body_markdown"]
+    new_gen["_revision_summary"] = result.get("revision_summary", "")
+    return new_gen
+
+
+def verify_and_revise(ver_prompt, rev_prompt, case, gen):
+    """Verify a draft; if it needs correctable fixes, revise and re-verify,
+    up to MAX_REVISION_ROUNDS times. Returns (final_gen, final_ver, history).
+
+    history is a list of per-round verifier verdicts (round 0 = first pass,
+    before any revision) for full traceability in the manifest.
+    """
+    history = []
+    current = gen
+    ver = None
+    for round_num in range(MAX_REVISION_ROUNDS + 1):
+        ver = claude(
+            ver_prompt,
+            f"RAW SOURCE CASE:\n\n{case['raw']}\n\n---\n\n"
+            f"DRAFTED ARTICLE:\n\n{current['body_markdown']}",
+        )
+        history.append({
+            "round": round_num,
+            "verdict": ver.get("verdict"),
+            "publishable": ver.get("publishable"),
+            "accuracy_score": ver.get("accuracy_score"),
+            "hallucinations": ver.get("hallucinations", []),
+            "missing_info": ver.get("missing_info", []),
+            "sensitive_data": ver.get("sensitive_data", []),
+            "revision_notes": ver.get("revision_notes", []),
+            "revision_summary": current.get("_revision_summary", "") if round_num > 0 else None,
+        })
+        if ver.get("verdict") == "approved":
+            break
+        # Not fixable by revising the body: source itself fails publishability,
+        # or there's nothing to verify against. Stop and let a human look.
+        if ver.get("verdict") == "cannot_verify" or ver.get("publishable") is False:
+            break
+        if round_num == MAX_REVISION_ROUNDS:
+            break
+        current = revise(rev_prompt, case, current, ver)
+    return current, ver, history
+
+
+
 def main():
     gen_prompt = (ROOT / "prompts" / "generator.md").read_text()
     ver_prompt = (ROOT / "prompts" / "verifier.md").read_text()
+    rev_prompt = (ROOT / "prompts" / "reviser.md").read_text()
     state = json.loads(STATE_FILE.read_text()) if STATE_FILE.exists() else {}
     known = known_case_ids()
 
@@ -247,16 +312,14 @@ def main():
                 state[case["case_id"]] = {"outcome": "rejected", "reason": reason, "on": TODAY}
                 report["rejected"].append({"case": case["case_id"], "reason": reason})
                 continue
-            ver = claude(
-                ver_prompt,
-                f"RAW SOURCE CASE:\n\n{case['raw']}\n\n---\n\nDRAFTED ARTICLE:\n\n{gen['body_markdown']}",
-            )
-            path = write_article(gen, ver, case)
+            final_gen, ver, history = verify_and_revise(ver_prompt, rev_prompt, case, gen)
+            path = write_article(final_gen, ver, case, history)
+            revisions = max(len(history) - 1, 0)
             state[case["case_id"]] = {"outcome": "drafted", "path": path,
-                                      "verdict": ver["verdict"], "on": TODAY}
+                                      "verdict": ver["verdict"], "revisions": revisions, "on": TODAY}
             entry = {"case": case["case_id"], "path": path,
-                     "title": gen["title"], "verdict": ver["verdict"],
-                     "accuracy": ver.get("accuracy_score")}
+                     "title": final_gen["title"], "verdict": ver["verdict"],
+                     "accuracy": ver.get("accuracy_score"), "revisions": revisions}
             (report["drafted"] if ver["verdict"] == "approved" else report["flagged"]).append(entry)
             drafted += 1
         except Exception as e:  # noqa: BLE001 — one bad case must not kill the run
