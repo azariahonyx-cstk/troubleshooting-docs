@@ -52,15 +52,18 @@ jobs:
               rec = json.loads(line)
               p = Path(rec["file"])
               text = p.read_text()
-              text = re.sub(r'(?m)^contentstack_entry_uid: null$',
-                            f'contentstack_entry_uid: "{rec["uid"]}"', text)
+              text = re.sub(r'(?m)^contentstack_parent_entry_uid: null$',
+                            f'contentstack_parent_entry_uid: "{rec["parent_uid"]}"', text)
+              text = re.sub(r'(?m)^contentstack_category_heading: null$',
+                            f'contentstack_category_heading: "{rec["category_heading"]}"', text)
               text = re.sub(r'(?m)^status: "(published-in-drive|approved|in-review|draft)"$',
                             'status: "published"', text)
               p.write_text(text)
               m = p.parent / (p.stem + ".manifest.json")
               if m.exists():
                   data = json.loads(m.read_text())
-                  data["contentstack_entry_uid"] = rec["uid"]
+                  data["contentstack_parent_entry_uid"] = rec["parent_uid"]
+                  data["contentstack_category_heading"] = rec["category_heading"]
                   data["status"] = "published"
                   m.write_text(json.dumps(data, indent=2) + "\n")
           EOF
@@ -68,5 +71,5 @@ jobs:
           git config user.name "docs-pipeline-bot"
           git config user.email "docs-pipeline@users.noreply.github.com"
           git add -A
-          git diff --cached --quiet || git commit -m "chore: write back Contentstack entry UIDs [skip ci]"
+          git diff --cached --quiet || git commit -m "chore: write back Contentstack parent entry UID + category [skip ci]"
           git push
