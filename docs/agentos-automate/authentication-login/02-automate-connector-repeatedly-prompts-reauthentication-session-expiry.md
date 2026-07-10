@@ -6,10 +6,10 @@ section: "Authentication & Login"
 order: 2
 meta_title: "Automate Connector Repeatedly Prompts for Re-authentication | Contentstack"
 meta_description: "The Automate connector may repeatedly prompt for re-authentication due to a short session expiry policy on the connected login. Learn how switching to a dedicated service account resolves it."
-status: "draft"
+status: "published"
 source_case_id: "00090001"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "bltf28cead7084dceac"
+contentstack_category_heading: "Authentication & Login"
 migrated_from: null
 migrated_on: null
 ---

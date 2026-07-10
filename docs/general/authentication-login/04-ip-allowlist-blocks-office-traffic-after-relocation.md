@@ -6,10 +6,10 @@ section: "Authentication & Login"
 order: 4
 meta_title: "IP Allowlist Blocking Office Traffic After Relocation | Contentstack"
 meta_description: "Learn why an outdated IP allowlist entry can block an entire office from accessing a Contentstack stack after a physical move, and how to update the allowlist to restore access."
-status: "draft"
+status: "published"
 source_case_id: "00090010"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt126bd9f8c6e8e9bb"
+contentstack_category_heading: "Authentication & Login"
 migrated_from: null
 migrated_on: null
 ---

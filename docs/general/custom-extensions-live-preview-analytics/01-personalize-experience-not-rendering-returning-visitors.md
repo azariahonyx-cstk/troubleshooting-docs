@@ -6,10 +6,10 @@ section: "Custom Extensions, Live Preview & Analytics"
 order: 1
 meta_title: "Personalize Experience Not Rendering for Returning Visitors | Contentstack"
 meta_description: "Personalize experiences may render for first-time visitors but fail for returning visitors when third-party cookies are blocked by default. Learn how to fix the cookie-consent configuration to restore identity resolution."
-status: "draft"
+status: "published"
 source_case_id: "00090002"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt126bd9f8c6e8e9bb"
+contentstack_category_heading: "Custom Extensions, Live Preview & Analytics"
 migrated_from: null
 migrated_on: null
 ---

@@ -4,10 +4,10 @@
   "pod": "General",
   "section": "Publishing, Releases & Environments",
   "order": 1,
-  "status": "draft",
+  "status": "published",
   "source_case_id": "00090009",
-  "contentstack_parent_entry_uid": null,
-  "contentstack_category_heading": null,
+  "contentstack_parent_entry_uid": "blt126bd9f8c6e8e9bb",
+  "contentstack_category_heading": "Publishing, Releases & Environments",
   "confidence_score": 0.6,
   "keywords": [
     "Mission Control",

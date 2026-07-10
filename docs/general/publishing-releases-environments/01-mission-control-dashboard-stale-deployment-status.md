@@ -6,10 +6,10 @@ section: "Publishing, Releases & Environments"
 order: 1
 meta_title: "Mission Control Dashboard Shows Stale Deployment Status | Contentstack"
 meta_description: "Learn why the Mission Control dashboard may keep showing a deployment as in progress after it has finished, and how refreshing the page resolves it."
-status: "draft"
+status: "published"
 source_case_id: "00090009"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt126bd9f8c6e8e9bb"
+contentstack_category_heading: "Publishing, Releases & Environments"
 migrated_from: null
 migrated_on: null
 ---

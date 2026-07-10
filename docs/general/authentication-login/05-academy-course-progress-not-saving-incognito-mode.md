@@ -6,10 +6,10 @@ section: "Authentication & Login"
 order: 5
 meta_title: "Academy Course Progress Not Saving in Incognito Mode | Contentstack"
 meta_description: "Contentstack Academy course progress can reset between sessions when using a private or incognito browser window. Learn why this happens and how to fix it."
-status: "draft"
+status: "published"
 source_case_id: "00090007"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt126bd9f8c6e8e9bb"
+contentstack_category_heading: "Authentication & Login"
 migrated_from: null
 migrated_on: null
 ---

@@ -6,10 +6,10 @@ section: "API Delivery, GraphQL & Assets"
 order: 5
 meta_title: "JavaScript SDK Region Mismatch Error After Stack Migration | Contentstack"
 meta_description: "Learn why the JavaScript Delivery SDK throws a region mismatch error after migrating a stack to a new region, and how to fix it by updating the SDK's region configuration."
-status: "draft"
+status: "published"
 source_case_id: "00090004"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt126bd9f8c6e8e9bb"
+contentstack_category_heading: "API Delivery, GraphQL & Assets"
 migrated_from: null
 migrated_on: null
 ---

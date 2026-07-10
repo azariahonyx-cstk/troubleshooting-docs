@@ -6,10 +6,10 @@ section: "Content Editing & UI Workflows"
 order: 2
 meta_title: "BrandKit Assets Not Appearing in Asset Picker | Contentstack"
 meta_description: "Learn why BrandKit assets may be visible in the BrandKit library but missing from the entry asset picker, and how linking the correct workspace to your stack resolves it."
-status: "draft"
+status: "published"
 source_case_id: "00090006"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt126bd9f8c6e8e9bb"
+contentstack_category_heading: "Content Editing & UI Workflows"
 migrated_from: null
 migrated_on: null
 ---

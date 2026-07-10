@@ -4,10 +4,10 @@
   "pod": "General",
   "section": "Authentication & Login",
   "order": 4,
-  "status": "draft",
+  "status": "published",
   "source_case_id": "00090010",
-  "contentstack_parent_entry_uid": null,
-  "contentstack_category_heading": null,
+  "contentstack_parent_entry_uid": "blt126bd9f8c6e8e9bb",
+  "contentstack_category_heading": "Authentication & Login",
   "confidence_score": 0.85,
   "keywords": [
     "IP allowlist",

@@ -4,10 +4,10 @@
   "pod": "AgentOS - Automate",
   "section": "Authentication & Login",
   "order": 2,
-  "status": "draft",
+  "status": "published",
   "source_case_id": "00090001",
-  "contentstack_parent_entry_uid": null,
-  "contentstack_category_heading": null,
+  "contentstack_parent_entry_uid": "bltf28cead7084dceac",
+  "contentstack_category_heading": "Authentication & Login",
   "confidence_score": 0.85,
   "keywords": [
     "Automate connector",

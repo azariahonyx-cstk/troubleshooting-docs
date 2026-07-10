@@ -6,10 +6,10 @@ section: "Webhooks & External Integrations"
 order: 2
 meta_title: "CDP Segment Sync Delayed by Hours | Contentstack"
 meta_description: "Learn why CDP audience segment updates may take hours to sync to a destination activation channel and how switching the connector to streaming sync resolves the delay."
-status: "draft"
+status: "published"
 source_case_id: "00090003"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt126bd9f8c6e8e9bb"
+contentstack_category_heading: "Webhooks & External Integrations"
 migrated_from: null
 migrated_on: null
 ---

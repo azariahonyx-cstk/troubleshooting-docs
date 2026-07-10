@@ -6,10 +6,10 @@ section: "API Delivery, GraphQL & Assets"
 order: 4
 meta_title: "CLI Export Fails with \"Too Many Open Files\" Error | Contentstack"
 meta_description: "Learn why a CLI export of a large stack can fail with a \"too many open files\" error and how raising the system's file-descriptor limit resolves it."
-status: "draft"
+status: "published"
 source_case_id: "00090005"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt126bd9f8c6e8e9bb"
+contentstack_category_heading: "API Delivery, GraphQL & Assets"
 migrated_from: null
 migrated_on: null
 ---
