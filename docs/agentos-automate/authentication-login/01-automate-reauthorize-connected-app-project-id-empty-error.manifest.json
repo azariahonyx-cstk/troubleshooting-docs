@@ -1,0 +1,61 @@
+{
+  "title": "Automate Reauthorization Fails with \"project_id should not be empty\" Error",
+  "slug": "automate-reauthorize-connected-app-project-id-empty-error",
+  "pod": "AgentOS - Automate",
+  "section": "Authentication & Login",
+  "order": 1,
+  "status": "draft",
+  "source_case_id": "00059958",
+  "contentstack_entry_uid": null,
+  "confidence_score": 0.8,
+  "keywords": [
+    "project_id should not be empty",
+    "Automate connected app reauthorization",
+    "AgentOS 400 error",
+    "Contentstack connector automation"
+  ],
+  "alternate_search_terms": [
+    "project_id should not be empty error",
+    "HTTP 400 Bad Request Automate connected app",
+    "reauthorize Contentstack connected app fails",
+    "Add new account Automate connection"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "Reauthorizing an existing Contentstack connected app in Automate (Agent OS) returns a \"project_id should not be empty\" HTTP 400 Bad Request error, which prevents creating new automations using the Contentstack connector with workflow access.",
+    "root_cause": "Not mentioned in notes.",
+    "resolution_steps": [
+      "Create a new Contentstack connection instead of reauthorizing the existing one, either from Settings \u2192 Connected Apps or by selecting \"Add new account\" within the automation step.",
+      "Grant the required permissions during the initial authorization of the new connection."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 9,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-10",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 9,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-10",
+    "pipeline": "generate-v1"
+  }
+}
