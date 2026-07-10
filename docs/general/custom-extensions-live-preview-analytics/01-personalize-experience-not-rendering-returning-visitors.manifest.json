@@ -1,0 +1,62 @@
+{
+  "title": "Personalize Experience Not Rendering for Returning Visitors",
+  "slug": "personalize-experience-not-rendering-returning-visitors",
+  "pod": "General",
+  "section": "Custom Extensions, Live Preview & Analytics",
+  "order": 1,
+  "status": "draft",
+  "source_case_id": "00090002",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.85,
+  "keywords": [
+    "Personalize",
+    "returning visitors",
+    "identity resolution cookie",
+    "third-party cookies",
+    "cookie consent configuration"
+  ],
+  "alternate_search_terms": [
+    "Personalize not working for returning visitors",
+    "Personalize experience only renders on first visit",
+    "identity resolution cookie dropped Personalize",
+    "Personalize cookie consent third-party blocked"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The customer's Personalize experience rendered correctly for first-time visitors but not returning visitors on the same device.",
+    "root_cause": "The site blocked third-party cookies by default, causing the Personalize identity-resolution cookie to be dropped between sessions.",
+    "resolution_steps": [
+      "Updated the cookie-consent configuration to allow the Personalize first-party cookie category by default"
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-10",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-10",
+    "pipeline": "generate-v1"
+  }
+}

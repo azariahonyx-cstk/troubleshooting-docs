@@ -57,5 +57,73 @@
     "on": "2026-07-10",
     "outcome": "rejected",
     "reason": "This is a preventive how-to/guidance request (upcoming SAML certificate renewal) rather than an active technical problem \u2014 the customer had not yet performed the renewal and no fix or workaround was confirmed."
+  },
+  "00090001": {
+    "on": "2026-07-10",
+    "outcome": "drafted",
+    "path": "docs/agentos-automate/authentication-login/02-automate-connector-repeatedly-prompts-reauthentication-session-expiry.md",
+    "revisions": 0,
+    "verdict": "approved"
+  },
+  "00090002": {
+    "on": "2026-07-10",
+    "outcome": "drafted",
+    "path": "docs/general/custom-extensions-live-preview-analytics/01-personalize-experience-not-rendering-returning-visitors.md",
+    "revisions": 0,
+    "verdict": "approved"
+  },
+  "00090003": {
+    "on": "2026-07-10",
+    "outcome": "drafted",
+    "path": "docs/general/webhooks-external-integrations/02-cdp-segment-sync-delayed-batch-vs-streaming-connector-mode.md",
+    "revisions": 0,
+    "verdict": "approved"
+  },
+  "00090004": {
+    "on": "2026-07-10",
+    "outcome": "drafted",
+    "path": "docs/general/api-delivery-graphql-assets/05-javascript-sdk-region-mismatch-error-after-stack-migration.md",
+    "revisions": 0,
+    "verdict": "approved"
+  },
+  "00090005": {
+    "on": "2026-07-10",
+    "outcome": "drafted",
+    "path": "docs/general/api-delivery-graphql-assets/04-cli-export-fails-too-many-open-files-error-large-stacks.md",
+    "revisions": 0,
+    "verdict": "approved"
+  },
+  "00090006": {
+    "on": "2026-07-10",
+    "outcome": "drafted",
+    "path": "docs/general/content-editing-ui-workflows/02-brandkit-assets-not-appearing-in-asset-picker.md",
+    "revisions": 0,
+    "verdict": "approved"
+  },
+  "00090007": {
+    "on": "2026-07-10",
+    "outcome": "drafted",
+    "path": "docs/general/authentication-login/05-academy-course-progress-not-saving-incognito-mode.md",
+    "revisions": 0,
+    "verdict": "approved"
+  },
+  "00090008": {
+    "on": "2026-07-10",
+    "outcome": "rejected",
+    "reason": "Resolution was a manual backend action by the TSO team (reissuing an exam link) with no self-service step a reader could take \u2014 equivalent to 'support fixed it internally,' not a repeatable troubleshooting fix."
+  },
+  "00090009": {
+    "on": "2026-07-10",
+    "outcome": "drafted",
+    "path": "docs/general/publishing-releases-environments/01-mission-control-dashboard-stale-deployment-status.md",
+    "revisions": 0,
+    "verdict": "approved"
+  },
+  "00090010": {
+    "on": "2026-07-10",
+    "outcome": "drafted",
+    "path": "docs/general/authentication-login/04-ip-allowlist-blocks-office-traffic-after-relocation.md",
+    "revisions": 1,
+    "verdict": "approved"
   }
 }

@@ -1,0 +1,62 @@
+{
+  "title": "Mission Control Dashboard Shows Deployment Stuck in \"In Progress\" After It Completed",
+  "slug": "mission-control-dashboard-stale-deployment-status",
+  "pod": "General",
+  "section": "Publishing, Releases & Environments",
+  "order": 1,
+  "status": "draft",
+  "source_case_id": "00090009",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.6,
+  "keywords": [
+    "Mission Control",
+    "deployment status",
+    "dashboard stale",
+    "in progress stuck",
+    "status polling"
+  ],
+  "alternate_search_terms": [
+    "deployment stuck in progress",
+    "Mission Control status not updating",
+    "dashboard shows deployment in progress after completion",
+    "deployment status frozen"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The customer's Mission Control dashboard continued showing a deployment as \"in progress\" long after it had completed.",
+    "root_cause": "The dashboard tab had been idle for hours and the underlying status polling had stalled.",
+    "resolution_steps": [
+      "Refresh the page"
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 9,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-10",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 9,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-10",
+    "pipeline": "generate-v1"
+  }
+}
