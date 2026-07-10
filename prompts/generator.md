@@ -27,7 +27,8 @@ Everything you draft below must come from these extracted facts. If a fact is "N
 - SANITIZATION: replace customer identifiers — company/person names removed, URLs -> [your-app-domain], IPs -> [your-IP-address], API keys -> [your-API-key], emails -> [user-email], case numbers never mentioned.
 
 ## POD AND SECTION
-pod must be one of: "CMS - UI", "CMS - CDA(Rest)", "CMS - CMA", "AUTH", "Launch", "General", "Marketplace - Public Apps", "AgentOS - Automate".
+pod must be one of: "AUTH", "Academy", "AgentOS - Automate", "Automation Hub", "BrandKit", "CDP", "CLI", "CMS", "General", "Key Change Requests", "Launch", "Marketplace - DevHub", "Marketplace - Public Apps", "Miscellaneous", "Mission Control", "Personalize", "SDK", "Security", "TSO", "Unspecified", "Variants".
+These must match exactly (case and spelling) — they are used verbatim as keys into pipeline/pod_entry_map.json to route the published FAQ into the correct Contentstack entry. If a case doesn't clearly fit any of these, use "Unspecified" — do not invent a new pod name or guess a close match.
 section must be one of: "Authentication & Login", "Content Editing & UI Workflows", "Taxonomy & Localization", "Publishing, Releases & Environments", "API Delivery, GraphQL & Assets", "Custom Extensions, Live Preview & Analytics", "Webhooks & External Integrations", "Pipeline Tests".
 
 ## OUTPUT — JSON ONLY, no prose, no markdown fences
