@@ -1,0 +1,79 @@
+{
+  "title": "Webhook RSA-PSS Signature Verification Fails with Documented Salt Length 32",
+  "slug": "webhook-rsa-pss-signature-verification-fails-salt-length-32",
+  "pod": "General",
+  "section": "Webhooks & External Integrations",
+  "order": 1,
+  "status": "draft",
+  "source_case_id": "00058862",
+  "contentstack_entry_uid": null,
+  "confidence_score": 0.7,
+  "keywords": [
+    "RSA-PSS",
+    "webhook signature verification",
+    "salt length",
+    "Java Spring Boot webhook",
+    "Contentstack webhooks"
+  ],
+  "alternate_search_terms": [
+    "RSA-PSS signature verification fails salt length",
+    "webhook signature invalid Java 21 Spring Boot",
+    "PSSParameterSpec salt length 32 mismatch",
+    "Contentstack webhook signature verification error"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "Contentstack webhook RSA-PSS signature verification fails when using the documented default salt length of 32, particularly in Java 21+/Spring Boot 4 environments.",
+    "root_cause": "Not mentioned in notes.",
+    "resolution_steps": [
+      "Explicitly set the RSA-PSS signature verification salt length to 222 instead of the documented default value of 32."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-10",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 1
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "needs_revision",
+      "publishable": true,
+      "accuracy_score": 7,
+      "hallucinations": [
+        {
+          "claim": "It's possible the documented default salt length of 32 does not match the actual salt length used by Contentstack's webhook signing implementation, though this was not explicitly confirmed in the case notes.",
+          "problem": "This specific theory (documented value vs. actual implementation mismatch) is not stated or implied anywhere in the source case. The case only reports the customer's workaround (setting salt length to 222), not any diagnosis of why 32 fails or what the 'actual' salt length is. Even hedged as speculation, this is an invented technical explanation not grounded in the raw case."
+        }
+      ],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [
+        "Remove the speculative sentence in the Root cause section positing that the documented salt length of 32 doesn't match Contentstack's actual implementation \u2014 the source case contains no such claim or hint. Keep only the honest disclosure: 'Root cause was not documented in the source case. The resolution below addresses the reported symptom.'"
+      ],
+      "revision_summary": null
+    },
+    {
+      "round": 1,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": "Removed the speculative sentence in the Root cause section theorizing a mismatch between the documented and actual salt length, since the raw case contains no such claim; left the honest 'not documented' disclosure in place."
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-10",
+    "pipeline": "generate-v1"
+  }
+}
