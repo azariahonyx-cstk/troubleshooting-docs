@@ -1,8 +1,18 @@
 {
+  "00045271": {
+    "on": "2026-07-10",
+    "outcome": "rejected",
+    "reason": "Resolution is entirely Contentstack-side infrastructure fixes (Cloudflare Worker/FL2 engine upgrade, deployment timing change) and rules out client causes (429, 499 confirmed as expected client-initiated closures) \u2014 no discrete action a reader could take to resolve or avoid the issue themselves."
+  },
   "00057737": {
     "on": "2026-07-10",
     "outcome": "rejected",
     "reason": "No confirmed resolution or workaround \u2014 case auto-closed due to customer inactivity with no fix on Contentstack's side and no actionable troubleshooting steps for the reader."
+  },
+  "00057858": {
+    "on": "2026-07-10",
+    "outcome": "rejected",
+    "reason": "Resolution is engineering fixed it backend-side (Contentstack deployed a permanent server-side fix); no discrete action a reader could take is described."
   },
   "00058862": {
     "on": "2026-07-10",
@@ -11,10 +21,22 @@
     "revisions": 1,
     "verdict": "approved"
   },
+  "00059832": {
+    "on": "2026-07-10",
+    "outcome": "rejected",
+    "reason": "Resolution notes contain no discrete troubleshooting steps or root cause\u2014only 'Customer confirmed he was able to login,' which is under 30 words and too vague to extract an actionable resolution."
+  },
   "00059897": {
     "on": "2026-07-10",
     "outcome": "rejected",
     "reason": "Internal support-portal ticketing issue resolved via internal COPS ticket \u2014 not a product/technical problem, and resolution has no reader-actionable steps."
+  },
+  "00059958": {
+    "on": "2026-07-10",
+    "outcome": "drafted",
+    "path": "docs/agentos-automate/authentication-login/01-automate-reauthorize-connected-app-project-id-empty-error.md",
+    "revisions": 0,
+    "verdict": "approved"
   },
   "00059964": {
     "on": "2026-07-10",
@@ -25,6 +47,11 @@
     "on": "2026-07-10",
     "outcome": "rejected",
     "reason": "How-to enquiry about intended Validate/Publish button behavior, not a technical problem with a resolution \u2014 no confirmed bug or reader-actionable fix."
+  },
+  "00059995": {
+    "on": "2026-07-10",
+    "outcome": "rejected",
+    "reason": "No confirmed resolution or technical detail in case notes \u2014 resolution reason is a placeholder ('Will keep them updated'), case text too vague to extract any problem or fix."
   },
   "00060009": {
     "on": "2026-07-10",
