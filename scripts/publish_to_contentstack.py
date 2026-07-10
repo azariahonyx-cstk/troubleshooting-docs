@@ -1,21 +1,30 @@
 #!/usr/bin/env python3
 """Publish changed articles to Contentstack via the Management API.
 
-Runs in GitHub Actions on merge to main. For each changed .md under docs/:
+Runs in GitHub Actions on merge to main. Each pod has ONE shared Contentstack
+entry (its "<Pod> Troubleshooting Guides" FAQ page — see
+pipeline/pod_entry_map.json for the UIDs). Articles are NOT their own entries.
+For each changed .md under docs/:
   - parse frontmatter + body
-  - create the FAQ entry if contentstack_entry_uid is null, else update it
-  - publish the entry to the configured environment
-  - write the returned entry UID back into the frontmatter + manifest and
-    commit that change (handled by the workflow step, not this script)
+  - look up the article's pod -> that pod's shared parent entry UID
+  - fetch the parent entry's current faqs_section
+  - find a category group whose heading matches this article's section;
+    append the FAQ into it, or create a new category group if none matches
+  - write the updated faqs_section back to the parent entry, publish it
+  - write the returned parent UID + category heading back into the
+    frontmatter + manifest (handled by the workflow step, not this script)
 
 Environment variables (set as GitHub Actions repo secrets/vars):
   CS_API_KEY        stack API key
-  CS_MGMT_TOKEN     management token with entry create/update/publish scope
+  CS_MGMT_TOKEN     management token with entry read/update/publish scope
   CS_REGION_HOST    e.g. api.contentstack.io (default) or eu-api.contentstack.com
   CS_CONTENT_TYPE   FAQ content type UID (default: product_faqs_2026)
   CS_ENVIRONMENT    target environment (default: staging — the only environment
                      that exists on the docs sandbox stack)
-  DRY_RUN           "1" = log payloads, make no API calls
+  DRY_RUN           "1" = log payloads, make no real API calls (GET is stubbed
+                     with an empty faqs_section, so dry-run can't reflect real
+                     existing categories — good enough to sanity-check the
+                     find-or-create logic runs, not to preview real output)
 
 Stdlib only — no pip install needed in CI.
 """
@@ -34,6 +43,8 @@ HOST = os.environ.get("CS_REGION_HOST", "api.contentstack.io")
 CONTENT_TYPE = os.environ.get("CS_CONTENT_TYPE", "product_faqs_2026")
 ENVIRONMENT = os.environ.get("CS_ENVIRONMENT", "staging")
 DRY_RUN = os.environ.get("DRY_RUN", "0") == "1"
+
+POD_ENTRY_MAP = json.loads((ROOT / "pipeline" / "pod_entry_map.json").read_text())
 
 
 def parse_frontmatter(text):
@@ -64,6 +75,8 @@ def api(method, path, payload=None):
     data = json.dumps(payload).encode() if payload is not None else None
     if DRY_RUN:
         print(f"DRY-RUN {method} {url}\n{json.dumps(payload, indent=2)[:800] if payload else ''}")
+        if method == "GET":
+            return {"entry": {"uid": "dry-run-uid", "faqs_section": []}}
         return {"entry": {"uid": "dry-run-uid"}}
     req = urllib.request.Request(url, data=data, headers=headers, method=method)
     with urllib.request.urlopen(req, timeout=30) as resp:
@@ -156,39 +169,28 @@ def to_site_format(body):
     return body.strip()
 
 
-def build_entry(fm, body):
-    """Map article frontmatter + body to the product_faqs_2026 content type.
-
-    Schema (fetched from the sandbox stack): title (text, mandatory), url
-    (text), breadcrumb (reference -> navigation, unused here), faqs_section
-    (group, repeatable) > heading (text) + faqs (group, repeatable) >
-    question (text) / answer (JSON RTE), seo (global field: title,
-    description, image, robots).
-
-    Each article becomes one faqs_section with a single faqs entry: question
-    is the article title, answer is the full body converted to JSON RTE.
-    """
+def build_faq_item(fm, body):
+    """Map one article's frontmatter + body to a single FAQ (question/answer)
+    item — NOT a whole entry. This gets appended into a category group inside
+    the pod's shared parent entry, never created as its own entry."""
     return {
-        "entry": {
-            "title": fm["title"],
-            "url": f"/troubleshooting/{fm['slug']}",
-            "faqs_section": [
-                {
-                    "heading": fm.get("section", ""),
-                    "faqs": [
-                        {
-                            "question": fm["title"],
-                            "answer": md_to_json_rte(to_site_format(body)),
-                        }
-                    ],
-                }
-            ],
-            "seo": {
-                "title": fm.get("meta_title", ""),
-                "description": fm.get("meta_description", ""),
-            },
-        }
+        "question": fm["title"],
+        "answer": md_to_json_rte(to_site_format(body)),
     }
+
+
+def find_or_append_category(faqs_section, category_heading, faq_item):
+    """Mutate faqs_section in place: append faq_item into the category group
+    whose heading matches (case-insensitive, whitespace-trimmed), or create a
+    new category group if none matches. Returns True if a new category was
+    created, False if it appended into an existing one."""
+    target = category_heading.strip().lower()
+    for group in faqs_section:
+        if group.get("heading", "").strip().lower() == target:
+            group.setdefault("faqs", []).append(faq_item)
+            return False
+    faqs_section.append({"heading": category_heading, "faqs": [faq_item]})
+    return True
 
 
 def main(changed_files):
@@ -198,26 +200,38 @@ def main(changed_files):
         if not path.exists() or path.suffix != ".md":
             continue
         fm, body = parse_frontmatter(path.read_text(encoding="utf-8"))
-        payload = build_entry(fm, body)
-        uid = fm.get("contentstack_entry_uid")
+        pod = fm.get("pod", "")
+        parent_uid = POD_ENTRY_MAP.get(pod)
+        if not parent_uid:
+            failures += 1
+            print(f"::error file={f}::pod {pod!r} has no entry in pipeline/pod_entry_map.json — "
+                  f"not auto-creating one, add it via scripts/seed_pod_entries.py first")
+            continue
+        category = fm.get("section") or "Unspecified"
         try:
-            if uid:
-                res = api("PUT", f"/v3/content_types/{CONTENT_TYPE}/entries/{uid}", payload)
-            else:
-                res = api("POST", f"/v3/content_types/{CONTENT_TYPE}/entries", payload)
-                uid = res["entry"]["uid"]
-                print(f"::notice::created entry {uid} for {f}")
+            current = api("GET", f"/v3/content_types/{CONTENT_TYPE}/entries/{parent_uid}")
+            faqs_section = current["entry"].get("faqs_section") or []
+            faq_item = build_faq_item(fm, body)
+            created_category = find_or_append_category(faqs_section, category, faq_item)
+            api(
+                "PUT",
+                f"/v3/content_types/{CONTENT_TYPE}/entries/{parent_uid}",
+                {"entry": {"faqs_section": faqs_section}},
+            )
             api(
                 "POST",
-                f"/v3/content_types/{CONTENT_TYPE}/entries/{uid}/publish",
+                f"/v3/content_types/{CONTENT_TYPE}/entries/{parent_uid}/publish",
                 {"entry": {"environments": [ENVIRONMENT], "locales": ["en-us"]}},
             )
-            print(f"OK {f} -> entry {uid} published to {ENVIRONMENT}")
-            # emit uid mapping for the workflow to write back (never in dry-run:
-            # a placeholder uid must not be committed into article frontmatter)
+            action = "new category" if created_category else "existing category"
+            print(f"OK {f} -> pod {pod!r} entry {parent_uid}, {action} {category!r}, published to {ENVIRONMENT}")
             if not DRY_RUN:
                 with open(ROOT / "publish-report.jsonl", "a") as out:
-                    out.write(json.dumps({"file": f, "uid": uid}) + "\n")
+                    out.write(json.dumps({
+                        "file": f,
+                        "parent_uid": parent_uid,
+                        "category_heading": category,
+                    }) + "\n")
         except Exception as e:
             failures += 1
             print(f"::error file={f}::publish failed: {e}")
