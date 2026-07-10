@@ -4,9 +4,9 @@
   "pod": "AgentOS - Automate",
   "section": "Authentication & Login",
   "order": 1,
-  "status": "draft",
+  "status": "published",
   "source_case_id": "00059958",
-  "contentstack_entry_uid": null,
+  "contentstack_entry_uid": "bltfc272f520b6a174d",
   "confidence_score": 0.8,
   "keywords": [
     "project_id should not be empty",

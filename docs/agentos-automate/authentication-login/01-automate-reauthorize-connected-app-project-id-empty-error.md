@@ -6,9 +6,9 @@ section: "Authentication & Login"
 order: 1
 meta_title: "Automate \"project_id should not be empty\" Error During Reauthorization | Contentstack"
 meta_description: "Reauthorizing an existing connected app in Automate can trigger a \"project_id should not be empty\" HTTP 400 error. Learn the workaround of creating a new Contentstack connection instead."
-status: "draft"
+status: "published"
 source_case_id: "00059958"
-contentstack_entry_uid: null
+contentstack_entry_uid: "bltfc272f520b6a174d"
 migrated_from: null
 migrated_on: null
 ---
