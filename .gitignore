@@ -3,3 +3,9 @@ __pycache__/
 publish-report.jsonl
 changed.txt
 .DS_Store
+
+# generate_articles.py run artifacts (written to repo root by design,
+# read by run_generate_local.sh / generate.yml, never meant to be committed)
+run-report.json
+run-summary.txt
+pr-comment.md
