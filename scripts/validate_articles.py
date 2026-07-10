@@ -69,7 +69,7 @@ def parse_frontmatter(text: str):
 
 def main():
     seen_slugs, seen_titles = {}, {}
-    md_files = sorted(DOCS.rglob("*.md"))
+    md_files = sorted(p for p in DOCS.rglob("*.md") if p.name != "README.md")
     if not md_files:
         print("No articles found under docs/ — nothing to validate")
         return 0
