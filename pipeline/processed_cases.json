@@ -1,0 +1,34 @@
+{
+  "00057737": {
+    "on": "2026-07-10",
+    "outcome": "rejected",
+    "reason": "Auto-closed due to customer inactivity with no confirmed resolution or workaround \u2014 Contentstack found no product-side issue and the case never documented what in the Netskope VPN configuration caused the problem or how it was fixed."
+  },
+  "00058862": {
+    "on": "2026-07-10",
+    "outcome": "drafted",
+    "path": "docs/general/webhooks-external-integrations/01-webhook-rsa-pss-signature-verification-fails-salt-length-32.md",
+    "revisions": 2,
+    "verdict": "needs_revision"
+  },
+  "00059897": {
+    "on": "2026-07-10",
+    "outcome": "rejected",
+    "reason": "Case concerns customer's inability to open tickets on the support portal itself (resolved via internal COPS ticket) \u2014 not a Contentstack product/technical issue, and resolution contains no actionable troubleshooting step for a reader."
+  },
+  "00059964": {
+    "on": "2026-07-10",
+    "outcome": "rejected",
+    "reason": "Not a technical issue \u2014 case is about a customer sharing screen-recording access with support; no product problem or resolution to document."
+  },
+  "00059976": {
+    "on": "2026-07-10",
+    "outcome": "rejected",
+    "reason": "How-to/conceptual question about Validate vs Publish button behavior, not a technical problem with a resolution or workaround."
+  },
+  "00060009": {
+    "on": "2026-07-10",
+    "outcome": "rejected",
+    "reason": "How-to/guidance request for renewing a SAML SSO certificate via Microsoft Entra ID \u2014 not a technical problem with a bug or fault, just proactive configuration guidance."
+  }
+}

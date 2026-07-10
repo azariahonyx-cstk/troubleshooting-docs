@@ -1,0 +1,164 @@
+{
+  "title": "Webhook RSA-PSS Signature Verification Fails With Documented Salt Length of 32",
+  "slug": "webhook-rsa-pss-signature-verification-fails-salt-length-32",
+  "pod": "General",
+  "section": "Webhooks & External Integrations",
+  "order": 1,
+  "status": "draft",
+  "source_case_id": "00058862",
+  "contentstack_entry_uid": null,
+  "confidence_score": 0.65,
+  "keywords": [
+    "webhook signature verification",
+    "RSA-PSS",
+    "salt length",
+    "PSSParameterSpec",
+    "webhook validation failure"
+  ],
+  "alternate_search_terms": [
+    "RSA-PSS signature verification fails",
+    "webhook salt length 32 invalid",
+    "PSSParameterSpec salt length 222",
+    "webhook signature verification Java 21",
+    "Spring Boot RSA-PSS webhook signature"
+  ],
+  "related_articles": [],
+  "verification": {
+    "verdict": "needs_revision",
+    "accuracy_score": 7,
+    "hallucinations": [
+      {
+        "claim": "Re-run signature verification against a known webhook payload and its corresponding signature header to confirm the change resolves the failure.",
+        "problem": "The case never describes verification mechanics involving a 'known webhook payload' or a 'signature header' \u2014 this specific procedural detail is invented, not stated or entailed by the resolution notes."
+      },
+      {
+        "claim": "After completing these steps, resend or replay a webhook payload and confirm that signature verification succeeds using the salt length of 222 rather than 32.",
+        "problem": "The case only states the customer confirmed the fix worked; it gives no detail about a resend/replay verification procedure."
+      },
+      {
+        "claim": "If verification still fails, capture the exact salt length your code is using and escalate with that detail plus a sample payload and signature header.",
+        "problem": "This escalation procedure (capturing salt length, providing a sample payload and signature header) is not mentioned anywhere in the source case."
+      }
+    ],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [
+      "Remove or generalize the invented verification/escalation mechanics (references to 'signature header', 'sample payload', 'resend or replay a webhook payload') since these specifics are not present in the source case.",
+      "Simplify the Resolution and Verification sections to state only that the customer set the salt length to 222 instead of 32 and confirmed successful verification, without adding unstated procedural detail."
+    ],
+    "verified_on": "2026-07-10",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 2
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "needs_revision",
+      "publishable": true,
+      "accuracy_score": 4,
+      "hallucinations": [
+        {
+          "claim": "For a 2048-bit RSA key with SHA-256 (32-byte hash), this works out to 256 \u2212 32 \u2212 2 = 222 bytes, which does not match the salt length of 32 stated in the documentation available at the time.",
+          "problem": "The source case never mentions the RSA key size (2048-bit) or the hash algorithm (SHA-256). This is a specific invented technical justification not present in or entailed by the case."
+        },
+        {
+          "claim": "the actual PSS salt length used by the signing implementation is not a fixed 32 bytes, but the maximum salt length allowed for the RSA key size (key size in bytes minus hash length minus 2)",
+          "problem": "This formula/explanation is presented as the likely mechanism but is not stated anywhere in the source case, which only records that 32 failed and 222 worked."
+        },
+        {
+          "claim": "construct an explicit `PSSParameterSpec` with `saltLen` set to 222 (using SHA-256 for both the message digest and MGF1 digest) rather than relying on any default salt length, and apply it to your `Signature` instance before calling `verify()`",
+          "problem": "Specific Java API details (PSSParameterSpec, MGF1 digest choice of SHA-256) are invented; the case only states the customer set the salt length to 222, with no detail on the API or digest algorithm used."
+        },
+        {
+          "claim": "If verification still fails, capture the RSA key size you are verifying against (if not 2048-bit, recompute the expected salt length as key size in bytes \u2212 hash length \u2212 2)",
+          "problem": "Continues the unsupported 2048-bit RSA key assumption introduced earlier; not present in the source case."
+        }
+      ],
+      "missing_info": [
+        "The case notes that this feedback was shared with Contentstack's documentation and engineering teams to review and update the official documentation \u2014 the article omits that this is a known, in-progress documentation correction."
+      ],
+      "sensitive_data": [],
+      "revision_notes": [
+        "Remove the specific 2048-bit RSA key and SHA-256 hash assumptions in the Root Cause section (the '256 \u2212 32 \u2212 2 = 222' calculation) \u2014 the source case does not state the customer's key size or hash algorithm.",
+        "Rephrase the root-cause hypothesis to avoid presenting specific unstated parameters (key size, hash algorithm) as if they were established facts; keep it as a generic, hedged hypothesis or remove the calculation entirely.",
+        "Remove the PSSParameterSpec/MGF1-SHA-256 implementation detail in the Resolution steps, or clearly label it as an illustrative example rather than something confirmed by the case.",
+        "Remove or soften the 'if not 2048-bit, recompute...' guidance in the Verification section, since the source never establishes a 2048-bit key.",
+        "Optionally add a note that this issue has been flagged to Contentstack's documentation/engineering teams for review, per the case resolution notes."
+      ],
+      "revision_summary": null
+    },
+    {
+      "round": 1,
+      "verdict": "needs_revision",
+      "publishable": true,
+      "accuracy_score": 5,
+      "hallucinations": [
+        {
+          "claim": "the documented default salt length of 32 bytes",
+          "problem": "Case says salt length \"32\" with no unit specified; \"bytes\" is an assumption not stated in the source."
+        },
+        {
+          "claim": "explicitly setting the PSS salt length to 222 bytes",
+          "problem": "Case says customer set salt length to \"222\" with no unit specified; \"bytes\" is invented."
+        },
+        {
+          "claim": "can fail even when the signature and public key are otherwise valid",
+          "problem": "Case never states the signature/public key were confirmed valid; this qualifier is invented."
+        },
+        {
+          "claim": "If you are using Java's built-in RSASSA-PSS support, explicitly set the PSS salt length parameter to 222 rather than relying on the default, and apply it to your Signature instance before calling verify().",
+          "problem": "Case only says the customer set salt length to 222; it never mentions Java's Signature class, a verify() call, or any specific API usage \u2014 this is an invented implementation detail."
+        },
+        {
+          "claim": "capture the exact PSS parameters (digest algorithm, MGF digest algorithm, and salt length) your code is using, along with the RSA key size",
+          "problem": "Case never mentions MGF digest algorithm or RSA key size; these escalation details are fabricated."
+        },
+        {
+          "claim": "Spring Boot 4's cryptography APIs",
+          "problem": "Case only mentions \"Java 21+/Spring Boot 4 environment\"; it does not reference specific cryptography APIs."
+        }
+      ],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [
+        "Remove or hedge the unit \"bytes\" for salt lengths 32 and 222 \u2014 the case never specifies a unit.",
+        "Remove the claim that the signature and public key were 'otherwise valid' \u2014 not stated in the source.",
+        "Remove the specific Java Signature/verify() implementation guidance \u2014 the case only states the customer changed the salt length value, not how it was applied in code.",
+        "Remove the escalation instruction to capture MGF digest algorithm and RSA key size \u2014 these are not mentioned anywhere in the source case.",
+        "Rephrase 'Spring Boot 4's cryptography APIs' to match the source's plain description of the environment (Java 21+/Spring Boot 4) without implying specific API usage."
+      ],
+      "revision_summary": "Removed the unsupported 2048-bit/SHA-256 key-size assumption and invented salt-length formula/mechanism from Root cause, stripped the specific PSSParameterSpec/MGF1-SHA-256 implementation detail and the 2048-bit parenthetical from Resolution, removed the 'if not 2048-bit, recompute' guidance from Verification, and added a note (per the case's resolution notes) that the discrepancy was reported to Contentstack's documentation and engineering teams."
+    },
+    {
+      "round": 2,
+      "verdict": "needs_revision",
+      "publishable": true,
+      "accuracy_score": 7,
+      "hallucinations": [
+        {
+          "claim": "Re-run signature verification against a known webhook payload and its corresponding signature header to confirm the change resolves the failure.",
+          "problem": "The case never describes verification mechanics involving a 'known webhook payload' or a 'signature header' \u2014 this specific procedural detail is invented, not stated or entailed by the resolution notes."
+        },
+        {
+          "claim": "After completing these steps, resend or replay a webhook payload and confirm that signature verification succeeds using the salt length of 222 rather than 32.",
+          "problem": "The case only states the customer confirmed the fix worked; it gives no detail about a resend/replay verification procedure."
+        },
+        {
+          "claim": "If verification still fails, capture the exact salt length your code is using and escalate with that detail plus a sample payload and signature header.",
+          "problem": "This escalation procedure (capturing salt length, providing a sample payload and signature header) is not mentioned anywhere in the source case."
+        }
+      ],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [
+        "Remove or generalize the invented verification/escalation mechanics (references to 'signature header', 'sample payload', 'resend or replay a webhook payload') since these specifics are not present in the source case.",
+        "Simplify the Resolution and Verification sections to state only that the customer set the salt length to 222 instead of 32 and confirmed successful verification, without adding unstated procedural detail."
+      ],
+      "revision_summary": "Removed invented units (\"bytes\") for the salt length values, the unsupported \"signature and public key otherwise valid\" qualifier, the fabricated Java Signature/verify() implementation detail, the fabricated MGF digest algorithm/RSA key size escalation guidance, and reworded the Spring Boot reference to match the case's plain environment description."
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-10",
+    "pipeline": "generate-v1"
+  }
+}
