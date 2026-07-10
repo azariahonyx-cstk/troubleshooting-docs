@@ -1,0 +1,81 @@
+{
+  "title": "IP Allowlist Blocks Legitimate Office Traffic After Office Relocation",
+  "slug": "ip-allowlist-blocks-office-traffic-after-relocation",
+  "pod": "General",
+  "section": "Authentication & Login",
+  "order": 4,
+  "status": "draft",
+  "source_case_id": "00090010",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.85,
+  "keywords": [
+    "IP allowlist",
+    "IP restriction error",
+    "stack access blocked",
+    "Security settings",
+    "office IP range"
+  ],
+  "alternate_search_terms": [
+    "IP restriction error Contentstack",
+    "blocked from stack after office move",
+    "update IP allowlist stack",
+    "team locked out after office relocation",
+    "static IP range access denied"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "After the customer's office relocated, their team was suddenly blocked from accessing the stack with an IP-restriction error.",
+    "root_cause": "The stack's IP allowlist still referenced the old office's static IP range.",
+    "resolution_steps": [
+      "Add the new office's IP range to the stack's IP allowlist under Security settings."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-10",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 1
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "needs_revision",
+      "publishable": true,
+      "accuracy_score": 8,
+      "hallucinations": [
+        {
+          "claim": "even though credentials and permissions are unchanged",
+          "problem": "The source case never mentions credentials or permissions status at all \u2014 this is an added detail not stated or directly entailed by the case."
+        }
+      ],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [
+        "Remove or rephrase 'even though credentials and permissions are unchanged' in the summary \u2014 the source case does not state or imply anything about credential/permission status."
+      ],
+      "revision_summary": null
+    },
+    {
+      "round": 1,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": "Removed the unsupported claim about credentials/permissions being unchanged from the problem statement, as the source case never mentions credential or permission status."
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-10",
+    "pipeline": "generate-v1"
+  }
+}

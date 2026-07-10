@@ -1,0 +1,63 @@
+{
+  "title": "JavaScript SDK Throws Region Mismatch Error After Migrating Stack to EU Region",
+  "slug": "javascript-sdk-region-mismatch-error-after-stack-migration",
+  "pod": "General",
+  "section": "API Delivery, GraphQL & Assets",
+  "order": 5,
+  "status": "draft",
+  "source_case_id": "00090004",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.85,
+  "keywords": [
+    "region mismatch",
+    "JavaScript SDK",
+    "Delivery SDK",
+    "EU region",
+    "stack migration",
+    "SDK region configuration"
+  ],
+  "alternate_search_terms": [
+    "Region Mismatch error",
+    "SDK region mismatch after migration",
+    "JavaScript SDK EU region error",
+    "Delivery SDK wrong region host"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "After migrating their stack to the EU region, the customer's JavaScript Delivery SDK calls began failing with a region mismatch error.",
+    "root_cause": "SDK initialization code still referenced the default US region host.",
+    "resolution_steps": [
+      "Updated the SDK's region configuration parameter to match the stack's actual region."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-10",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-10",
+    "pipeline": "generate-v1"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Academy Course Progress Not Saving in Private/Incognito Browsing Mode",
+  "slug": "academy-course-progress-not-saving-incognito-mode",
+  "pod": "General",
+  "section": "Authentication & Login",
+  "order": 5,
+  "status": "draft",
+  "source_case_id": "00090007",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.75,
+  "keywords": [
+    "Contentstack Academy",
+    "course progress not saving",
+    "incognito mode",
+    "private browsing",
+    "progress tracking cookie"
+  ],
+  "alternate_search_terms": [
+    "Academy progress resets between sessions",
+    "course progress lost incognito",
+    "Academy course progress not saving",
+    "progress tracking cookie not persisting"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The customer's Contentstack Academy course progress kept resetting between sessions.",
+    "root_cause": "The customer was accessing the Academy in a private/incognito browser window, which prevented the progress-tracking cookie from persisting.",
+    "resolution_steps": [
+      "Exit the private/incognito browser window and access Contentstack Academy using a standard (non-private) browser session."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-10",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-10",
+    "pipeline": "generate-v1"
+  }
+}

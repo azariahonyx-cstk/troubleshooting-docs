@@ -1,0 +1,64 @@
+{
+  "title": "Automate Connector Repeatedly Prompts for Re-authentication",
+  "slug": "automate-connector-repeatedly-prompts-reauthentication-session-expiry",
+  "pod": "AgentOS - Automate",
+  "section": "Authentication & Login",
+  "order": 2,
+  "status": "draft",
+  "source_case_id": "00090001",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.85,
+  "keywords": [
+    "Automate connector",
+    "re-authentication",
+    "session expiry",
+    "service account",
+    "IT policy",
+    "AgentOS"
+  ],
+  "alternate_search_terms": [
+    "Automate connector keeps asking to reauthenticate",
+    "Contentstack connector session expired every few hours",
+    "Automate workflow interrupted by login prompt",
+    "connected app re-authentication loop"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The customer's Automate workflow using the Contentstack connector kept prompting for re-authentication every few hours, interrupting scheduled automations.",
+    "root_cause": "The connected app had been authorized using a personal Contentstack login with short session expiry set by the customer's IT policy.",
+    "resolution_steps": [
+      "Create a dedicated service-account login with standard session settings instead of a personal login.",
+      "Reconnect the Automate app using the new service-account login."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-10",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-10",
+    "pipeline": "generate-v1"
+  }
+}

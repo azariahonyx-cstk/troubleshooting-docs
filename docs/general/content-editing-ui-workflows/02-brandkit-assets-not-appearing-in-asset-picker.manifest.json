@@ -1,0 +1,62 @@
+{
+  "title": "BrandKit Assets Don't Appear in the Entry Asset Picker",
+  "slug": "brandkit-assets-not-appearing-in-asset-picker",
+  "pod": "General",
+  "section": "Content Editing & UI Workflows",
+  "order": 2,
+  "status": "draft",
+  "source_case_id": "00090006",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.85,
+  "keywords": [
+    "BrandKit",
+    "asset picker",
+    "BrandKit workspace",
+    "stack settings",
+    "missing assets"
+  ],
+  "alternate_search_terms": [
+    "BrandKit assets not showing in asset picker",
+    "BrandKit library assets missing from entry",
+    "link BrandKit workspace to stack",
+    "assets visible in BrandKit but not in picker"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "BrandKit assets were not showing up in the entry asset picker despite being visible in the BrandKit library itself.",
+    "root_cause": "The assets were uploaded under a BrandKit workspace not yet linked to the stack being edited.",
+    "resolution_steps": [
+      "Link the correct BrandKit workspace to the stack under Settings."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 9,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-10",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 9,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-10",
+    "pipeline": "generate-v1"
+  }
+}
