@@ -6,9 +6,9 @@ section: "Webhooks & External Integrations"
 order: 1
 meta_title: "Webhook RSA-PSS Signature Verification Fails with Salt Length 32 | Contentstack"
 meta_description: "Webhook RSA-PSS signature verification can fail when using the documented default salt length of 32 in Java 21+/Spring Boot 4 environments. Learn the workaround."
-status: "draft"
+status: "published"
 source_case_id: "00058862"
-contentstack_entry_uid: null
+contentstack_entry_uid: "blt3898d9637b6061b6"
 migrated_from: null
 migrated_on: null
 ---
