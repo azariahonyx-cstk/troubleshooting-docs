@@ -192,7 +192,8 @@ def write_article(gen, ver, case, history=None):
         "meta_title": gen.get("meta_title", ""),
         "meta_description": gen.get("meta_description", ""),
         "status": "draft", "source_case_id": case["case_id"],
-        "contentstack_entry_uid": None,
+        "contentstack_parent_entry_uid": None,
+        "contentstack_category_heading": None,
         "migrated_from": None, "migrated_on": None,
     }
     fm_yaml = "\n".join(
@@ -204,7 +205,9 @@ def write_article(gen, ver, case, history=None):
     manifest = {
         "title": gen["title"], "slug": slug, "pod": pod,
         "section": gen["section"], "order": order, "status": "draft",
-        "source_case_id": case["case_id"], "contentstack_entry_uid": None,
+        "source_case_id": case["case_id"],
+        "contentstack_parent_entry_uid": None,
+        "contentstack_category_heading": None,
         "confidence_score": gen.get("confidence"),
         "keywords": gen.get("keywords", []),
         "alternate_search_terms": gen.get("alternate_search_terms", []),
