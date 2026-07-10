@@ -209,6 +209,7 @@ def write_article(gen, ver, case, history=None):
         "keywords": gen.get("keywords", []),
         "alternate_search_terms": gen.get("alternate_search_terms", []),
         "related_articles": [],
+        "extracted_facts": gen.get("extracted_facts", {}),
         "verification": {
             "verdict": ver["verdict"],
             "accuracy_score": ver.get("accuracy_score"),
@@ -237,6 +238,7 @@ def revise(rev_prompt, case, gen, ver):
     }
     user = (
         f"RAW SOURCE CASE:\n\n{case['raw']}\n\n---\n\n"
+        f"EXTRACTED FACTS:\n\n{json.dumps(gen.get('extracted_facts', {}), indent=2)}\n\n---\n\n"
         f"CURRENT DRAFT:\n\n{gen['body_markdown']}\n\n---\n\n"
         f"VERIFIER FINDINGS:\n\n{json.dumps(findings, indent=2)}"
     )
