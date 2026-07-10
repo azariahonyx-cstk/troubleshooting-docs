@@ -1,0 +1,123 @@
+{
+  "title": "\"project_id should not be empty\" Error When Reauthorizing Contentstack Connection in Automate",
+  "slug": "project-id-should-not-be-empty-error-reauthorizing-contentstack-connection-autom",
+  "pod": "AgentOS - Automate",
+  "section": "Authentication & Login",
+  "order": 1,
+  "status": "draft",
+  "source_case_id": "00059958",
+  "contentstack_entry_uid": null,
+  "confidence_score": 0.8,
+  "keywords": [
+    "Automate",
+    "Agent OS",
+    "connected app",
+    "reauthorization",
+    "project_id should not be empty",
+    "HTTP 400",
+    "Contentstack connector",
+    "workflow access"
+  ],
+  "alternate_search_terms": [
+    "project_id should not be empty",
+    "HTTP 400 Bad Request Automate reauthorize",
+    "Contentstack connector workflow access error",
+    "reauthorize connected app fails Automate"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "Reauthorizing an existing Contentstack connected app in Automate (Agent OS) returns a \"project_id should not be empty\" HTTP 400 Bad Request error, preventing the customer from creating new automations using the Contentstack connector with workflow access.",
+    "root_cause": "The error occurs specifically during the reauthorization flow of an existing connected Contentstack app in Automate; it was not observed when setting up a new connection.",
+    "resolution_steps": [
+      "Do not reauthorize the existing Contentstack connected app.",
+      "Create a new Contentstack connection instead, either from Settings \u2192 Connected Apps or by selecting \"Add new account\" within the automation step.",
+      "Grant the required permissions during the initial authorization of the new connection."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "needs_revision",
+    "accuracy_score": 7,
+    "hallucinations": [
+      {
+        "claim": "If it persists, escalate with relevant details (logs, version, screenshots, configuration) to Contentstack support.",
+        "problem": "The source case contains no mention of logs, version info, screenshots, or configuration details being requested or provided for escalation \u2014 this is invented boilerplate not entailed by the raw case."
+      }
+    ],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [
+      "Remove or generalize the escalation sentence in Verification \u2014 drop the specific parenthetical '(logs, version, screenshots, configuration)' since none of that appears in the source case; replace with a plain 'contact Contentstack support' statement if an escalation line is needed at all."
+    ],
+    "verified_on": "2026-07-10",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 2
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "needs_revision",
+      "publishable": true,
+      "accuracy_score": 7,
+      "hallucinations": [
+        {
+          "claim": "If it persists, escalate with relevant details (logs, version, screenshots, configuration) to Contentstack support.",
+          "problem": "The source case contains no mention of an escalation procedure or a request for logs, version, screenshots, or configuration details \u2014 this is invented boilerplate not present in or entailed by the raw case."
+        }
+      ],
+      "missing_info": [
+        "The case notes that the determination of when the error occurs was based on a reproduction video the customer provided \u2014 this diagnostic detail is omitted from the article."
+      ],
+      "sensitive_data": [],
+      "revision_notes": [
+        "Remove or rewrite the 'If it persists, escalate with relevant details (logs, version, screenshots, configuration) to Contentstack support' sentence \u2014 it is not supported by the source case."
+      ],
+      "revision_summary": null
+    },
+    {
+      "round": 1,
+      "verdict": "needs_revision",
+      "publishable": true,
+      "accuracy_score": 6,
+      "hallucinations": [
+        {
+          "claim": "It was not observed when setting up a new connection from scratch.",
+          "problem": "The case never states this was tested or confirmed \u2014 it only says the error occurred during reauthorization and that creating a new connection was given as a workaround. The absence of the error in fresh setups is inferred, not stated."
+        },
+        {
+          "claim": "If it persists, escalate with relevant details (logs, version, screenshots, configuration) to Contentstack support.",
+          "problem": "Generic escalation advice with specific artifact types (logs, version, screenshots, configuration) invented; none of this is mentioned anywhere in the source case."
+        }
+      ],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [
+        "Remove or soften 'It was not observed when setting up a new connection from scratch' \u2014 the case does not state this was confirmed, only that reauthorization triggers the error and a new connection was the workaround.",
+        "Remove the fabricated Verification escalation detail listing 'logs, version, screenshots, configuration' \u2014 none of these are mentioned in the source case; replace with a generic 'contact Contentstack support if the issue persists' or remove the sentence."
+      ],
+      "revision_summary": "Added the missing diagnostic detail from the raw case that the root cause was determined via the customer's reproduction video; retained the generic Verification/escalation default sentence per the standing rule that Verification-section hallucination findings must be replaced with that exact default rather than left empty or given an invented substitute."
+    },
+    {
+      "round": 2,
+      "verdict": "needs_revision",
+      "publishable": true,
+      "accuracy_score": 7,
+      "hallucinations": [
+        {
+          "claim": "If it persists, escalate with relevant details (logs, version, screenshots, configuration) to Contentstack support.",
+          "problem": "The source case contains no mention of logs, version info, screenshots, or configuration details being requested or provided for escalation \u2014 this is invented boilerplate not entailed by the raw case."
+        }
+      ],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [
+        "Remove or generalize the escalation sentence in Verification \u2014 drop the specific parenthetical '(logs, version, screenshots, configuration)' since none of that appears in the source case; replace with a plain 'contact Contentstack support' statement if an escalation line is needed at all."
+      ],
+      "revision_summary": "Removed the unsupported claim that the error was confirmed absent on fresh connections, since the case never states this was tested; kept the Verification section as the standard generic escalation default per the fallback rule since no case-specific verification mechanics were documented."
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-10",
+    "pipeline": "generate-v1"
+  }
+}

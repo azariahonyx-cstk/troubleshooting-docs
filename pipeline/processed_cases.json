@@ -1,8 +1,18 @@
 {
+  "00045271": {
+    "on": "2026-07-10",
+    "outcome": "rejected",
+    "reason": "Resolution is entirely Contentstack-side infrastructure work (Cloudflare Worker/FL2 engine upgrade, connection-handling patch, moving deployments to weekend windows) with no action a reader could take."
+  },
   "00057737": {
     "on": "2026-07-10",
     "outcome": "rejected",
     "reason": "No confirmed resolution or workaround \u2014 case auto-closed due to customer inactivity with no fix on Contentstack's side and no actionable troubleshooting steps for the reader."
+  },
+  "00057858": {
+    "on": "2026-07-10",
+    "outcome": "rejected",
+    "reason": "Resolution was an internal engineering RCA and backend platform fix with no reader-side action or workaround \u2014 outcome explicitly states no manual steps were needed."
   },
   "00058862": {
     "on": "2026-07-10",
@@ -11,10 +21,22 @@
     "revisions": 1,
     "verdict": "approved"
   },
+  "00059832": {
+    "on": "2026-07-10",
+    "outcome": "rejected",
+    "reason": "No resolution steps or root cause documented \u2014 notes only state the customer confirmed login worked, with no actionable troubleshooting content."
+  },
   "00059897": {
     "on": "2026-07-10",
     "outcome": "rejected",
     "reason": "Internal support-portal ticketing issue resolved via internal COPS ticket \u2014 not a product/technical problem, and resolution has no reader-actionable steps."
+  },
+  "00059958": {
+    "on": "2026-07-10",
+    "outcome": "drafted",
+    "path": "docs/agentos-automate/authentication-login/01-project-id-should-not-be-empty-error-reauthorizing-contentstack-connection-autom.md",
+    "revisions": 2,
+    "verdict": "needs_revision"
   },
   "00059964": {
     "on": "2026-07-10",
@@ -25,6 +47,11 @@
     "on": "2026-07-10",
     "outcome": "rejected",
     "reason": "How-to enquiry about intended Validate/Publish button behavior, not a technical problem with a resolution \u2014 no confirmed bug or reader-actionable fix."
+  },
+  "00059995": {
+    "on": "2026-07-10",
+    "outcome": "rejected",
+    "reason": "No confirmed resolution or workaround documented \u2014 resolution notes only state 'Will keep them updated,' and no problem, root cause, or fix details are present in the case."
   },
   "00060009": {
     "on": "2026-07-10",
