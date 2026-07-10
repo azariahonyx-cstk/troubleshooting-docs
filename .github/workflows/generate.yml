@@ -70,9 +70,11 @@ jobs:
           print(f"automerge={'1' if automerge else '0'}")
           summary = [f"Run {r['run_date']}: {r['new_cases']} new cases · {len(r['drafted'])} approved · {len(r['flagged'])} flagged · {len(r['rejected'])} rejected · {len(r['errors'])} errors"]
           for a in r["drafted"]:
-              summary.append(f"  APPROVED {a['case']} — {a['title']} (accuracy {a['accuracy']}/10)")
+              rev = f" (after {a['revisions']} revision{'s' if a['revisions'] != 1 else ''})" if a.get("revisions") else ""
+              summary.append(f"  APPROVED {a['case']} — {a['title']} (accuracy {a['accuracy']}/10){rev}")
           for a in r["flagged"]:
-              summary.append(f"  FLAGGED {a['case']} — {a['title']} ({a['verdict']})")
+              rev = f" (after {a['revisions']} revision{'s' if a['revisions'] != 1 else ''})" if a.get("revisions") else ""
+              summary.append(f"  FLAGGED {a['case']} — {a['title']} ({a['verdict']}){rev}")
           for a in r["rejected"]:
               summary.append(f"  rejected {a['case']}: {a['reason']}")
           for e in r["errors"]:
