@@ -1,0 +1,63 @@
+{
+  "title": "CMS Entry Save Fails with \"Reference Cycle Detected\" Error",
+  "slug": "cms-entry-save-fails-reference-cycle-detected-error",
+  "pod": "CMS",
+  "section": "Content Editing & UI Workflows",
+  "order": 1,
+  "status": "draft",
+  "source_case_id": "00099014",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.85,
+  "keywords": [
+    "reference cycle detected",
+    "circular reference",
+    "reference field",
+    "entry save error",
+    "content model"
+  ],
+  "alternate_search_terms": [
+    "reference cycle detected error",
+    "entry won't save circular reference",
+    "two entries referencing each other CMS",
+    "reference field save fails"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The customer's entry failed to save with a \"reference cycle detected\" error whenever they tried to link two entries to each other through a reference field.",
+    "root_cause": "The content model allowed entry A to reference entry B and entry B to reference entry A through the same field, creating a circular reference the CMS correctly refused to save.",
+    "resolution_steps": [
+      "Restructure the relationship to use a one-directional reference instead of a bidirectional one.",
+      "Handle the reverse link through a separate lookup field."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}
