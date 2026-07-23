@@ -1,0 +1,63 @@
+{
+  "title": "Personalize Experience Shows Default Content on Mobile Devices Due to Case-Sensitive Targeting Rule",
+  "slug": "personalize-experience-default-content-mobile-case-sensitive-targeting-rule",
+  "pod": "Personalize",
+  "section": "Content Editing & UI Workflows",
+  "order": 1,
+  "status": "draft",
+  "source_case_id": "00099016",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.85,
+  "keywords": [
+    "Personalize",
+    "targeting rule",
+    "device type",
+    "mobile devices",
+    "case sensitivity",
+    "SDK"
+  ],
+  "alternate_search_terms": [
+    "Personalize experience shows default content on mobile",
+    "targeting rule not matching mobile devices",
+    "device type Mobile vs mobile case sensitivity",
+    "Personalize mobile targeting not working"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The Personalize experience rendered correctly on desktop but always showed default content on mobile devices.",
+    "root_cause": "The experience's targeting rule used a device-type attribute value of \"Mobile\" (capitalized), while the SDK reported the device type in lowercase as \"mobile\", so the rule's comparison never matched on mobile devices.",
+    "resolution_steps": [
+      "Update the targeting rule's device-type attribute value to lowercase \"mobile\" so it matches the value the SDK actually sends."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}
