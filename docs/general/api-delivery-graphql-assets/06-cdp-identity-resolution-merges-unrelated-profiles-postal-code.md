@@ -6,10 +6,10 @@ section: "API Delivery, GraphQL & Assets"
 order: 6
 meta_title: "CDP Identity Resolution Merges Unrelated Customer Profiles | Contentstack"
 meta_description: "Learn why Contentstack CDP identity resolution may incorrectly merge unrelated customer profiles that share only a postal code, and how to fix it by tightening the matching ruleset."
-status: "draft"
+status: "published"
 source_case_id: "00099001"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt126bd9f8c6e8e9bb"
+contentstack_category_heading: "API Delivery, GraphQL & Assets"
 migrated_from: null
 migrated_on: null
 ---
