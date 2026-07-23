@@ -6,10 +6,10 @@ section: "Content Editing & UI Workflows"
 order: 1
 meta_title: "Personalize Experience Not Applying to Mobile Devices | Contentstack"
 meta_description: "Learn why a Personalize targeting rule can fail to apply on mobile devices because of a case-sensitive mismatch between the rule value and the SDK-reported device type, and how to fix it."
-status: "draft"
+status: "published"
 source_case_id: "00099016"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt42160a754b110d62"
+contentstack_category_heading: "Content Editing & UI Workflows"
 migrated_from: null
 migrated_on: null
 ---
