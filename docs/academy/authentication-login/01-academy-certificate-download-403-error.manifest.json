@@ -4,10 +4,10 @@
   "pod": "Academy",
   "section": "Authentication & Login",
   "order": 1,
-  "status": "draft",
+  "status": "published",
   "source_case_id": "00099006",
-  "contentstack_parent_entry_uid": null,
-  "contentstack_category_heading": null,
+  "contentstack_parent_entry_uid": "bltfcb67aee4f13afca",
+  "contentstack_category_heading": "Authentication & Login",
   "confidence_score": 0.85,
   "keywords": [
     "Academy certificate 403",

@@ -6,10 +6,10 @@ section: "Authentication & Login"
 order: 1
 meta_title: "Academy Certificate Download Returns 403 Forbidden | Contentstack"
 meta_description: "Learn why an Academy course-completion certificate download link may return a 403 Forbidden error and how to resolve it by regenerating the link under the correct org."
-status: "draft"
+status: "published"
 source_case_id: "00099006"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "bltfcb67aee4f13afca"
+contentstack_category_heading: "Authentication & Login"
 migrated_from: null
 migrated_on: null
 ---

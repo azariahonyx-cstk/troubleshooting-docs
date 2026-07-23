@@ -4,10 +4,10 @@
   "pod": "CLI",
   "section": "Authentication & Login",
   "order": 1,
-  "status": "draft",
+  "status": "published",
   "source_case_id": "00099005",
-  "contentstack_parent_entry_uid": null,
-  "contentstack_category_heading": null,
+  "contentstack_parent_entry_uid": "blt4c00a7a2be05efe4",
+  "contentstack_category_heading": "Authentication & Login",
   "confidence_score": 0.88,
   "keywords": [
     "CLI login hangs",

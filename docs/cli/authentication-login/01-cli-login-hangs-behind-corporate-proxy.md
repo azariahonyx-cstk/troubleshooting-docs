@@ -6,10 +6,10 @@ section: "Authentication & Login"
 order: 1
 meta_title: "CLI Login Hangs Behind a Corporate Proxy | Contentstack"
 meta_description: "Resolve CLI login commands that hang indefinitely with no error on corporate networks by configuring the HTTPS_PROXY environment variable."
-status: "draft"
+status: "published"
 source_case_id: "00099005"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt4c00a7a2be05efe4"
+contentstack_category_heading: "Authentication & Login"
 migrated_from: null
 migrated_on: null
 ---
