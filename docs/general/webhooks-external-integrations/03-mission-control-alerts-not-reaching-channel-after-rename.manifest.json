@@ -1,0 +1,80 @@
+{
+  "title": "Mission Control Alerts Stop Reaching Notification Channel After Channel Rename",
+  "slug": "mission-control-alerts-not-reaching-channel-after-rename",
+  "pod": "General",
+  "section": "Webhooks & External Integrations",
+  "order": 3,
+  "status": "draft",
+  "source_case_id": "00099004",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.85,
+  "keywords": [
+    "Mission Control",
+    "alerts not received",
+    "notification channel",
+    "webhook link broken",
+    "renamed channel"
+  ],
+  "alternate_search_terms": [
+    "Mission Control alerts not working",
+    "webhook broken after channel rename",
+    "notifications stopped Mission Control",
+    "reconnect Mission Control notification channel"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The customer's Mission Control deployment alerts stopped reaching their assigned team's notification channel.",
+    "root_cause": "The notification channel had been renamed on the customer's messaging platform, breaking the existing webhook link.",
+    "resolution_steps": [
+      "Reconnect Mission Control's notification integration to the renamed channel"
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 1
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "needs_revision",
+      "publishable": true,
+      "accuracy_score": 8,
+      "hallucinations": [
+        {
+          "claim": "notifications stop arriving even though the deployment alerts themselves continue to fire correctly",
+          "problem": "The source case never states that Mission Control's deployment alerts continued to fire correctly on its end; it only states that alerts stopped reaching the notification channel due to the broken webhook link. The claim that alert generation itself kept working normally is an added inference, not an explicit statement in the case."
+        }
+      ],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [
+        "Remove or soften the clause 'even though the deployment alerts themselves continue to fire correctly' in the Root cause section since the source case does not explicitly confirm this."
+      ],
+      "revision_summary": null
+    },
+    {
+      "round": 1,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": "Removed the unsupported clause claiming deployment alerts continued to fire correctly, since the source case never states this; the rest of the Root cause sentence is preserved unchanged."
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}
