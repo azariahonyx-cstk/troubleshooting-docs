@@ -6,10 +6,10 @@ section: "Content Editing & UI Workflows"
 order: 3
 meta_title: "Automation Hub Workflow Stuck in Pending Approval | Contentstack"
 meta_description: "An Automation Hub workflow can remain in Pending Approval indefinitely when its approval step references a renamed user role. Learn how to update the role reference to restore approval routing."
-status: "draft"
+status: "published"
 source_case_id: "00099002"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt126bd9f8c6e8e9bb"
+contentstack_category_heading: "Content Editing & UI Workflows"
 migrated_from: null
 migrated_on: null
 ---
