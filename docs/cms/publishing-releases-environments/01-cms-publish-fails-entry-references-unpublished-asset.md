@@ -6,10 +6,10 @@ section: "Publishing, Releases & Environments"
 order: 1
 meta_title: "CMS Publish Fails Silently When Entry References an Unpublished Asset | Contentstack"
 meta_description: "An entry may fail to publish without a clear error when it references an unpublished image asset. Learn how to identify the unpublished asset and resolve the publish failure."
-status: "draft"
+status: "published"
 source_case_id: "00099015"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt930aa025508bb411"
+contentstack_category_heading: "Publishing, Releases & Environments"
 migrated_from: null
 migrated_on: null
 ---
