@@ -1,0 +1,62 @@
+{
+  "title": "BrandKit Assets Over 50MB Fail to Sync Silently",
+  "slug": "brandkit-assets-over-50mb-fail-to-sync-silently",
+  "pod": "BrandKit",
+  "section": "API Delivery, GraphQL & Assets",
+  "order": 1,
+  "status": "draft",
+  "source_case_id": "00099003",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.85,
+  "keywords": [
+    "BrandKit",
+    "asset sync",
+    "sync connector",
+    "upload size limit",
+    "50MB"
+  ],
+  "alternate_search_terms": [
+    "BrandKit assets not syncing",
+    "BrandKit sync fails silently",
+    "asset over 50MB missing from asset library",
+    "BrandKit connector upload limit"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The customer's BrandKit assets over 50MB were failing to sync into the stack's asset library, with no error shown to the user.",
+    "root_cause": "The workspace's sync connector had a default upload size cap of 50MB that silently dropped larger files instead of erroring.",
+    "resolution_steps": [
+      "Raise the sync connector's upload size limit in its configuration settings."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}
