@@ -195,5 +195,27 @@
     "path": "docs/sdk/authentication-login/01-sdk-authentication-token-silently-fails-to-refresh.md",
     "revisions": 0,
     "verdict": "approved"
+  },
+  "00099011": {
+    "on": "2026-07-23",
+    "outcome": "rejected",
+    "reason": "How-to question (customer asked how to create a CDP audience segment) \u2014 not a technical problem, per rejection taxonomy."
+  },
+  "00099012": {
+    "on": "2026-07-23",
+    "outcome": "rejected",
+    "reason": "Pure incident report \u2014 internal infrastructure issue resolved backend-side by Contentstack with no customer-side action or reader-actionable troubleshooting steps."
+  },
+  "00099013": {
+    "on": "2026-07-23",
+    "outcome": "rejected",
+    "reason": "Account management/identity-verification case \u2014 2FA lockout was resolved by Support manually re-verifying identity and resetting the phone number on the account; there is no technical defect or self-service action a reader can perform."
+  },
+  "00099014": {
+    "on": "2026-07-23",
+    "outcome": "drafted",
+    "path": "docs/cms/content-editing-ui-workflows/01-cms-entry-save-fails-reference-cycle-detected-error.md",
+    "revisions": 0,
+    "verdict": "approved"
   }
 }
