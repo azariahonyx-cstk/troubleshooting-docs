@@ -6,10 +6,10 @@ section: "API Delivery, GraphQL & Assets"
 order: 1
 meta_title: "BrandKit Assets Over 50MB Fail to Sync Silently | Contentstack"
 meta_description: "BrandKit assets larger than 50MB can fail to sync into the asset library with no error shown. Learn the cause and how to raise the sync connector's upload size limit to fix it."
-status: "draft"
+status: "published"
 source_case_id: "00099003"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt65675af8d7e450b2"
+contentstack_category_heading: "API Delivery, GraphQL & Assets"
 migrated_from: null
 migrated_on: null
 ---

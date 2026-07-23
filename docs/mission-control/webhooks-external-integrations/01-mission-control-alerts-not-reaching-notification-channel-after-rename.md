@@ -6,10 +6,10 @@ section: "Webhooks & External Integrations"
 order: 1
 meta_title: "Mission Control Alerts Not Reaching Notification Channel After Rename | Contentstack"
 meta_description: "Mission Control deployment alerts can stop arriving in a team's notification channel after the channel is renamed on the connected messaging platform, breaking the webhook link."
-status: "draft"
+status: "published"
 source_case_id: "00099004"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt7a1952301fed723e"
+contentstack_category_heading: "Webhooks & External Integrations"
 migrated_from: null
 migrated_on: null
 ---
