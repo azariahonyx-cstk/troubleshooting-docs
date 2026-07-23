@@ -1,0 +1,63 @@
+{
+  "title": "CLI Login Hangs Indefinitely Behind a Corporate Proxy",
+  "slug": "cli-login-hangs-behind-corporate-proxy",
+  "pod": "CLI",
+  "section": "Authentication & Login",
+  "order": 1,
+  "status": "draft",
+  "source_case_id": "00099005",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.88,
+  "keywords": [
+    "CLI login hangs",
+    "corporate proxy",
+    "HTTPS_PROXY",
+    "CLI authentication",
+    "proxy configuration"
+  ],
+  "alternate_search_terms": [
+    "CLI login stuck no error",
+    "CLI login never completes",
+    "CLI hangs behind proxy",
+    "HTTPS_PROXY CLI login fix"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The customer's CLI login command hung indefinitely with no error when run from inside their corporate network.",
+    "root_cause": "The CLI's login flow was attempting to reach the auth server directly, bypassing the corporate HTTP proxy required for outbound traffic on that network.",
+    "resolution_steps": [
+      "Set the HTTPS_PROXY environment variable to point to your corporate proxy.",
+      "Run the CLI login command again."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}

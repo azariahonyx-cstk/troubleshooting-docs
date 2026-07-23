@@ -1,0 +1,63 @@
+{
+  "title": "Academy Certificate Download Returns 403 Forbidden Error",
+  "slug": "academy-certificate-download-403-error",
+  "pod": "Academy",
+  "section": "Authentication & Login",
+  "order": 1,
+  "status": "draft",
+  "source_case_id": "00099006",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.85,
+  "keywords": [
+    "Academy certificate 403",
+    "certificate download error",
+    "Academy enrollment access",
+    "Contentstack org mismatch"
+  ],
+  "alternate_search_terms": [
+    "403 Forbidden certificate download",
+    "Academy certificate link not working",
+    "certificate download forbidden error",
+    "Academy course completion certificate error"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The customer's Academy course-completion certificate download link returned a 403 Forbidden error when clicked.",
+    "root_cause": "The certificate link had been generated while the customer was logged into a different Contentstack org than the one their Academy enrollment was under, so the download request didn't match the enrollment's access scope.",
+    "resolution_steps": [
+      "Log out of the current Contentstack org.",
+      "Log back in under the org where the Academy enrollment is registered.",
+      "Regenerate the certificate link from the Academy dashboard."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}
