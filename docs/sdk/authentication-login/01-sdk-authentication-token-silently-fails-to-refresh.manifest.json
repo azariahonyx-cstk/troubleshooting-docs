@@ -1,0 +1,63 @@
+{
+  "title": "SDK Authentication Token Silently Fails to Refresh After Long-Running Sessions",
+  "slug": "sdk-authentication-token-silently-fails-to-refresh",
+  "pod": "SDK",
+  "section": "Authentication & Login",
+  "order": 1,
+  "status": "draft",
+  "source_case_id": "00099010",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.82,
+  "keywords": [
+    "SDK authentication",
+    "token refresh",
+    "auto-refresh token",
+    "static token",
+    "authentication error"
+  ],
+  "alternate_search_terms": [
+    "SDK authentication error after hours",
+    "token expired SDK",
+    "SDK stops authenticating",
+    "auto refresh token SDK",
+    "static token authentication failure"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The customer's SDK-based integration started returning authentication errors after several hours of continuous use, with no warning beforehand.",
+    "root_cause": "The SDK client was initialized once at application startup with a short-lived token and never configured to refresh it automatically.",
+    "resolution_steps": [
+      "Update the SDK initialization to use the auto-refresh token option instead of a static token"
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}
