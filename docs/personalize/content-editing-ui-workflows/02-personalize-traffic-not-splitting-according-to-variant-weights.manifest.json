@@ -1,0 +1,63 @@
+{
+  "title": "Personalize Traffic Not Splitting According to Configured Variant Weights",
+  "slug": "personalize-traffic-not-splitting-according-to-variant-weights",
+  "pod": "Personalize",
+  "section": "Content Editing & UI Workflows",
+  "order": 2,
+  "status": "draft",
+  "source_case_id": "00099020",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.88,
+  "keywords": [
+    "Personalize variant weights",
+    "traffic split not working",
+    "audience priority rule",
+    "Personalize experience",
+    "50/50 split not working"
+  ],
+  "alternate_search_terms": [
+    "variant weights not splitting traffic",
+    "Personalize all traffic going to one variant",
+    "audience priority rule overriding variant weight",
+    "Personalize experience traffic split broken",
+    "50/50 split not working Personalize"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The customer configured a 50/50 traffic split between two variants, but nearly all traffic was going to only one variant.",
+    "root_cause": "The experience still had a leftover audience-priority rule from an earlier draft that forced one variant for a broad audience segment, overriding the weighted split for most visitors.",
+    "resolution_steps": [
+      "Remove the leftover audience-priority rule from the experience configuration."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}

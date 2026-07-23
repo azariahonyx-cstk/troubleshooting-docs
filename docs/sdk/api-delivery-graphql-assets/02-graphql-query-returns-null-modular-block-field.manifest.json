@@ -1,0 +1,63 @@
+{
+  "title": "GraphQL Query Returns Null for Modular Block Field",
+  "slug": "graphql-query-returns-null-modular-block-field",
+  "pod": "SDK",
+  "section": "API Delivery, GraphQL & Assets",
+  "order": 2,
+  "status": "draft",
+  "source_case_id": "00099018",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.85,
+  "keywords": [
+    "GraphQL",
+    "modular block",
+    "fragment spread",
+    "SDK",
+    "null field"
+  ],
+  "alternate_search_terms": [
+    "GraphQL modular block returns null",
+    "fragment spread modular block",
+    "SDK GraphQL null field content exists",
+    "modular block field null GraphQL query"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "A GraphQL query returned null for a modular block field even though the entry had content in that field.",
+    "root_cause": "The query was missing the required fragment spread for the modular block's specific block types, so the SDK couldn't resolve which fields to return.",
+    "resolution_steps": [
+      "Add the correct fragment spread for each block type used in the modular block field.",
+      "Confirm the query returns the expected content."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}

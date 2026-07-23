@@ -238,5 +238,26 @@
     "path": "docs/sdk/publishing-releases-environments/01-nodejs-sdk-query-empty-array-environment-mismatch.md",
     "revisions": 0,
     "verdict": "approved"
+  },
+  "00099018": {
+    "on": "2026-07-23",
+    "outcome": "drafted",
+    "path": "docs/sdk/api-delivery-graphql-assets/02-graphql-query-returns-null-modular-block-field.md",
+    "revisions": 0,
+    "verdict": "approved"
+  },
+  "00099019": {
+    "on": "2026-07-23",
+    "outcome": "drafted",
+    "path": "docs/cms/publishing-releases-environments/02-bulk-publish-skips-entries-silently-required-field-empty.md",
+    "revisions": 0,
+    "verdict": "approved"
+  },
+  "00099020": {
+    "on": "2026-07-23",
+    "outcome": "drafted",
+    "path": "docs/personalize/content-editing-ui-workflows/02-personalize-traffic-not-splitting-according-to-variant-weights.md",
+    "revisions": 0,
+    "verdict": "approved"
   }
 }
