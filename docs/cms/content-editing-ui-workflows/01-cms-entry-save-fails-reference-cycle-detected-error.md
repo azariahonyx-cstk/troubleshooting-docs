@@ -6,10 +6,10 @@ section: "Content Editing & UI Workflows"
 order: 1
 meta_title: "CMS Entry Save Fails with \"Reference Cycle Detected\" Error | Contentstack"
 meta_description: "Saving an entry may fail with a reference cycle detected error when two entries reference each other through the same field. Learn how to restructure the reference to resolve it."
-status: "draft"
+status: "published"
 source_case_id: "00099014"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt930aa025508bb411"
+contentstack_category_heading: "Content Editing & UI Workflows"
 migrated_from: null
 migrated_on: null
 ---
