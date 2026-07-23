@@ -6,10 +6,10 @@ section: "Publishing, Releases & Environments"
 order: 1
 meta_title: "Node.js SDK Query Returns Empty Array Despite Existing Entries | Contentstack"
 meta_description: "Learn why a Contentstack Node.js SDK query can return an empty array even when matching entries exist in the CMS, and how to fix it by aligning the query's environment parameter with the entry's published environment."
-status: "draft"
+status: "published"
 source_case_id: "00099017"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "bltef47181f70dc4e80"
+contentstack_category_heading: "Publishing, Releases & Environments"
 migrated_from: null
 migrated_on: null
 ---
