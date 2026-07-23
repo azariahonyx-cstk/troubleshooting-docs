@@ -1,0 +1,63 @@
+{
+  "title": "CDP Identity Resolution Merges Unrelated Customer Profiles Sharing the Same Postal Code",
+  "slug": "cdp-identity-resolution-merges-unrelated-profiles-postal-code",
+  "pod": "General",
+  "section": "API Delivery, GraphQL & Assets",
+  "order": 6,
+  "status": "draft",
+  "source_case_id": "00099001",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.82,
+  "keywords": [
+    "CDP identity resolution",
+    "customer profile merging",
+    "identity resolution ruleset",
+    "postal code matching",
+    "CDP fallback signal"
+  ],
+  "alternate_search_terms": [
+    "CDP merging unrelated customers",
+    "identity resolution merging wrong profiles",
+    "postal code matching too loose CDP",
+    "CDP profiles merged incorrectly",
+    "identity resolution false match"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The customer's CDP was merging two genuinely different customers into a single profile whenever they shared the same postal code.",
+    "root_cause": "The identity-resolution rule set was configured to match on postal code alone as a fallback signal, which was too loose for the customer's customer base density.",
+    "resolution_steps": [
+      "Tighten the identity-resolution ruleset to require postal code plus at least one additional matching signal (email or phone) before merging profiles."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}

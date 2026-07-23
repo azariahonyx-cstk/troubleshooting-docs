@@ -125,5 +125,19 @@
     "path": "docs/general/authentication-login/04-ip-allowlist-blocks-office-traffic-after-relocation.md",
     "revisions": 1,
     "verdict": "approved"
+  },
+  "00099001": {
+    "on": "2026-07-23",
+    "outcome": "drafted",
+    "path": "docs/general/api-delivery-graphql-assets/06-cdp-identity-resolution-merges-unrelated-profiles-postal-code.md",
+    "revisions": 0,
+    "verdict": "approved"
+  },
+  "00099002": {
+    "on": "2026-07-23",
+    "outcome": "drafted",
+    "path": "docs/general/content-editing-ui-workflows/03-automation-hub-workflow-stuck-pending-approval.md",
+    "revisions": 0,
+    "verdict": "approved"
   }
 }

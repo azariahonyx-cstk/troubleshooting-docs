@@ -1,0 +1,62 @@
+{
+  "title": "Automation Hub Workflow Stuck in \"Pending Approval\" Status",
+  "slug": "automation-hub-workflow-stuck-pending-approval",
+  "pod": "General",
+  "section": "Content Editing & UI Workflows",
+  "order": 3,
+  "status": "draft",
+  "source_case_id": "00099002",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.85,
+  "keywords": [
+    "Automation Hub",
+    "workflow approval",
+    "pending approval",
+    "approval step",
+    "user role renamed"
+  ],
+  "alternate_search_terms": [
+    "workflow stuck in pending approval",
+    "no approver notified Automation Hub",
+    "approval step not routing",
+    "workflow approval never triggers"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The customer's Automation Hub workflow got stuck showing \"Pending Approval\" indefinitely, with no approver ever notified.",
+    "root_cause": "The workflow's approval step referenced a user role that had since been renamed, so the notification had nowhere valid to route.",
+    "resolution_steps": [
+      "Updated the approval step to reference the current role name"
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}
