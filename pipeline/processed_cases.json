@@ -153,5 +153,19 @@
     "path": "docs/mission-control/webhooks-external-integrations/01-mission-control-alerts-not-reaching-notification-channel-after-rename.md",
     "revisions": 0,
     "verdict": "approved"
+  },
+  "00099005": {
+    "on": "2026-07-23",
+    "outcome": "drafted",
+    "path": "docs/cli/authentication-login/01-cli-login-hangs-behind-corporate-proxy.md",
+    "revisions": 0,
+    "verdict": "approved"
+  },
+  "00099006": {
+    "on": "2026-07-23",
+    "outcome": "drafted",
+    "path": "docs/academy/authentication-login/01-academy-certificate-download-403-error.md",
+    "revisions": 0,
+    "verdict": "approved"
   }
 }
