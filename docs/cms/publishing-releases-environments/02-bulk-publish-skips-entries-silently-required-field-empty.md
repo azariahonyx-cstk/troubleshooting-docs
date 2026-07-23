@@ -6,10 +6,10 @@ section: "Publishing, Releases & Environments"
 order: 2
 meta_title: "Bulk Publish Skips Entries Silently When a Required Field Is Empty | Contentstack"
 meta_description: "Bulk publish can silently skip entries with no error when a required field is left empty. Learn why this happens and how to fix skipped entries so they publish successfully."
-status: "draft"
+status: "published"
 source_case_id: "00099019"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt930aa025508bb411"
+contentstack_category_heading: "Publishing, Releases & Environments"
 migrated_from: null
 migrated_on: null
 ---

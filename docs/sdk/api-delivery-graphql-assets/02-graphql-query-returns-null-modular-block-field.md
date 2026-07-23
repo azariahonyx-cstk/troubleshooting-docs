@@ -6,10 +6,10 @@ section: "API Delivery, GraphQL & Assets"
 order: 2
 meta_title: "GraphQL Query Returns Null for Modular Block Field | Contentstack"
 meta_description: "A GraphQL query can return null for a modular block field when required fragment spreads for each block type are missing. Learn how to add the correct fragment spreads to resolve the field."
-status: "draft"
+status: "published"
 source_case_id: "00099018"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "bltef47181f70dc4e80"
+contentstack_category_heading: "API Delivery, GraphQL & Assets"
 migrated_from: null
 migrated_on: null
 ---

@@ -4,10 +4,10 @@
   "pod": "CMS",
   "section": "Publishing, Releases & Environments",
   "order": 2,
-  "status": "draft",
+  "status": "published",
   "source_case_id": "00099019",
-  "contentstack_parent_entry_uid": null,
-  "contentstack_category_heading": null,
+  "contentstack_parent_entry_uid": "blt930aa025508bb411",
+  "contentstack_category_heading": "Publishing, Releases & Environments",
   "confidence_score": 0.85,
   "keywords": [
     "bulk publish",

@@ -6,10 +6,10 @@ section: "Content Editing & UI Workflows"
 order: 2
 meta_title: "Personalize Traffic Not Splitting According to Configured Variant Weights | Contentstack"
 meta_description: "Learn why a Personalize experience may send nearly all traffic to a single variant despite a configured weight split, and how a leftover audience-priority rule can cause it."
-status: "draft"
+status: "published"
 source_case_id: "00099020"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt42160a754b110d62"
+contentstack_category_heading: "Content Editing & UI Workflows"
 migrated_from: null
 migrated_on: null
 ---
