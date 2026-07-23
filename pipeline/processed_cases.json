@@ -139,5 +139,19 @@
     "path": "docs/general/content-editing-ui-workflows/03-automation-hub-workflow-stuck-pending-approval.md",
     "revisions": 0,
     "verdict": "approved"
+  },
+  "00099003": {
+    "on": "2026-07-23",
+    "outcome": "drafted",
+    "path": "docs/general/api-delivery-graphql-assets/07-brandkit-sync-fails-assets-larger-than-50mb.md",
+    "revisions": 0,
+    "verdict": "approved"
+  },
+  "00099004": {
+    "on": "2026-07-23",
+    "outcome": "drafted",
+    "path": "docs/general/webhooks-external-integrations/03-mission-control-alerts-not-reaching-channel-after-rename.md",
+    "revisions": 0,
+    "verdict": "approved"
   }
 }

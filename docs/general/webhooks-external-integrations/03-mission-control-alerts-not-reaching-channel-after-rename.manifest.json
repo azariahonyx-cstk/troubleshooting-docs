@@ -1,0 +1,64 @@
+{
+  "title": "Mission Control Alerts Stop Reaching Notification Channel After Channel Rename",
+  "slug": "mission-control-alerts-not-reaching-channel-after-rename",
+  "pod": "General",
+  "section": "Webhooks & External Integrations",
+  "order": 3,
+  "status": "draft",
+  "source_case_id": "00099004",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.75,
+  "keywords": [
+    "Mission Control",
+    "alerts",
+    "notification channel",
+    "webhook",
+    "notification integration",
+    "renamed channel"
+  ],
+  "alternate_search_terms": [
+    "Mission Control alerts not arriving",
+    "Mission Control notifications stopped working",
+    "webhook broken after renaming channel",
+    "Mission Control Slack channel not receiving alerts",
+    "reconnect Mission Control notification integration"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "Mission Control deployment alerts stopped reaching the assigned team's notification channel.",
+    "root_cause": "The notification channel had been renamed on the customer's messaging platform, which broke the existing webhook link connecting it to Mission Control.",
+    "resolution_steps": [
+      "Reconnect Mission Control's notification integration to the renamed channel."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}
