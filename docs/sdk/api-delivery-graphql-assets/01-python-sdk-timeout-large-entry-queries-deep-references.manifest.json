@@ -1,0 +1,63 @@
+{
+  "title": "Python SDK Times Out on Large Entry Queries with Deep Reference Chains",
+  "slug": "python-sdk-timeout-large-entry-queries-deep-references",
+  "pod": "SDK",
+  "section": "API Delivery, GraphQL & Assets",
+  "order": 1,
+  "status": "draft",
+  "source_case_id": "00099008",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.75,
+  "keywords": [
+    "Python SDK",
+    "timeout",
+    "reference fields",
+    "SDK client configuration",
+    "large entry queries"
+  ],
+  "alternate_search_terms": [
+    "Python SDK timeout error",
+    "SDK query times out",
+    "ReadTimeout Python SDK",
+    "entry query timeout referenced fields",
+    "increase SDK client timeout"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "Python SDK calls timed out when querying entries with a large number of referenced fields.",
+    "root_cause": "The SDK client was initialized with the default 10-second timeout, which was too short for queries resolving deep reference chains.",
+    "resolution_steps": [
+      "Increase the SDK client's timeout configuration from the default 10 seconds to 30 seconds."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}

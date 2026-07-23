@@ -1,0 +1,63 @@
+{
+  "title": "Personalize Preview Displays Default Content Instead of Targeted Variant",
+  "slug": "personalize-preview-shows-default-content-instead-of-targeted-variant",
+  "pod": "Personalize",
+  "section": "Custom Extensions, Live Preview & Analytics",
+  "order": 1,
+  "status": "draft",
+  "source_case_id": "00099007",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.85,
+  "keywords": [
+    "Personalize preview",
+    "targeted variant",
+    "default content",
+    "audience context cookie",
+    "preview session"
+  ],
+  "alternate_search_terms": [
+    "Personalize preview shows default content",
+    "targeted variant not displaying in preview",
+    "preview stuck on default variant",
+    "stale audience cookie Personalize"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "Personalize preview mode kept showing default content instead of the targeted variant, even when the preview audience matched the targeting rule.",
+    "root_cause": "The preview session was using a stale audience-context cookie set before the targeting rule was last edited.",
+    "resolution_steps": [
+      "Clear the preview cookie.",
+      "Start a fresh preview session."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}

@@ -167,5 +167,19 @@
     "path": "docs/academy/authentication-login/01-academy-certificate-download-403-error.md",
     "revisions": 0,
     "verdict": "approved"
+  },
+  "00099007": {
+    "on": "2026-07-23",
+    "outcome": "drafted",
+    "path": "docs/personalize/custom-extensions-live-preview-analytics/01-personalize-preview-shows-default-content-instead-of-targeted-variant.md",
+    "revisions": 0,
+    "verdict": "approved"
+  },
+  "00099008": {
+    "on": "2026-07-23",
+    "outcome": "drafted",
+    "path": "docs/sdk/api-delivery-graphql-assets/01-python-sdk-timeout-large-entry-queries-deep-references.md",
+    "revisions": 0,
+    "verdict": "approved"
   }
 }
