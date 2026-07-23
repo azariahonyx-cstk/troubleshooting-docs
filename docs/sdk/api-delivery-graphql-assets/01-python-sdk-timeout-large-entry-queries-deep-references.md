@@ -6,10 +6,10 @@ section: "API Delivery, GraphQL & Assets"
 order: 1
 meta_title: "Python SDK Times Out on Large Entry Queries | Contentstack"
 meta_description: "Learn why Python SDK queries with deep reference chains can time out and how increasing the client timeout configuration resolves the issue."
-status: "draft"
+status: "published"
 source_case_id: "00099008"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "bltef47181f70dc4e80"
+contentstack_category_heading: "API Delivery, GraphQL & Assets"
 migrated_from: null
 migrated_on: null
 ---
