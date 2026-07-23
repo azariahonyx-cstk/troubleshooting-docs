@@ -1,0 +1,64 @@
+{
+  "title": "Bulk Publish Skips Entries Silently When a Required Field Is Empty",
+  "slug": "bulk-publish-skips-entries-silently-required-field-empty",
+  "pod": "CMS",
+  "section": "Publishing, Releases & Environments",
+  "order": 2,
+  "status": "draft",
+  "source_case_id": "00099019",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.85,
+  "keywords": [
+    "bulk publish",
+    "entries not publishing",
+    "silent publish failure",
+    "required field validation",
+    "CMS publish skipped entries"
+  ],
+  "alternate_search_terms": [
+    "bulk publish no error but entries not published",
+    "entry skipped during bulk publish",
+    "why did bulk publish not publish all entries",
+    "bulk publish silently fails"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "A bulk publish action silently skipped some entries without any error, leaving them unpublished.",
+    "root_cause": "The skipped entries had a required field left empty. The CMS validates required fields only during publish, not during the bulk selection step, so the entries were selectable for bulk publish but failed validation silently when the publish attempt reached them.",
+    "resolution_steps": [
+      "Open each skipped entry.",
+      "Fill in the missing required field.",
+      "Run the bulk publish attempt again and confirm all entries publish successfully."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}
