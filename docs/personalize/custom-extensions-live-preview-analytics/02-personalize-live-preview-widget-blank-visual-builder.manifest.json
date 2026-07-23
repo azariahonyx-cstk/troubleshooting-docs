@@ -1,0 +1,62 @@
+{
+  "title": "Personalize Live Preview Widget Shows Blank Panel in Visual Builder",
+  "slug": "personalize-live-preview-widget-blank-visual-builder",
+  "pod": "Personalize",
+  "section": "Custom Extensions, Live Preview & Analytics",
+  "order": 2,
+  "status": "draft",
+  "source_case_id": "00099009",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.88,
+  "keywords": [
+    "Personalize",
+    "Live Preview",
+    "Visual Builder",
+    "ad-blocker",
+    "blank panel"
+  ],
+  "alternate_search_terms": [
+    "Personalize preview widget blank",
+    "Visual Builder live preview not loading",
+    "ad blocker blocking Personalize widget",
+    "Personalize widget blocked by browser extension"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The Personalize live preview widget failed to load inside Visual Builder, showing a blank panel with no error.",
+    "root_cause": "An ad-blocker browser extension was blocking the preview widget's script from loading because its URL pattern matched a common tracking-script signature.",
+    "resolution_steps": [
+      "Add the Personalize preview domain to the ad-blocker's allowlist."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}
