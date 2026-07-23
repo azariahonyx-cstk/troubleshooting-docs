@@ -44,8 +44,11 @@ MODEL = os.environ.get("CLAUDE_MODEL", "claude-sonnet-4-6")
 TODAY = date.today().isoformat()
 
 CASE_ID_RE = re.compile(r"\b(000\d{5})\b")
-PODS = ["CMS - UI", "CMS - CDA(Rest)", "CMS - CMA", "AUTH", "Launch",
-        "General", "Marketplace - Public Apps", "AgentOS - Automate"]
+PODS = ["AUTH", "Academy", "AgentOS - Automate", "Automation Hub", "BrandKit",
+        "CDP", "CLI", "CMS", "General", "Key Change Requests", "Launch",
+        "Marketplace - DevHub", "Marketplace - Public Apps", "Miscellaneous",
+        "Mission Control", "Personalize", "SDK", "Security", "TSO",
+        "Unspecified", "Variants"]
 
 
 def slack(method, params):
