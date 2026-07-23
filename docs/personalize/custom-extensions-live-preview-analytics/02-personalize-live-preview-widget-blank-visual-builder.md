@@ -6,10 +6,10 @@ section: "Custom Extensions, Live Preview & Analytics"
 order: 2
 meta_title: "Personalize Live Preview Widget Not Loading in Visual Builder | Contentstack"
 meta_description: "Learn why the Personalize live preview widget may show a blank panel in Visual Builder and how an ad-blocker extension can cause it, plus the fix."
-status: "draft"
+status: "published"
 source_case_id: "00099009"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "blt42160a754b110d62"
+contentstack_category_heading: "Custom Extensions, Live Preview & Analytics"
 migrated_from: null
 migrated_on: null
 ---

@@ -4,10 +4,10 @@
   "pod": "SDK",
   "section": "Authentication & Login",
   "order": 1,
-  "status": "draft",
+  "status": "published",
   "source_case_id": "00099010",
-  "contentstack_parent_entry_uid": null,
-  "contentstack_category_heading": null,
+  "contentstack_parent_entry_uid": "bltef47181f70dc4e80",
+  "contentstack_category_heading": "Authentication & Login",
   "confidence_score": 0.82,
   "keywords": [
     "SDK authentication",

@@ -6,10 +6,10 @@ section: "Authentication & Login"
 order: 1
 meta_title: "SDK Authentication Token Silently Fails to Refresh | Contentstack"
 meta_description: "SDK-based integrations can start returning authentication errors after several hours of continuous use. Learn why this happens and how to configure automatic token refresh."
-status: "draft"
+status: "published"
 source_case_id: "00099010"
-contentstack_parent_entry_uid: null
-contentstack_category_heading: null
+contentstack_parent_entry_uid: "bltef47181f70dc4e80"
+contentstack_category_heading: "Authentication & Login"
 migrated_from: null
 migrated_on: null
 ---
