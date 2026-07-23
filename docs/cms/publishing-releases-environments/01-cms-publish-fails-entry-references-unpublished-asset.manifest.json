@@ -1,0 +1,65 @@
+{
+  "title": "CMS Publish Fails Silently When Entry References an Unpublished Asset",
+  "slug": "cms-publish-fails-entry-references-unpublished-asset",
+  "pod": "CMS",
+  "section": "Publishing, Releases & Environments",
+  "order": 1,
+  "status": "draft",
+  "source_case_id": "00099015",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.85,
+  "keywords": [
+    "CMS publish failure",
+    "unpublished asset",
+    "entry publish error",
+    "asset reference",
+    "publish blocked"
+  ],
+  "alternate_search_terms": [
+    "entry won't publish no error",
+    "publish fails silently",
+    "asset not published error",
+    "CMS publish stuck",
+    "entry references unpublished asset"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The customer's entry failed to publish with no clear error message whenever it referenced an image asset that hadn't been published yet.",
+    "root_cause": "The CMS silently blocked publishing entries that reference unpublished assets, without surfacing which asset was the cause.",
+    "resolution_steps": [
+      "Check each referenced asset's publish status individually to identify the unpublished asset.",
+      "Publish that asset first.",
+      "Confirm the entry publishes successfully afterward."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}

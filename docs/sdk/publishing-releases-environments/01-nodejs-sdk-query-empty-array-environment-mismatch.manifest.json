@@ -1,0 +1,62 @@
+{
+  "title": "Node.js SDK Query Returns Empty Array for Entries That Exist in the CMS",
+  "slug": "nodejs-sdk-query-empty-array-environment-mismatch",
+  "pod": "SDK",
+  "section": "Publishing, Releases & Environments",
+  "order": 1,
+  "status": "draft",
+  "source_case_id": "00099017",
+  "contentstack_parent_entry_uid": null,
+  "contentstack_category_heading": null,
+  "confidence_score": 0.85,
+  "keywords": [
+    "Node.js SDK",
+    "empty array",
+    "query returns no results",
+    "environment parameter",
+    "published entries"
+  ],
+  "alternate_search_terms": [
+    "SDK query returns empty array",
+    "entries visible in CMS but not in query",
+    "Node.js SDK no results",
+    "environment mismatch publish query"
+  ],
+  "related_articles": [],
+  "extracted_facts": {
+    "problem": "The Node.js SDK query returned an empty array even though matching entries existed and were visible in the CMS UI.",
+    "root_cause": "The query was scoped to the \"production\" environment while the entries had only been published to \"staging\".",
+    "resolution_steps": [
+      "Update the SDK query's environment parameter to match the environment where the entries are actually published (e.g., \"staging\" instead of \"production\")."
+    ],
+    "fix_confirmed": "yes"
+  },
+  "verification": {
+    "verdict": "approved",
+    "accuracy_score": 10,
+    "hallucinations": [],
+    "missing_info": [],
+    "sensitive_data": [],
+    "revision_notes": [],
+    "verified_on": "2026-07-23",
+    "verifier_model": "claude-sonnet-4-6",
+    "revisions": 0
+  },
+  "verification_history": [
+    {
+      "round": 0,
+      "verdict": "approved",
+      "publishable": true,
+      "accuracy_score": 10,
+      "hallucinations": [],
+      "missing_info": [],
+      "sensitive_data": [],
+      "revision_notes": [],
+      "revision_summary": null
+    }
+  ],
+  "traceability": {
+    "generated_on": "2026-07-23",
+    "pipeline": "generate-v1"
+  }
+}

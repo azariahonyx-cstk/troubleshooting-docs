@@ -217,5 +217,26 @@
     "path": "docs/cms/content-editing-ui-workflows/01-cms-entry-save-fails-reference-cycle-detected-error.md",
     "revisions": 0,
     "verdict": "approved"
+  },
+  "00099015": {
+    "on": "2026-07-23",
+    "outcome": "drafted",
+    "path": "docs/cms/publishing-releases-environments/01-cms-publish-fails-entry-references-unpublished-asset.md",
+    "revisions": 0,
+    "verdict": "approved"
+  },
+  "00099016": {
+    "on": "2026-07-23",
+    "outcome": "drafted",
+    "path": "docs/personalize/content-editing-ui-workflows/01-personalize-experience-default-content-mobile-case-sensitive-targeting-rule.md",
+    "revisions": 0,
+    "verdict": "approved"
+  },
+  "00099017": {
+    "on": "2026-07-23",
+    "outcome": "drafted",
+    "path": "docs/sdk/publishing-releases-environments/01-nodejs-sdk-query-empty-array-environment-mismatch.md",
+    "revisions": 0,
+    "verdict": "approved"
   }
 }
