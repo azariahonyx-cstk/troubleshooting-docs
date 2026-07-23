@@ -195,5 +195,15 @@
     "path": "docs/sdk/authentication-login/01-sdk-authentication-token-silently-fails-to-refresh.md",
     "revisions": 0,
     "verdict": "approved"
+  },
+  "00099011": {
+    "on": "2026-07-23",
+    "outcome": "rejected",
+    "reason": "How-to question (customer asking how to create a CDP audience segment) with no technical problem \u2014 falls under how-to/account-management rejection criteria."
+  },
+  "00099012": {
+    "on": "2026-07-23",
+    "outcome": "rejected",
+    "reason": "Backend infrastructure fix (queue worker rebalancing) with no customer-side action or reader-actionable troubleshooting value \u2014 pure incident report."
   }
 }
