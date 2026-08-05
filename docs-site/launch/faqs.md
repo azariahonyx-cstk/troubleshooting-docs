@@ -782,7 +782,7 @@ App launch and upload functionality requires Organization Admin access, not just
 
 The issue is resolved when the user (or an Organization Admin acting on their behalf) can successfully upload the zip file and complete the app setup without encountering the 403 error.
 
-<!-- case:00060727 status:draft synced:false bucket:"Performance, Network & Security Errors" -->
+<!-- case:00060727 status:draft synced:true bucket:"Performance, Network & Security Errors" -->
 ### Launch Cloud Function Times Out After 30 Seconds
 
 Calling a Cloud Function synchronously from the frontend may return a 500-class error (for example CFOO5) when the function takes longer than 30 seconds to execute.

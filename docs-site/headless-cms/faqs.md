@@ -9819,7 +9819,7 @@ A platform fix has been deployed. The asset library grid now loads unique assets
 
 After the fix, confirm the Assets grid view scrolls continuously without duplicating assets, and all assets are accessible without redundant entries.
 
-<!-- case:00060591 status:draft synced:false bucket:"Assets & Metadata Management" -->
+<!-- case:00060591 status:draft synced:true bucket:"Assets & Metadata Management" -->
 ### High-Volume Asset Deletions Overload Purge Services
 
 Deleting a very large number of assets in a short window may place significant load on Contentstack's purge services and slow other operations on the stack.
@@ -10812,7 +10812,7 @@ The URL slug generator removes characters outside the standard ASCII range and i
 
 After implementing transliteration, verify that new entries with accented characters generate slugs with correctly transliterated ASCII equivalents.
 
-<!-- case:00060593 status:draft synced:false bucket:"CMA Behavior, Limits & Miscellaneous" -->
+<!-- case:00060593 status:draft synced:true bucket:"CMA Behavior, Limits & Miscellaneous" -->
 ### Recovering Accidentally Deleted Entries via Trash
 
 Deleting published or unpublished entries across multiple stacks may result in permanent-feeling content loss when no stack-wide point-in-time restore is available to recover them automatically.
