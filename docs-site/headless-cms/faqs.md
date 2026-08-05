@@ -7770,7 +7770,7 @@ No action required - the values are correct. Use decimal conversion when compari
 
 Contentstack uses decimal (SI) units. Exported byte values divided by 1,000,000,000,000 will match the terabyte values shown in the dashboard.
 
-<!-- case:00059438 status:draft synced:true bucket:"Custom Extensions, Live Preview & Analytics" -->
+<!-- case:00059438 status:draft synced:false bucket:"Custom Extensions, Live Preview & Analytics" -->
 ### RTE Editing in Nested Fields Throws onFocus TypeError
 
 Rich Text Editor content nested inside Reference or Global fields may throw a console error (Uncaught TypeError: e.onFocus is not a function) in Visual Experience when edits are applied.
@@ -10795,7 +10795,7 @@ After implementing transliteration, verify that new entries with accented charac
 
 ## AI Assistant & Polaris Features
 
-<!-- case:00060830 status:draft synced:true bucket:"AI Assistant & Polaris Features" -->
+<!-- case:00060830 status:draft synced:false bucket:"AI Assistant & Polaris Features" -->
 ### Polaris Fails to Load Despite AI Credits Enabled
 
 Polaris may fail to load and display an error prompt even when AI Credits and Polaris are enabled at the organization level.
