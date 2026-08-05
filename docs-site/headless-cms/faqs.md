@@ -9819,6 +9819,25 @@ A platform fix has been deployed. The asset library grid now loads unique assets
 
 After the fix, confirm the Assets grid view scrolls continuously without duplicating assets, and all assets are accessible without redundant entries.
 
+<!-- case:00060591 status:draft synced:false bucket:"Assets & Metadata Management" -->
+### High-Volume Asset Deletions Overload Purge Services
+
+Deleting a very large number of assets in a short window may place significant load on Contentstack's purge services and slow other operations on the stack.
+
+**Root Cause**
+
+Submitting a high volume of asset deletions in a short period (for example, over 200,000 deletions within a few hours) generates significant load on the platform's purge services, which can affect the performance of other concurrent operations on the stack.
+
+**Resolution**
+
+1.  Throttle bulk asset deletions by introducing a 5–10 second delay after every 25–30 deletions to reduce load on the purge infrastructure.
+
+2.  Use the `api_version: 3.2` request header on bulk asset publishing operations to route them through the optimized publish flow.
+
+After throttling deletion requests, run the bulk deletion again and monitor stack performance during the process. If other operations remain responsive and no purge-related slowdowns occur, the issue is resolved. Escalate with the deletion volume, time window, and request timestamps if performance issues persist.
+
+<!-- end:00060591 -->
+
 ## Localization via CMA
 
 ### Fetching Taxonomy Term Names via API: Use GraphQL
@@ -10792,6 +10811,27 @@ The URL slug generator removes characters outside the standard ASCII range and i
     
 
 After implementing transliteration, verify that new entries with accented characters generate slugs with correctly transliterated ASCII equivalents.
+
+<!-- case:00060593 status:draft synced:false bucket:"CMA Behavior, Limits & Miscellaneous" -->
+### Recovering Accidentally Deleted Entries via Trash
+
+Deleting published or unpublished entries across multiple stacks may result in permanent-feeling content loss when no stack-wide point-in-time restore is available to recover them automatically.
+
+**Root Cause**
+
+Accidental deletion removes entries from the live stack, and Contentstack does not offer a stack-wide point-in-time restore. The Publish Queue and Audit Log also do not retain enough history to confirm which entry version was live in each environment prior to the deletion.
+
+**Resolution**
+
+1.  Open Trash in the affected stack and restore the deleted entries.
+
+2.  Republish the latest available version of each restored entry to the required environments.
+
+3.  If entries were removed in bulk and the pre-deletion state can't be confirmed, treat Publish Queue and Audit Log history as unreliable beyond a limited window when reconstructing what was live.
+
+After restoring entries from Trash and republishing them, verify the previously deleted content is live again in the required environments. If the content matches what was published before the deletion, the issue is resolved. Escalate with the affected stack UID and the approximate deletion timeframe if entries cannot be restored from Trash.
+
+<!-- end:00060593 -->
 
 ## AI Assistant & Polaris Features
 
