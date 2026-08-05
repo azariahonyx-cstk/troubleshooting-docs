@@ -2,12 +2,12 @@
   "00045271": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "Resolution is entirely Contentstack-side infrastructure fixes (Cloudflare Worker/FL2 engine upgrade, deployment timing change) and rules out client causes (429, 499 confirmed as expected client-initiated closures) \u2014 no discrete action a reader could take to resolve or avoid the issue themselves."
+    "reason": "Resolution is entirely Contentstack-side infrastructure fixes (Cloudflare Worker/FL2 engine upgrade, deployment timing change) and rules out client causes (429, 499 confirmed as expected client-initiated closures) — no discrete action a reader could take to resolve or avoid the issue themselves."
   },
   "00057737": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "No confirmed resolution or workaround \u2014 case auto-closed due to customer inactivity with no fix on Contentstack's side and no actionable troubleshooting steps for the reader."
+    "reason": "No confirmed resolution or workaround — case auto-closed due to customer inactivity with no fix on Contentstack's side and no actionable troubleshooting steps for the reader."
   },
   "00057858": {
     "on": "2026-07-10",
@@ -24,12 +24,12 @@
   "00059832": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "Resolution notes contain no discrete troubleshooting steps or root cause\u2014only 'Customer confirmed he was able to login,' which is under 30 words and too vague to extract an actionable resolution."
+    "reason": "Resolution notes contain no discrete troubleshooting steps or root cause—only 'Customer confirmed he was able to login,' which is under 30 words and too vague to extract an actionable resolution."
   },
   "00059897": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "Internal support-portal ticketing issue resolved via internal COPS ticket \u2014 not a product/technical problem, and resolution has no reader-actionable steps."
+    "reason": "Internal support-portal ticketing issue resolved via internal COPS ticket — not a product/technical problem, and resolution has no reader-actionable steps."
   },
   "00059958": {
     "on": "2026-07-10",
@@ -41,22 +41,22 @@
   "00059964": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "Case concerns screen-recording sharing/access permissions between the customer and support, not a Contentstack product problem or technical resolution \u2014 no extractable troubleshooting content."
+    "reason": "Case concerns screen-recording sharing/access permissions between the customer and support, not a Contentstack product problem or technical resolution — no extractable troubleshooting content."
   },
   "00059976": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "How-to enquiry about intended Validate/Publish button behavior, not a technical problem with a resolution \u2014 no confirmed bug or reader-actionable fix."
+    "reason": "How-to enquiry about intended Validate/Publish button behavior, not a technical problem with a resolution — no confirmed bug or reader-actionable fix."
   },
   "00059995": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "No confirmed resolution or technical detail in case notes \u2014 resolution reason is a placeholder ('Will keep them updated'), case text too vague to extract any problem or fix."
+    "reason": "No confirmed resolution or technical detail in case notes — resolution reason is a placeholder ('Will keep them updated'), case text too vague to extract any problem or fix."
   },
   "00060009": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "This is a preventive how-to/guidance request (upcoming SAML certificate renewal) rather than an active technical problem \u2014 the customer had not yet performed the renewal and no fix or workaround was confirmed."
+    "reason": "This is a preventive how-to/guidance request (upcoming SAML certificate renewal) rather than an active technical problem — the customer had not yet performed the renewal and no fix or workaround was confirmed."
   },
   "00090001": {
     "on": "2026-07-10",
@@ -110,7 +110,7 @@
   "00090008": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "Resolution was a manual backend action by the TSO team (reissuing an exam link) with no self-service step a reader could take \u2014 equivalent to 'support fixed it internally,' not a repeatable troubleshooting fix."
+    "reason": "Resolution was a manual backend action by the TSO team (reissuing an exam link) with no self-service step a reader could take — equivalent to 'support fixed it internally,' not a repeatable troubleshooting fix."
   },
   "00090009": {
     "on": "2026-07-10",
@@ -199,17 +199,17 @@
   "00099011": {
     "on": "2026-07-23",
     "outcome": "rejected",
-    "reason": "How-to question (customer asked how to create a CDP audience segment) \u2014 not a technical problem, per rejection taxonomy."
+    "reason": "How-to question (customer asked how to create a CDP audience segment) — not a technical problem, per rejection taxonomy."
   },
   "00099012": {
     "on": "2026-07-23",
     "outcome": "rejected",
-    "reason": "Pure incident report \u2014 internal infrastructure issue resolved backend-side by Contentstack with no customer-side action or reader-actionable troubleshooting steps."
+    "reason": "Pure incident report — internal infrastructure issue resolved backend-side by Contentstack with no customer-side action or reader-actionable troubleshooting steps."
   },
   "00099013": {
     "on": "2026-07-23",
     "outcome": "rejected",
-    "reason": "Account management/identity-verification case \u2014 2FA lockout was resolved by Support manually re-verifying identity and resetting the phone number on the account; there is no technical defect or self-service action a reader can perform."
+    "reason": "Account management/identity-verification case — 2FA lockout was resolved by Support manually re-verifying identity and resetting the phone number on the account; there is no technical defect or self-service action a reader can perform."
   },
   "00099014": {
     "on": "2026-07-23",
@@ -259,5 +259,135 @@
     "path": "docs/personalize/content-editing-ui-workflows/02-personalize-traffic-not-splitting-according-to-variant-weights.md",
     "revisions": 0,
     "verdict": "approved"
+  },
+  "00060830": {
+    "on": "2026-08-05",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "AI Assistant & Polaris Features"
+  },
+  "00059438": {
+    "on": "2026-08-05",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Custom Extensions, Live Preview & Analytics"
+  },
+  "00060767": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Pre-existing skip decision from prior run; reason not tracked, seeded per instruction to avoid reprocessing."
+  },
+  "00052876": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Pre-existing skip decision from prior run; reason not tracked, seeded per instruction to avoid reprocessing."
+  },
+  "00058089": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Pre-existing skip decision from prior run; reason not tracked, seeded per instruction to avoid reprocessing."
+  },
+  "00060506": {
+    "on": "2026-08-05",
+    "outcome": "FLAG",
+    "reason": "Resolution notes present generic DNS/CAA/CNAME troubleshooting guidance for stuck domain prevalidation, but there is no confirmation the steps were actually applied or that they fixed this customer's case (no 'customer confirmed' language) — uncertain publishability."
+  },
+  "00060512": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "New Feature Request (CSV export / raw field export for Lytics audiences); Resolution Reason 'Request Accepted/On Roadmap' with only a JIRA filed, no workaround or technical resolution."
+  },
+  "00060817": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Administrative duplicate closure referencing case 00060803 and an unspecified infrastructure RCA — no discrete technical content in this case's own notes."
+  },
+  "00060558": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Informational Q&A about SSL intermediate/root certificate continuity during a scheduled renewal — no technical problem or reader-actionable troubleshooting steps, just a confirmed fact."
+  },
+  "00060818": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Pure clarification question about how Contentstack defines Production vs Developer stacks — no technical problem or fix, a simple how-to/informational answer."
+  },
+  "00060285": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Font-color rendering issue was never reproduced platform-side and self-resolved on the customer's end with no confirmed root cause — closed as no-longer-reproducing per the 'could not be reproduced' skip criterion."
+  },
+  "00060591": {
+    "on": "2026-08-05",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Assets & Metadata Management (reused)"
+  },
+  "00058456": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Two sub-issues, neither actionable: performance investigation was abandoned (no root cause, no response), and the audience limit increase was a manual backend change by a Contentstack TAM — no reader-actionable troubleshooting step for either."
+  },
+  "00060727": {
+    "on": "2026-08-05",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/launch/faqs.md",
+    "bucket": "Performance, Network & Security Errors (reused)"
+  },
+  "00060593": {
+    "on": "2026-08-05",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "CMA Behavior, Limits & Miscellaneous (reused)"
+  },
+  "00029591": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "New Feature Request (make asset Description field mandatory); Resolution Reason 'New Feature/Enhancement Released' — response is feature-availability guidance, not a troubleshooting fix for a confirmed technical problem."
+  },
+  "00050508": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Duplicate of case 00029591 processed in this same run (identical New Feature Request: mandatory asset Description field) — also independently a Never-publishable feature request with no workaround."
+  },
+  "00060559": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Investigation stalled — customer never provided the requested diagnostic artifacts (content type export, entry export, screenshot, screen recording); no root cause identified or resolution applied."
+  },
+  "00060673": {
+    "on": "2026-08-05",
+    "outcome": "FLAG",
+    "reason": "Strong publishable content (confirmed root cause: internal auth/key-rotation issue; confirmed customer-side fix) but Microservice 'AgentOS/Automate' has no docs-site category mapping in pipeline/microservice_to_docsite.json — flagged per unmapped-microservice rule, no target file to draft into."
+  },
+  "00060718": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Investigation could not proceed — no diagnostic info received from customer (image file, Stack UID, upload method, cURL, screenshot); no root cause or fix confirmed."
+  },
+  "00060486": {
+    "on": "2026-08-05",
+    "outcome": "FLAG",
+    "reason": "Strong publishable content (clear root cause: Data Store Execution Level scope doesn't support read-after-write within a single execution; clear resolution steps) but Microservice 'AgentOS/Automate' has no docs-site category mapping — flagged per unmapped-microservice rule, no target file to draft into."
+  },
+  "00060814": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Administrative duplicate closure — case explicitly continued under case 00060819 instead; no technical content of its own."
+  },
+  "00059626": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Issue self-resolved on the customer's end without a confirmed root cause; investigation could not proceed due to no further customer response — no actionable fix identified."
+  },
+  "00044058": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "New Feature Request (Brightcove Marketplace app search behavior) closed due to inactivity with no technical detail beyond the subject line."
+  },
+  "00060307": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Auto-closed due to inactivity with zero technical detail in the resolution notes beyond closure boilerplate — no root cause or fix documented despite being logged as a Bug."
   }
 }
