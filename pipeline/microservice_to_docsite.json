@@ -1,0 +1,36 @@
+{
+  "mapped": {
+    "AUTH": "administration",
+    "CLI": "headless-cms",
+    "CMS - UI": "headless-cms",
+    "CMS - CMA": "headless-cms",
+    "CMS - CDA(Rest)": "headless-cms",
+    "SDK": "headless-cms",
+    "Launch": "launch",
+    "Marketplace - DevHub": "marketplace",
+    "Marketplace - Public Apps": "marketplace",
+    "Personalize": "personalize",
+    "Variants": "personalize",
+    "CDP": "personalize"
+  },
+  "unmapped": [
+    { "microservice": "Academy", "reason": "no docs-site category represents training/education content" },
+    { "microservice": "AgentOS - Automate", "reason": "docs-site/agent-os exists but is empty (.gitkeep only), no scraped content" },
+    { "microservice": "Automation Hub", "reason": "no dedicated docs-site category; closest candidate (agent-os) is also empty" },
+    { "microservice": "BrandKit", "reason": "docs-site/brand-kit exists but is empty (.gitkeep only), no scraped content" },
+    { "microservice": "General", "reason": "cross-cutting catch-all pod by design, not tied to one product category" },
+    { "microservice": "Key Change Requests", "reason": "internal engineering/process pod, not a customer-facing product category" },
+    { "microservice": "Miscellaneous", "reason": "catch-all pod for uncategorized cases, no single matching category" },
+    { "microservice": "Mission Control", "reason": "no docs-site category has confirmed Mission Control content; administration's org/SCIM section is a plausible but unconfirmed fit" },
+    { "microservice": "Security", "reason": "security content is scattered across administration (2FA) and launch (compliance/network) with no single dedicated home" },
+    { "microservice": "TSO", "reason": "internal team/pod designation, not a specific product feature category" },
+    { "microservice": "Unspecified", "reason": "catch-all for missing/unclear Microservice values by design, not a real category" }
+  ],
+  "docs_site_parent_entries": {
+    "headless-cms": "bltf594f0414e813549",
+    "personalize": "blt7c71b7a61f73d9e0",
+    "launch": "bltdcb2e439643d6088",
+    "marketplace": "blt5d637d1949c2db8d",
+    "administration": "blt38a02b7d8938d0ca"
+  }
+}
