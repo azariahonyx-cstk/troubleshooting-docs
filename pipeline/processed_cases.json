@@ -389,5 +389,113 @@
     "on": "2026-08-05",
     "outcome": "SKIP",
     "reason": "Auto-closed due to inactivity with zero technical detail in the resolution notes beyond closure boilerplate — no root cause or fix documented despite being logged as a Bug."
+  },
+  "00060779": {
+    "on": "2026-08-05",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "AI Assistant & Polaris Features (reused)"
+  },
+  "00060269": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response with no root cause or fix documented before closure; only boilerplate follow-up-unanswered text."
+  },
+  "00060183": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "New Feature Request (prevent pasting images into RichText fields) closed as feature released, notes contain only boilerplate auto-close text with no technical detail."
+  },
+  "00060157": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; investigation into SSO role/access-retention issue stalled on data-sharing logistics with no root cause identified and no fix or workaround documented."
+  },
+  "00060538": {
+    "on": "2026-08-05",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Content Editing & UI Workflows (reused)"
+  },
+  "00034145": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "New Feature Request (Algolia indexing of referenced field data) closed as feature released with no discrete troubleshooting or configuration steps a reader could take."
+  },
+  "00050794": {
+    "on": "2026-08-05",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Authentication, Tokens & Access (reused)"
+  },
+  "00060723": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Simple how-to Q&A about 2FA org toggle vs. individual profile setup, no underlying technical problem."
+  },
+  "00060794": {
+    "on": "2026-08-05",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Webhooks & External Integrations (reused)"
+  },
+  "00060602": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Resolution notes only point to an internal Slack heads-up message with no technical content of its own."
+  },
+  "00060766": {
+    "on": "2026-08-05",
+    "outcome": "FLAG",
+    "reason": "Strong publishable content (confirmed root cause: model output-token limit exceeded on large HTML payload, causing intentional non-persistence, mislabeled as a connector capacity error) but Microservice 'AgentOS/Automate' has no docs-site category mapping (agent-os is empty)."
+  },
+  "00060677": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Informational guidance on Personalize + GTM tracking setup, answered as a how-to clarification with no underlying bug or paraphrasable troubleshooting steps."
+  },
+  "00060690": {
+    "on": "2026-08-05",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Assets & Metadata Management (reused)"
+  },
+  "00060722": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Administrative request (MFA enablement question + org ownership transfer) with no ownership change made and no technical problem to troubleshoot."
+  },
+  "00060720": {
+    "on": "2026-08-05",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "API Delivery, GraphQL & Assets (reused)"
+  },
+  "00060592": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "New Feature Request (account merge / certification transfer) deferred pending a future release; no workaround exists today."
+  },
+  "00060730": {
+    "on": "2026-08-05",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Publishing, Releases, Environments and Operations (reused)"
+  },
+  "00060755": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; case closed because user was out of office, with no root cause identified or fix documented before closure."
+  },
+  "00060653": {
+    "on": "2026-08-05",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/marketplace/faqs.md",
+    "bucket": "Vendor-Specific Integrations (reused)"
+  },
+  "00060456": {
+    "on": "2026-08-05",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; no root cause identified, only a request for a discovery call that went unanswered."
   }
 }
