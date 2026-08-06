@@ -465,7 +465,7 @@ Attempting to manage a very large set of domains under a single service can exce
 
 The issue is resolved when all domains are successfully added, redirections are functional, and SSL certificates have provisioned automatically across both groups.
 
-<!-- case:00060756 status:draft synced:false bucket:"Domains, DNS & SSL" -->
+<!-- case:00060756 status:draft synced:true bucket:"Domains, DNS & SSL" -->
 ### SSL Certificate Stuck Inactive After Migrating From Fastly
 
 Migrating a custom domain from a deprecated Fastly IP to the current Contentstack IP may leave the SSL certificate stuck in an inactive state.

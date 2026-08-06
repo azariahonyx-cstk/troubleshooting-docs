@@ -408,7 +408,7 @@ After limiting the stored fields, attempt to select a product from the Shopify s
 
 If the entry saves successfully without a 40KB size error, the payload is correctly optimized for system limits.
 
-<!-- case:00060653 status:draft synced:false bucket:"Vendor-Specific Integrations" -->
+<!-- case:00060653 status:draft synced:true bucket:"Vendor-Specific Integrations" -->
 ### Brightcove App Returns 400 or Credentials Error Selecting Video
 
 Selecting a video through the Brightcove Marketplace app's custom field may return a 400 Bad Request error, or may fail to save with an "invalid or missing credentials" error when selecting a single video.

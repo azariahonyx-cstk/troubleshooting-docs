@@ -2004,7 +2004,7 @@ The social embed option requires the Social Embed feature to be enabled at the f
 
 After enabling the Social Embed toggle, verify the option appears in the JSON RTE for editors.
 
-<!-- case:00060538 status:draft synced:false bucket:"Content Editing & UI Workflows" -->
+<!-- case:00060538 status:draft synced:true bucket:"Content Editing & UI Workflows" -->
 ### Mixed Arabic/Latin Text Displays Left-to-Right in Multi Line Textbox
 
 Entering mixed Arabic and Latin text into a Multi Line Textbox field may render left-to-right (LTR) instead of right-to-left (RTL), even when most of the content is Arabic.
@@ -3117,7 +3117,7 @@ This is expected behavior and not a security issue. The actual permission check 
 
 After reloading the entry page, confirm the Publish and Unpublish buttons are no longer visible for the user whose permissions were revoked.
 
-<!-- case:00060730 status:draft synced:false bucket:"Publishing, Releases, Environments and Operations" -->
+<!-- case:00060730 status:draft synced:true bucket:"Publishing, Releases, Environments and Operations" -->
 ### Release Shows Successful Deployment but Content Reverts
 
 Deploying a Release may show a successful status while the published content fails to reach the target environment, with the content reverting after redeployment.
@@ -5493,7 +5493,7 @@ This error occurs when the number of rules configured within a Personalize audie
 
 After the limit increase is applied, re-run the GraphQL query that was returning the error. If the query executes successfully and returns personalized content, the audience rule limit has been resolved.
 
-<!-- case:00060720 status:draft synced:false bucket:"API Delivery, GraphQL & Assets" -->
+<!-- case:00060720 status:draft synced:true bucket:"API Delivery, GraphQL & Assets" -->
 ### Descending Sort Places Lowercase Values Before Uppercase
 
 Sorting entries in descending order by a text field may place values beginning with lowercase characters before values beginning with uppercase characters, appearing out of alphabetical order.
@@ -6711,7 +6711,7 @@ The socket hang up error is caused by a connection disruption between the sync-c
 
 After upgrading the SDK and confirming automatic reconnection, monitor the sync receiver for 24 hours to confirm the socket hang up no longer requires manual intervention.
 
-<!-- case:00060794 status:draft synced:false bucket:"Webhooks & External Integrations" -->
+<!-- case:00060794 status:draft synced:true bucket:"Webhooks & External Integrations" -->
 ### Webhook Executions Not Triggering After Entries Are Published
 
 Webhook executions may stop triggering after publishing entries, with the publish queue also failing to process as expected.
@@ -7869,7 +7869,7 @@ After upgrading, attempt to edit Rich Text Editor content nested inside a Refere
 
 <!-- end:00059438 -->
 
-<!-- case:00058802 status:draft synced:false bucket:"Custom Extensions, Live Preview & Analytics" -->
+<!-- case:00058802 status:draft synced:true bucket:"Custom Extensions, Live Preview & Analytics" -->
 ### Live Preview Not Updating in SSR Applications
 
 Configuring Live Preview in a server-side rendered (SSR) application may fail to reflect entry changes on initial load or when edits are made.
@@ -8707,7 +8707,7 @@ An engineering fix has been deployed to correct the taxonomy term display order 
 
 After the fix deployment, select taxonomy terms in a specific order and confirm the entry editor displays them in the same sequence as the CDA returns them.
 
-<!-- case:00050794 status:draft synced:false bucket:"Authentication, Tokens & Access" -->
+<!-- case:00050794 status:draft synced:true bucket:"Authentication, Tokens & Access" -->
 ### Roles Created via CMA Don't Display Correctly in the UI
 
 Creating a role through the Content Management API may result in the role details failing to load in the Contentstack UI, even though the role was created successfully.
@@ -9964,7 +9964,7 @@ After throttling deletion requests, run the bulk deletion again and monitor stac
 
 <!-- end:00060591 -->
 
-<!-- case:00060690 status:draft synced:false bucket:"Assets & Metadata Management" -->
+<!-- case:00060690 status:draft synced:true bucket:"Assets & Metadata Management" -->
 ### Get Single Asset Metadata Nested Differently in CDA vs CMA
 
 Requesting asset metadata with include_metadata=true may return a different response structure depending on whether the Get Single Asset call is made through the CMA or the CDA, breaking field mappings built against one API's shape.
@@ -10959,7 +10959,7 @@ The URL slug generator removes characters outside the standard ASCII range and i
 
 After implementing transliteration, verify that new entries with accented characters generate slugs with correctly transliterated ASCII equivalents.
 
-<!-- case:00060883 status:draft synced:false bucket:"CMA Behavior, Limits & Miscellaneous" -->
+<!-- case:00060883 status:draft synced:true bucket:"CMA Behavior, Limits & Miscellaneous" -->
 ### Bulk Task Queue Jobs Stuck Behind One Stalled Job
 
 Bulk Task Queue jobs, such as branch-creation jobs, may appear stuck in a Waiting state across multiple stacks, blocking further queue processing.
@@ -11027,7 +11027,7 @@ After Contentstack Support confirms the backend provisioning issue has been corr
 
 <!-- end:00060830 -->
 
-<!-- case:00060779 status:draft synced:false bucket:"AI Assistant & Polaris Features" -->
+<!-- case:00060779 status:draft synced:true bucket:"AI Assistant & Polaris Features" -->
 ### Organization Admins Unable to Access AI Settings
 
 Accessing Administration → AI Settings may be blocked for a user even when that user holds Organization Admin privileges.

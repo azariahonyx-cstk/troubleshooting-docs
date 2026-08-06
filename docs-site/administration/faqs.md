@@ -402,7 +402,7 @@ This notification is triggered by multiple failed attempts on Contentstack's sta
 
 After logging in via SSO, confirm access works normally despite having received the notification.
 
-<!-- case:00060768 status:draft synced:false bucket:"Single Sign-On (SSO) & IdP Configuration" -->
+<!-- case:00060768 status:draft synced:true bucket:"Single Sign-On (SSO) & IdP Configuration" -->
 ### SSO Login Fails When Roles Attribute Missing With Role Mapping
 
 Enabling SSO Role Mapping without including the required roles attribute in the SAML assertion may block SSO login for all users in the organization.
