@@ -7869,6 +7869,29 @@ After upgrading, attempt to edit Rich Text Editor content nested inside a Refere
 
 <!-- end:00059438 -->
 
+<!-- case:00058802 status:draft synced:false bucket:"Custom Extensions, Live Preview & Analytics" -->
+### Live Preview Not Updating in SSR Applications
+
+Configuring Live Preview in a server-side rendered (SSR) application may fail to reflect entry changes on initial load or when edits are made.
+
+**Root Cause**
+
+The onEntryChange callback was gated behind a livePreviewReady condition and wrapped in a setTimeout, preventing it from firing on initial load. In addition, the SSR implementation did not call stack.livePreviewQuery(req.query) on the server for every request, so the required Live Preview parameters were never explicitly set or cleared.
+
+**Resolution**
+
+1.  Remove any condition (such as checking livePreviewReady) that prevents onEntryChange from firing on initial page load.
+
+2.  Remove the setTimeout wrapper around the Live Preview initialization and callback flow so it executes immediately when the component mounts.
+
+3.  Call stack.livePreviewQuery(req.query) on the server for every request, in both preview and non-preview flows, so Live Preview parameters are set or cleared correctly.
+
+4.  Confirm onEntryChange triggers both on initial load and when edits are made in the entry editor.
+
+After redeploying with these changes, open the entry in edit mode and confirm both the initial page load and subsequent edits reflect in Live Preview. If updates render immediately without requiring a manual refresh, the issue is resolved. Escalate with your SDK version and SSR framework details if it persists.
+
+<!-- end:00058802 -->
+
 ## Authentication, Tokens & Access
 
 ### API User Session Breaks When Using Two-Factor Authentication
@@ -10935,6 +10958,31 @@ The URL slug generator removes characters outside the standard ASCII range and i
     
 
 After implementing transliteration, verify that new entries with accented characters generate slugs with correctly transliterated ASCII equivalents.
+
+<!-- case:00060883 status:draft synced:false bucket:"CMA Behavior, Limits & Miscellaneous" -->
+### Bulk Task Queue Jobs Stuck Behind One Stalled Job
+
+Bulk Task Queue jobs, such as branch-creation jobs, may appear stuck in a Waiting state across multiple stacks, blocking further queue processing.
+
+**Root Cause**
+
+Bulk Task Queue jobs process sequentially per organization. When one job stalls on the backend, all subsequent queued jobs remain blocked and show as Waiting in the UI, even though they are not individually broken.
+
+**Resolution**
+
+1.  Retrieve all incomplete jobs for the organization using GET /v3/organizations/{org_uid}/jobs?completed=false with an org owner or admin authtoken to identify which job is stalled.
+
+2.  Identify the stalled job from the response.
+
+3.  Retry the stalled job using POST /v3/organizations/{org_uid}/jobs/{job_id}/retry with an org owner or admin authtoken.
+
+4.  Confirm the queue clears and the remaining jobs process normally.
+
+Note that no delete-job API exists; retry is the only supported action for a stuck job.
+
+After retrying the stalled job, check the Bulk Task Queue again and confirm the remaining jobs move out of the Waiting state and complete. If the queue clears and new jobs process normally, the issue is resolved. Escalate with the organization UID and job ID if the queue remains stuck after a retry.
+
+<!-- end:00060883 -->
 
 <!-- case:00060593 status:draft synced:true bucket:"CMA Behavior, Limits & Miscellaneous" -->
 ### Recovering Accidentally Deleted Entries via Trash
