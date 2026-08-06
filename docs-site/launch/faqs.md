@@ -465,6 +465,27 @@ Attempting to manage a very large set of domains under a single service can exce
 
 The issue is resolved when all domains are successfully added, redirections are functional, and SSL certificates have provisioned automatically across both groups.
 
+<!-- case:00060756 status:draft synced:false bucket:"Domains, DNS & SSL" -->
+### SSL Certificate Stuck Inactive After Migrating From Fastly
+
+Migrating a custom domain from a deprecated Fastly IP to the current Contentstack IP may leave the SSL certificate stuck in an inactive state.
+
+**Root Cause**
+
+The domain's DNS still pointed to legacy Fastly infrastructure that is no longer in use, and the certificate required an updated Cloudflare DCV CNAME record instead of the legacy Fastly validation method.
+
+**Resolution**
+
+1.  Update the \_acme-challenge CNAME record for the domain to point to the Cloudflare DCV validation endpoint.
+
+2.  Update the domain's A record to point to the current Contentstack IP address, available from Contentstack Support or your domain configuration.
+
+3.  Allow DNS propagation to complete, then check the certificate status in the domain settings.
+
+After updating the CNAME and A records, check the domain's SSL certificate status in Launch. If the certificate shows as Active, the issue is resolved. Escalate with your domain name and current DNS records if it remains stuck after propagation.
+
+<!-- end:00060756 -->
+
 ### Configuring Custom Hostnames and Increasing Domain Limits
 
 Subdomain traffic is failing to reach a Launch application despite having valid CNAME records in a DNS provider. Additionally, the user is unable to add the necessary domains to the Launch UI due to reaching a project-level limit.
