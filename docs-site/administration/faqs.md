@@ -402,6 +402,29 @@ This notification is triggered by multiple failed attempts on Contentstack's sta
 
 After logging in via SSO, confirm access works normally despite having received the notification.
 
+<!-- case:00060768 status:draft synced:false bucket:"Single Sign-On (SSO) & IdP Configuration" -->
+### SSO Login Fails When Roles Attribute Missing With Role Mapping
+
+Enabling SSO Role Mapping without including the required roles attribute in the SAML assertion may block SSO login for all users in the organization.
+
+**Root Cause**
+
+SSO Role Mapping requires a roles attribute containing an array of strings in the SAML assertion to map Identity Provider roles to Contentstack roles. When Role Mapping is enabled but this attribute is missing from the assertion, authentication fails for every user in the organization.
+
+**Resolution**
+
+1.  In the identity provider's SAML application, add a roles attribute to the SAML assertion, formatted as an array of strings.
+
+2.  Map each IdP Role Identifier to the corresponding Contentstack role, such as a custom read-only Content Viewer role, in the Contentstack IDP panel.
+
+3.  Save the updated SAML and IDP configuration.
+
+4.  Have an affected user retry SSO login to confirm access is restored.
+
+After adding the roles attribute and confirming the IdP Role Identifier mapping, have a user retry SSO login. If authentication completes successfully, the issue is resolved. Escalate with a fresh SAML response capture if login continues to fail.
+
+<!-- end:00060768 -->
+
 ## Multi-Factor Authentication (2FA) & Security
 
 ### Two-Factor Authentication Login Failure Due to Expired Training Instance

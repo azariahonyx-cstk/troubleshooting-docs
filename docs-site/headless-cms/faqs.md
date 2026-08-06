@@ -2004,6 +2004,25 @@ The social embed option requires the Social Embed feature to be enabled at the f
 
 After enabling the Social Embed toggle, verify the option appears in the JSON RTE for editors.
 
+<!-- case:00060538 status:draft synced:false bucket:"Content Editing & UI Workflows" -->
+### Mixed Arabic/Latin Text Displays Left-to-Right in Multi Line Textbox
+
+Entering mixed Arabic and Latin text into a Multi Line Textbox field may render left-to-right (LTR) instead of right-to-left (RTL), even when most of the content is Arabic.
+
+**Root Cause**
+
+The Multi Line Textbox is a plain text field, so Contentstack does not explicitly control its text direction. The browser applies the Unicode Bidirectional Algorithm instead, which determines RTL versus LTR based on the first strong directional character in the field. When a Latin character appears before any Arabic character, the browser resolves the entire field as LTR.
+
+**Resolution**
+
+1.  Insert a Unicode Right-to-Left Mark (U+200F) as the first character in the field value. This is a zero-width, non-printing character and does not affect the visible content.
+
+2.  Save and publish the entry.
+
+After inserting the RTL mark, reload the entry and confirm the field renders right-to-left. If the direction displays correctly, the issue is resolved. Escalate with the field UID and a sample of the affected text if the mark does not force RTL rendering.
+
+<!-- end:00060538 -->
+
 ## Publishing, Releases, Environments and Operations
 
 ### Referenced Entry Not Publishing with Parent Entry
@@ -3097,6 +3116,27 @@ This is expected behavior and not a security issue. The actual permission check 
     
 
 After reloading the entry page, confirm the Publish and Unpublish buttons are no longer visible for the user whose permissions were revoked.
+
+<!-- case:00060730 status:draft synced:false bucket:"Publishing, Releases, Environments and Operations" -->
+### Release Shows Successful Deployment but Content Reverts
+
+Deploying a Release may show a successful status while the published content fails to reach the target environment, with the content reverting after redeployment.
+
+**Root Cause**
+
+The root cause was identified as two teams editing and publishing the same entries at the same time, producing conflicting data that caused the apparent revert after deployment.
+
+**Resolution**
+
+1.  Check whether multiple teams or users published changes to the same entries at or near the same time as the Release deployment.
+
+2.  Coordinate publishing so that only one team edits and publishes a given set of entries within the same Release window.
+
+3.  Redeploy the Release after confirming no conflicting edits are in progress.
+
+After coordinating publishing and redeploying the Release, confirm the target environment reflects the expected content without reverting. If the content persists as published, the issue is resolved. Escalate with the Release name and the affected entry UIDs if the content continues to revert.
+
+<!-- end:00060730 -->
 
 ## API Delivery, GraphQL & Assets
 
@@ -5453,6 +5493,27 @@ This error occurs when the number of rules configured within a Personalize audie
 
 After the limit increase is applied, re-run the GraphQL query that was returning the error. If the query executes successfully and returns personalized content, the audience rule limit has been resolved.
 
+<!-- case:00060720 status:draft synced:false bucket:"API Delivery, GraphQL & Assets" -->
+### Descending Sort Places Lowercase Values Before Uppercase
+
+Sorting entries in descending order by a text field may place values beginning with lowercase characters before values beginning with uppercase characters, appearing out of alphabetical order.
+
+**Root Cause**
+
+Descending sort is case-sensitive and orders values by character code rather than human alphabetical order. Because lowercase characters have higher character values than uppercase characters, entries starting with lowercase letters can appear before uppercase entries in descending order.
+
+**Resolution**
+
+1.  Check whether the sorted field contains a mix of uppercase and lowercase starting characters.
+
+2.  Maintain a consistent casing convention for the field's values if alphabetical ordering is required.
+
+3.  Alternatively, perform a case-insensitive sort at the application level after retrieving the entries.
+
+After applying a consistent casing convention or sorting case-insensitively at the application level, confirm the entries display in the expected alphabetical order. If the ordering matches expectations, the issue is resolved. Escalate with the field UID and a sample of the affected values if the ordering still appears incorrect.
+
+<!-- end:00060720 -->
+
 ## Webhooks & External Integrations
 
 ### Entry Publish Failed - Webhook Not Triggered as a Result
@@ -6650,6 +6711,27 @@ The socket hang up error is caused by a connection disruption between the sync-c
 
 After upgrading the SDK and confirming automatic reconnection, monitor the sync receiver for 24 hours to confirm the socket hang up no longer requires manual intervention.
 
+<!-- case:00060794 status:draft synced:false bucket:"Webhooks & External Integrations" -->
+### Webhook Executions Not Triggering After Entries Are Published
+
+Webhook executions may stop triggering after publishing entries, with the publish queue also failing to process as expected.
+
+**Root Cause**
+
+An indexing configuration mismatch caused some indexes to be automatically created with incorrect mappings, resulting in repeated processing attempts and a backlog in the publish queue that prevented webhook executions from firing.
+
+**Resolution**
+
+1.  Confirm that entries are publishing successfully but configured webhooks are not executing, and that the publish queue shows a growing backlog.
+
+2.  Gather the stack API key and sample cURL requests for Get Entry, Webhook Executions, and Publish Queue for the affected entries.
+
+3.  Contact Contentstack Support with these details so the indexing configuration can be checked and the affected indexes recreated with correct mappings.
+
+After Contentstack Support recreates the affected indexes, publish an entry and confirm the publish queue clears without a backlog and the webhook executes as expected. Escalate with the stack API key and the affected entry UIDs if webhook executions still fail to trigger.
+
+<!-- end:00060794 -->
+
 ## Custom Extensions, Live Preview & Analytics
 
 ### Resolving null User-Agent values in usage reporting
@@ -7787,6 +7869,29 @@ After upgrading, attempt to edit Rich Text Editor content nested inside a Refere
 
 <!-- end:00059438 -->
 
+<!-- case:00058802 status:draft synced:false bucket:"Custom Extensions, Live Preview & Analytics" -->
+### Live Preview Not Updating in SSR Applications
+
+Configuring Live Preview in a server-side rendered (SSR) application may fail to reflect entry changes on initial load or when edits are made.
+
+**Root Cause**
+
+The onEntryChange callback was gated behind a livePreviewReady condition and wrapped in a setTimeout, preventing it from firing on initial load. In addition, the SSR implementation did not call stack.livePreviewQuery(req.query) on the server for every request, so the required Live Preview parameters were never explicitly set or cleared.
+
+**Resolution**
+
+1.  Remove any condition (such as checking livePreviewReady) that prevents onEntryChange from firing on initial page load.
+
+2.  Remove the setTimeout wrapper around the Live Preview initialization and callback flow so it executes immediately when the component mounts.
+
+3.  Call stack.livePreviewQuery(req.query) on the server for every request, in both preview and non-preview flows, so Live Preview parameters are set or cleared correctly.
+
+4.  Confirm onEntryChange triggers both on initial load and when edits are made in the entry editor.
+
+After redeploying with these changes, open the entry in edit mode and confirm both the initial page load and subsequent edits reflect in Live Preview. If updates render immediately without requiring a manual refresh, the issue is resolved. Escalate with your SDK version and SSR framework details if it persists.
+
+<!-- end:00058802 -->
+
 ## Authentication, Tokens & Access
 
 ### API User Session Breaks When Using Two-Factor Authentication
@@ -8601,6 +8706,27 @@ An engineering fix has been deployed to correct the taxonomy term display order 
     
 
 After the fix deployment, select taxonomy terms in a specific order and confirm the entry editor displays them in the same sequence as the CDA returns them.
+
+<!-- case:00050794 status:draft synced:false bucket:"Authentication, Tokens & Access" -->
+### Roles Created via CMA Don't Display Correctly in the UI
+
+Creating a role through the Content Management API may result in the role details failing to load in the Contentstack UI, even though the role was created successfully.
+
+**Root Cause**
+
+The request payload for roles created programmatically was missing the sub_acl key inside the content_types module, which caused the UI to fail when rendering the role's permission details.
+
+**Resolution**
+
+1.  Confirm the role was created via the CMA and that its details fail to load or render in the Contentstack UI.
+
+2.  Retry loading the role details. A platform fix for the missing sub_acl key has been deployed and resolves this for both new and previously created roles.
+
+3.  Contact Contentstack Support with the role UID and stack API key if the role details still fail to load after retrying.
+
+After retrying, open the affected role in the Contentstack UI and confirm the Content Type Management permissions display correctly. If the role details load as expected, the issue is resolved. Escalate with the role UID and stack API key if it persists.
+
+<!-- end:00050794 -->
 
 ## CMA Rate Limiting & 429 Errors
 
@@ -9838,6 +9964,27 @@ After throttling deletion requests, run the bulk deletion again and monitor stac
 
 <!-- end:00060591 -->
 
+<!-- case:00060690 status:draft synced:false bucket:"Assets & Metadata Management" -->
+### Get Single Asset Metadata Nested Differently in CDA vs CMA
+
+Requesting asset metadata with include_metadata=true may return a different response structure depending on whether the Get Single Asset call is made through the CMA or the CDA, breaking field mappings built against one API's shape.
+
+**Root Cause**
+
+The CMA returns flattened extension metadata for the Get Single Asset API, while the CDA returns the same metadata nested inside a metadata wrapper. This is expected, long-standing behavior specific to each API rather than a defect.
+
+**Resolution**
+
+1.  Compare the include_metadata=true response for the same asset between the CMA and the CDA to confirm which structure your integration expects.
+
+2.  Enable the org-level flag that flattens the CDA response if your field mappings require the flattened structure used by the CMA.
+
+3.  Alternatively, update your integration's field mapping to handle the CDA's default nested metadata wrapper.
+
+After enabling the flag or updating the field mapping, re-request the asset metadata via the CDA and confirm the structure matches what your integration expects. If field mappings resolve correctly, the issue is resolved. Escalate with the stack API key and the affected asset UID if the response structure still does not match after enabling the flag.
+
+<!-- end:00060690 -->
+
 ## Localization via CMA
 
 ### Fetching Taxonomy Term Names via API: Use GraphQL
@@ -10812,6 +10959,31 @@ The URL slug generator removes characters outside the standard ASCII range and i
 
 After implementing transliteration, verify that new entries with accented characters generate slugs with correctly transliterated ASCII equivalents.
 
+<!-- case:00060883 status:draft synced:false bucket:"CMA Behavior, Limits & Miscellaneous" -->
+### Bulk Task Queue Jobs Stuck Behind One Stalled Job
+
+Bulk Task Queue jobs, such as branch-creation jobs, may appear stuck in a Waiting state across multiple stacks, blocking further queue processing.
+
+**Root Cause**
+
+Bulk Task Queue jobs process sequentially per organization. When one job stalls on the backend, all subsequent queued jobs remain blocked and show as Waiting in the UI, even though they are not individually broken.
+
+**Resolution**
+
+1.  Retrieve all incomplete jobs for the organization using GET /v3/organizations/{org_uid}/jobs?completed=false with an org owner or admin authtoken to identify which job is stalled.
+
+2.  Identify the stalled job from the response.
+
+3.  Retry the stalled job using POST /v3/organizations/{org_uid}/jobs/{job_id}/retry with an org owner or admin authtoken.
+
+4.  Confirm the queue clears and the remaining jobs process normally.
+
+Note that no delete-job API exists; retry is the only supported action for a stuck job.
+
+After retrying the stalled job, check the Bulk Task Queue again and confirm the remaining jobs move out of the Waiting state and complete. If the queue clears and new jobs process normally, the issue is resolved. Escalate with the organization UID and job ID if the queue remains stuck after a retry.
+
+<!-- end:00060883 -->
+
 <!-- case:00060593 status:draft synced:true bucket:"CMA Behavior, Limits & Miscellaneous" -->
 ### Recovering Accidentally Deleted Entries via Trash
 
@@ -10854,3 +11026,24 @@ The failure originated from a backend provisioning issue on Contentstack's side 
 After Contentstack Support confirms the backend provisioning issue has been corrected, reload Polaris. If it loads successfully without the error prompt, the issue is resolved. Escalate with updated console errors if it persists after the fix is applied.
 
 <!-- end:00060830 -->
+
+<!-- case:00060779 status:draft synced:false bucket:"AI Assistant & Polaris Features" -->
+### Organization Admins Unable to Access AI Settings
+
+Accessing Administration → AI Settings may be blocked for a user even when that user holds Organization Admin privileges.
+
+**Root Cause**
+
+The access failure was caused by a permissions-handling defect on Contentstack's backend rather than a stack-level configuration issue. Contentstack engineering identified and corrected the defect in production.
+
+**Resolution**
+
+1.  Confirm the affected user holds Organization Admin privileges and is still unable to access or manage Administration → AI Settings.
+
+2.  Toggle an AI setting off and on to confirm existing AI functionality behaves as expected, since access alone does not guarantee full functional verification.
+
+3.  Contact Contentstack Support with the organization UID and a description of the access failure if the issue persists after the fix.
+
+After confirming the permissions fix is applied, reload Administration → AI Settings as an Organization Admin. If the page loads and settings can be managed, the issue is resolved. Escalate with the organization UID if access remains blocked.
+
+<!-- end:00060779 -->
