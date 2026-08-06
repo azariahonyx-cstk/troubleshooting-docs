@@ -390,6 +390,65 @@
     "outcome": "SKIP",
     "reason": "Auto-closed due to inactivity with zero technical detail in the resolution notes beyond closure boilerplate — no root cause or fix documented despite being logged as a Bug."
   },
+  "00060857": {
+    "on": "2026-08-06",
+    "outcome": "SKIP",
+    "reason": "Feature-enablement/administrative request (Studio Early Access for sandbox orgs) put on hold pending a future rollout wave — not a technical problem, no fix or workaround."
+  },
+  "00058802": {
+    "on": "2026-08-06",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Custom Extensions, Live Preview & Analytics (reused)"
+  },
+  "00060883": {
+    "on": "2026-08-06",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "CMA Behavior, Limits & Miscellaneous (reused)"
+  },
+  "00060756": {
+    "on": "2026-08-06",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/launch/faqs.md",
+    "bucket": "Domains, DNS & SSL (reused)"
+  },
+  "00059598": {
+    "on": "2026-08-06",
+    "outcome": "FLAG",
+    "reason": "Strong publishable content (explicit HTTP 422 error, confirmed root cause: webhook count exceeding platform limit from field mappings, customer-confirmed fix) but Microservice 'Marketplace - Public Apps' maps to docs-site category 'marketplace' in pipeline/microservice_to_docsite.json, and docs-site/marketplace/faqs.md does not exist on main — no target file to draft into on this branch. Note: an unmerged PR #31 (docs-site/marketplace-batch-1, open since 2026-08-05) already proposes creating this file for a different case (00060653); once that PR merges, this case can be drafted into the same file on a future run."
+  },
+  "00060528": {
+    "on": "2026-08-06",
+    "outcome": "FLAG",
+    "reason": "Uncertain publishability — case is primarily a Q&A about Lytics identifier/primary-key type requirements with real technical guidance (cast primary_key to string), but there is no explicit customer confirmation that applying the fix resolved the issue; a human should weigh in on whether this crosses the how-to/troubleshooting line."
+  },
+  "00060768": {
+    "on": "2026-08-06",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/administration/faqs.md",
+    "bucket": "Single Sign-On (SSO) & IdP Configuration (reused)"
+  },
+  "00060681": {
+    "on": "2026-08-06",
+    "outcome": "SKIP",
+    "reason": "Internal support-portal dashboard visibility/sync bug (case not appearing on customer's portal), not a Contentstack product/technical problem — same pattern as previously skipped case 00059897."
+  },
+  "00060762": {
+    "on": "2026-08-06",
+    "outcome": "SKIP",
+    "reason": "Aprimo connector cannot select video/mp4 files due to a confirmed third-party SDK limitation (Aprimo Content Selector SDK does not return adaptive-streaming Public Links); customer was informed of the limitation with no fix or workaround applied — fails the resolution/workaround-applied criterion."
+  },
+  "00060840": {
+    "on": "2026-08-06",
+    "outcome": "SKIP",
+    "reason": "Pure account-administration request (new user dashboard access) — customer directed to their Org Owner/Admin; no technical problem or fix."
+  },
+  "00060871": {
+    "on": "2026-08-06",
+    "outcome": "SKIP",
+    "reason": "Administrative duplicate closure — resolution notes state 'dup of 00059955'; no technical content of its own."
+  },
   "00060779": {
     "on": "2026-08-05",
     "outcome": "PUBLISH",
