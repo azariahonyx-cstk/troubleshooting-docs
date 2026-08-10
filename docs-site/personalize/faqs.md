@@ -949,6 +949,48 @@ Each Contentstack organization has a maximum limit on the number of Personalize 
 
 Project limit increases are applied at the organization level by Contentstack Support. There is no self-service option for adjusting this limit.
 
+<!-- case:00060858 status:draft synced:false bucket:"Platform Settings & Permissions" -->
+### Personalize Access Requires an Explicit Project Invite
+
+Accessing Contentstack Personalize may remain unavailable even for users with standard organization access, because Personalize uses its own invite-only permission model.
+
+**Root Cause**
+
+Personalize permissions are governed by a separate, invite-only permission model with three distinct roles — Organization Owner/Admin, Project Owner, and Project Member — rather than by general stack permissions. A user who has not been explicitly invited under one of these roles cannot access Personalize, regardless of their broader organization access.
+
+**Resolution**
+
+1.  Confirm the affected user's organization-level role and whether they hold Organization Owner/Admin access, which grants Personalize access automatically.
+
+2.  If the user is not an Organization Owner/Admin, have an existing Project Owner explicitly invite them as a Project Owner or Project Member on the relevant Personalize project.
+
+3.  Have the user confirm they can access the project after the invite is accepted.
+
+After the explicit invite is sent and accepted, confirm the user can access the Personalize project. If access is restored, the issue is resolved. Escalate with the Personalize project ID and the user's organization role if access remains unavailable after inviting them.
+
+<!-- end:00060858 -->
+
+<!-- case:00059944 status:draft synced:false bucket:"Platform Settings & Permissions" -->
+### SSO/RBAC Regression Removes Users From Personalize Projects
+
+Inviting a user to a Personalize project may appear to succeed, but the user's name never appears on the project's user list, and they are later automatically removed from the project, losing access again.
+
+**Root Cause**
+
+This was a confirmed platform bug in the SSO and role-mapping flow that caused users to be automatically removed from Personalize projects after being invited. The same regression also caused related 403 errors on Lytics for affected organizations.
+
+**Resolution**
+
+1.  Confirm you are hitting this issue by checking whether invited users disappear from the Personalize project's user list or are auto-removed after initially gaining access, and whether related 403 errors also appear on Lytics.
+
+2.  Retry the invite. Contentstack engineering shipped a backend hotfix that resolves this SSO/RBAC regression for both the Personalize user-removal issue and the related Lytics 403 errors.
+
+3.  Contact Contentstack Support with the organization ID and affected user's role if the user is still removed after retrying the invite.
+
+After retrying the invite, confirm the user's name persists on the Personalize project's user list and that they retain access without being auto-removed. If access remains stable, the issue is resolved. Escalate with your organization ID and the affected project if removal continues to occur.
+
+<!-- end:00059944 -->
+
 ## External CDN & Architecture
 
 ### Variant Resolution Broken When External CDN (Akamai) Sits in Front of Launch
