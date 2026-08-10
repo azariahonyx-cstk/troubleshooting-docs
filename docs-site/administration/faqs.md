@@ -735,6 +735,48 @@ Failed network requests to the /extensions API can prevent the dashboard from re
 
 After re-adding the user, verify that the dashboard loads and that entries can be opened without the “cannot access entry” error.
 
+<!-- case:00060895 status:draft synced:false bucket:"Organization & Stack Invitations" -->
+### Content Models Option Missing Despite Assumed Admin Role
+
+Accessing the Content Models (Content Type Builder) option may appear unavailable in the stack navigation even when a user believes they hold the Admin role.
+
+**Root Cause**
+
+A mismatch existed between the assumed role and the role actually assigned to the account. The Content Models option is gated by role, and this mismatch prevented the option from appearing in the stack navigation.
+
+**Resolution**
+
+1.  Confirm the user's actual role in the organization or stack settings; do not rely on assumption alone.
+
+2.  Have the organization's Admin or Owner re-invite the user with the Admin role explicitly assigned.
+
+3.  Accept the new invitation, then log out and log back in to Contentstack.
+
+After logging back in with the correct role, verify the Content Models option now appears in the stack navigation. If it is visible, the issue is resolved. Escalate with the stack details and the user's account role if the option remains missing after re-inviting with Admin access.
+
+<!-- end:00060895 -->
+
+<!-- case:00060463 status:draft synced:false bucket:"Organization & Stack Invitations" -->
+### Combined Roles Block Publish With Nested Reference Error
+
+Publishing an entry may fail with a "couldn't load nested references entries for publishing" error when an editor holds a specific combination of custom roles.
+
+**Root Cause**
+
+Root cause was not identified in the source case data. The resolution below reflects the steps that resolved the reported symptom: assigning two specific custom roles to the same user together interfered with the publish flow's ability to load nested reference entries, while either role held alone did not reproduce the error.
+
+**Resolution**
+
+1.  Identify the specific combination of custom roles assigned to the affected user.
+
+2.  Remove one of the conflicting roles from the user, retaining only the role required for their primary responsibilities.
+
+3.  Retry publishing the entry.
+
+After removing the conflicting role, retry publishing the entry with nested references. If publishing completes without the "couldn't load nested references entries for publishing" error, the issue is resolved. Escalate with the specific role names and the entry's content type if the error persists after removing a role.
+
+<!-- end:00060463 -->
+
 ### Unexpected Session Logouts Can Occur Even When Authentication Is Working Normally
 
 A user may be logged out of Contentstack unexpectedly while editing, without any advance warning, even though nothing appears to be wrong with their account or credentials.
