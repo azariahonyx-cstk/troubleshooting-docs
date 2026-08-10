@@ -556,5 +556,115 @@
     "on": "2026-08-05",
     "outcome": "SKIP",
     "reason": "Auto-Closed - No Response; no root cause identified, only a request for a discovery call that went unanswered."
+  },
+  "00060628": {
+    "on": "2026-08-10",
+    "outcome": "SKIP",
+    "reason": "Case labeled 'Contentstack Resolved' but contains only an unresolved investigation — no anomalies found, no root cause identified, no fix applied; pending auto-close on customer response."
+  },
+  "00060618": {
+    "on": "2026-08-10",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/launch/faqs.md",
+    "bucket": "Builds & Deployments (reused)"
+  },
+  "00060524": {
+    "on": "2026-08-10",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Content Editing & UI Workflows (reused)"
+  },
+  "00060925": {
+    "on": "2026-08-10",
+    "outcome": "SKIP",
+    "reason": "Plan/configuration field-count limit increase resolved by Support raising an internal limit — not a technical defect, no reader-actionable troubleshooting step beyond contacting Support."
+  },
+  "00060964": {
+    "on": "2026-08-10",
+    "outcome": "SKIP",
+    "reason": "Administrative feature-enablement request (enable SCIM for the organization) — not a technical problem or fix."
+  },
+  "00060882": {
+    "on": "2026-08-10",
+    "outcome": "SKIP",
+    "reason": "Duplicate of existing entry 'Resolving Account Login Failure Due to Lockout' in docs-site/administration/faqs.md (Basic Login, Passwords & Account Lockouts bucket) — same symptom (account lockout) and same resolution (contact Org Owner/Admin or Support to unlock)."
+  },
+  "00060895": {
+    "on": "2026-08-10",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/administration/faqs.md",
+    "bucket": "Organization & Stack Invitations (reused)"
+  },
+  "00060935": {
+    "on": "2026-08-10",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Assets & Metadata Management (reused)"
+  },
+  "00060858": {
+    "on": "2026-08-10",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/personalize/faqs.md",
+    "bucket": "Platform Settings & Permissions (reused)"
+  },
+  "00060532": {
+    "on": "2026-08-10",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Content Editing & UI Workflows (reused)"
+  },
+  "00060851": {
+    "on": "2026-08-10",
+    "outcome": "SKIP",
+    "reason": "Informational Q&A (asset-scanning availability + SSO session timeout clarification) — no confirmed technical problem or fix, only status/policy answers."
+  },
+  "00060781": {
+    "on": "2026-08-10",
+    "outcome": "SKIP",
+    "reason": "Could not be reproduced ('Seems like it's not replicating now') and includes an accompanying new feature request with no workaround — fails both the reproducibility and no-fix criteria."
+  },
+  "00060563": {
+    "on": "2026-08-10",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; intermittent duplicated-HTML rendering issue could not be reproduced on either side and no root cause or fix was identified before closure."
+  },
+  "00060173": {
+    "on": "2026-08-10",
+    "outcome": "SKIP",
+    "reason": "How-to informational request (how to verify data flowing into Lytics from the Audience Insights app) — no underlying technical problem or fix."
+  },
+  "00059744": {
+    "on": "2026-08-10",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "API Delivery, GraphQL & Assets (reused)"
+  },
+  "00059944": {
+    "on": "2026-08-10",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/personalize/faqs.md",
+    "bucket": "Platform Settings & Permissions (reused)"
+  },
+  "00060463": {
+    "on": "2026-08-10",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/administration/faqs.md",
+    "bucket": "Organization & Stack Invitations (reused)"
+  },
+  "00060929": {
+    "on": "2026-08-10",
+    "outcome": "SKIP",
+    "reason": "No confirmed resolution or root cause — investigation left open pending the customer's role/permissions details and a screenshot; nothing was actually fixed before closure."
+  },
+  "00060816": {
+    "on": "2026-08-10",
+    "outcome": "SKIP",
+    "reason": "Auto-closed with only speculative, unconfirmed internal theories (login/session issue or browser extension conflict) and no confirmed root cause or resolution; Microservice 'Academy' is also unmapped to any docs-site category."
+  },
+  "00060807": {
+    "on": "2026-08-10",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Custom Extensions, Live Preview & Analytics (reused)"
   }
 }
