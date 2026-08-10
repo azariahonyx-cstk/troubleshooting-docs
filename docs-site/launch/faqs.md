@@ -408,6 +408,25 @@ These failures were caused by the container app limit being reached on the produ
 
 The issue is resolved when Cloud Functions deployments complete successfully across all affected environments and server logs are accessible, confirming the container app limit has been addressed.
 
+<!-- case:00060618 status:draft synced:false bucket:"Builds & Deployments" -->
+### Next.js Deployment Fails With Invalid Output Directory
+
+Deploying a Next.js application from a Turborepo monorepo may fail at the packaging step with an "Invalid output directory" error, even when the build itself completes successfully.
+
+**Root Cause**
+
+The Next.js configuration was missing the `output: 'standalone'` setting. Launch's deployment process requires a standalone build to locate the server entry file at `.next/standalone/<app-path>/server.js`; without it, the build completes but the required packaging artifact is never generated, causing deployment to fail at the packaging step even when the output directory and build command are configured correctly.
+
+**Resolution**
+
+1.  Add `output: 'standalone'` to the Next.js app's `next.config.js`.
+
+2.  Redeploy the project.
+
+After redeploying with the standalone output configuration, confirm the deployment completes successfully. If the "Invalid output directory" error no longer appears and the packaging step finishes without error, the issue is resolved. Escalate with your monorepo structure and build command if it persists.
+
+<!-- end:00060618 -->
+
 ## Domains, DNS & SSL
 
 ### Validating Domain Ownership via CNAME Records
