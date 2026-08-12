@@ -584,6 +584,25 @@ The title field is unique by default and not configurable to allow non-unique va
 
 No configuration change is available. If a non-unique display label is needed alongside a unique title, add a separate custom field for that purpose.
 
+<!-- case:00059666 status:draft synced:false bucket:"Migration, Cloning & Architecture" -->
+### cm:stacks:clone Hangs After "Audit Process Completed"
+
+Cloning a stack with csdx cm:stacks:clone may stall indefinitely after the process displays "Audit process completed," never progressing to the import phase.
+
+**Root Cause**
+
+This is a known failure pattern in the clone workflow for certain stack configurations: the command completes the audit phase but hangs before it can start the import phase. Updating the CLI does not resolve it.
+
+**Resolution**
+
+1.  Export the source stack directly: csdx cm:stacks:export --stack-api-key [your-stack-uid] --data-dir <path>.
+2.  Import the exported data into the destination stack: csdx cm:stacks:import --stack-api-key [your-stack-uid] --data-dir <path>.
+3.  Use this two-step export/import approach in place of cm:stacks:clone - the import step does not run the audit phase, so it proceeds directly without the hang.
+
+After completing the export and import steps, confirm the destination stack matches the source. If the clone completes without hanging at the audit phase, the issue is resolved. Escalate with your CLI version and stack configuration details if the export or import step itself fails.
+
+<!-- end:00059666 -->
+
 ## Export/Import Commands & Data Formats
 
 ### CLI Import to New Locale Fails After Renaming Exported File
@@ -906,6 +925,25 @@ This is supported by the CLI today. The @contentstack/cli-bulk-operations plugin
 
 If custom logic beyond these flags is needed, a Management SDK script (query entries, fetch publish details, re-publish) remains a valid alternative.
 
+<!-- case:00059311 status:draft synced:false bucket:"Export/Import Commands & Data Formats" -->
+### CLI Export-to-CSV Pagination Capped at 10 Records
+
+Exporting users with csdx cm:export-to-csv may cap the export at exactly 10 records instead of retrieving the complete list, even after upgrading the CLI.
+
+**Root Cause**
+
+The pagination fix for this command resides in a sub-plugin rather than the core CLI. A standard npm update does not force npm to replace a sub-plugin if the top-level CLI version is already considered valid, so the fix does not pull down correctly through a regular update.
+
+**Resolution**
+
+1.  Completely uninstall the existing CLI package: npm uninstall -g @contentstack/cli.
+2.  Freshly install the package to force-fetch all latest sub-plugins: npm install -g @contentstack/cli.
+3.  Re-run csdx cm:export-to-csv and confirm the full record list is exported.
+
+After performing a clean reinstall, re-run the export command. If it returns the complete list of records rather than capping at 10, the issue is resolved. Escalate with your CLI and sub-plugin versions if it persists.
+
+<!-- end:00059311 -->
+
 ## TypeScript Generation (TSGen) & Plugins
 
 ### csdx tsgen GraphQL Type Generation Fails with Empty Logs
@@ -1005,3 +1043,23 @@ Apply the scenario that matches the customer setup (often more than one check is
 **Verified case:** After installing or updating contentstack-cli-tsgen, the generated types showed correct property type definitions and the customer confirmed resolution.
 
 **General:** After the matching fix above, generated output should reflect the intended stack, environment, and branch; interfaces should include expected custom fields, not only system metadata (unless --include-system-fields was intentionally used).
+
+<!-- case:00059390 status:draft synced:false bucket:"TypeScript Generation (TSGen) & Plugins" -->
+### tsgen ERR_REQUIRE_ESM Error on Windows
+
+Running npm run tsgen on Windows may fail with an ERR_REQUIRE_ESM error, even when following the standard tsgen setup.
+
+**Root Cause**
+
+The uuid module bundled with an outdated version of the Contentstack CLI ships as a newer ES Module version that is incompatible with the CommonJS require() call used internally by @contentstack/cli-utilities.
+
+**Resolution**
+
+1.  Update the tsgen plugin to the latest version: csdx plugins:install @contentstack/cli-tsgen@latest.
+2.  Confirm the installed version is v4.7.0 or higher.
+3.  If the error persists, perform a clean reinstall of the CLI on Windows and re-verify the uuid module version for compatibility.
+4.  Re-run npm run tsgen.
+
+After updating the tsgen plugin and confirming the version, re-run npm run tsgen. If the command completes without an ERR_REQUIRE_ESM error, the issue is resolved. Escalate with your CLI version and OS details if it persists.
+
+<!-- end:00059390 -->
