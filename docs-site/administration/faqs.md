@@ -93,6 +93,25 @@ After rejoining the organization, attempt to log in using account credentials.
 
 If the login page advances and access is granted, the issue is resolved.
 
+<!-- case:00059534 status:draft synced:false bucket:"Basic Login, Passwords & Account Lockouts" -->
+### Password Reset Email Not Received Due to Account Lock
+
+Triggering a password reset may not deliver the reset email, even though the process appears to initiate successfully.
+
+**Root Cause**
+
+The account was locked, which prevented the password reset email from being delivered despite the reset flow appearing to start normally.
+
+**Resolution**
+
+1.  Contact Contentstack Support to check whether the account is locked.
+2.  Have Support clear the account lock and reset the password reset flow for the account.
+3.  Attempt the password reset again after the lock has been cleared.
+
+After the account lock is cleared, trigger the password reset again. If the reset email is received and login succeeds, the issue is resolved.
+
+<!-- end:00059534 -->
+
 ## Single Sign-On (SSO) & IdP Configuration
 
 ### Resolving SSO Login Requirement After Disabling Strict Mode
@@ -424,6 +443,141 @@ SSO Role Mapping requires a roles attribute containing an array of strings in th
 After adding the roles attribute and confirming the IdP Role Identifier mapping, have a user retry SSO login. If authentication completes successfully, the issue is resolved. Escalate with a fresh SAML response capture if login continues to fail.
 
 <!-- end:00060768 -->
+
+<!-- case:00059477 status:draft synced:false bucket:"Single Sign-On (SSO) & IdP Configuration" -->
+### SSO Users Resetting Passwords Land in Incorrect Accepted State
+
+Users who log in via SSO and then attempt to reset their password may end up with their account directly in an Accepted state without completing login.
+
+**Root Cause**
+
+Attempting a standard password reset on an account provisioned for SSO login moves the account into an Accepted state prematurely, bypassing the normal login completion flow.
+
+**Resolution**
+
+1.  Confirm whether the affected users authenticate via SSO rather than standard username/password login.
+2.  Remove and re-add the affected users so their account state resets correctly.
+3.  Advise users to log in exclusively through SSO going forward, and avoid using the standard password reset flow on SSO-provisioned accounts.
+
+After re-adding the affected users and confirming they log in via SSO only, verify their account state reflects normal login rather than a premature Accepted state.
+
+<!-- end:00059477 -->
+
+<!-- case:00059502 status:draft synced:false bucket:"Single Sign-On (SSO) & IdP Configuration" -->
+### No Access to SSO Settings After the Org Owner Departs
+
+Updating an expiring SSO certificate may be blocked when the only user with Organization Owner access has left the company.
+
+**Root Cause**
+
+Access to SSO and Security Configuration settings is restricted to Organization Owners. If the sole Organization Owner departs without transferring ownership, no remaining user can access these settings to update the certificate.
+
+**Resolution**
+
+1.  Confirm that SSO and Security Configuration access is restricted to the Organization Owner role.
+2.  Request an organization ownership transfer from Contentstack Support if no active Organization Owner remains.
+3.  Accept the ownership transfer to regain access to SSO configuration settings.
+4.  Update the expiring SSO certificate once access is restored.
+
+After completing the ownership transfer, confirm access to the SSO configuration settings and update the certificate. If the update completes successfully, the issue is resolved.
+
+<!-- end:00059502 -->
+
+<!-- case:00059563 status:draft synced:false bucket:"Single Sign-On (SSO) & IdP Configuration" -->
+### SSO Login Confusion When Username Differs From Invited Email
+
+Accepting a stack invitation and creating an account via the email/password flow may still leave a user unable to log in when their organization uses SSO with a username that differs from their email address.
+
+**Root Cause**
+
+The organization requires SSO login, but the user's SSO username does not match the email address used in the invitation. The original invitation link becomes unusable once an account has been created, adding to the confusion about which login method to use.
+
+**Resolution**
+
+1.  Confirm whether the organization has SSO enabled and whether the user's SSO username differs from their email address.
+2.  Direct the user to log in through the organization's SSO landing page rather than the standard email/password login flow.
+3.  Have the customer's Org Admin provide the correct SSO login instructions if the user is unsure how to proceed.
+
+After logging in through the organization's SSO landing page, confirm the user can access the invited stack. If access works as expected, the issue is resolved.
+
+<!-- end:00059563 -->
+
+<!-- case:00059621 status:draft synced:false bucket:"Single Sign-On (SSO) & IdP Configuration" -->
+### Login Redirect Loop When Organization Enforces SSO
+
+Entering valid credentials and an authentication code may result in a continuous redirect back to the login page instead of a successful sign-in.
+
+**Root Cause**
+
+The organization has SSO enforced through an identity provider such as Okta. Attempting to log in with direct username/password credentials instead of the organization's SSO option triggers the redirect loop.
+
+**Resolution**
+
+1.  Confirm whether the organization has SSO enforced and identify the correct SSO identifier for login.
+2.  Use the Single Sign-On option with the organization's configured SSO identifier instead of direct username/password authentication.
+3.  If the loop continues, try an incognito browser window and confirm there is an active session with the identity provider.
+
+After logging in using the organization's SSO option, confirm the redirect loop no longer occurs and login completes successfully.
+
+<!-- end:00059621 -->
+
+<!-- case:00059641 status:draft synced:false bucket:"Single Sign-On (SSO) & IdP Configuration" -->
+### Organization Invitation Remains Pending Under Strict SSO
+
+Accepting an organization invitation may remain stuck in a Pending state when the organization has Strict SSO enabled, even though the SSO configuration is verified and working.
+
+**Root Cause**
+
+The issue is related to the invitation acceptance flow rather than the SSO configuration itself. A Pending invitation under Strict SSO may not complete correctly, even when SSO is functioning normally for other users.
+
+**Resolution**
+
+1.  Confirm the organization's SSO configuration is verified and functioning correctly for other users.
+2.  Remove the pending invitation and re-invite the affected user from the Super Admin panel.
+3.  Have the user authenticate directly via the organization's SSO login page rather than through any existing invitation link.
+4.  Confirm the user is presented with the Privacy Policy and Terms of Service acceptance screen, which allows the invitation process to complete.
+
+After re-inviting the user and having them authenticate directly via the organization's SSO login page, confirm the invitation moves out of the Pending state. If acceptance completes, the issue is resolved.
+
+<!-- end:00059641 -->
+
+<!-- case:00059682 status:draft synced:false bucket:"Single Sign-On (SSO) & IdP Configuration" -->
+### Cannot Access a Secondary Organization While Using SSO
+
+An Org Admin may be unable to access a secondary or test organization when their primary organization uses SSO.
+
+**Root Cause**
+
+Using SSO for the primary organization can interfere with access to a separate secondary organization tied to the same account.
+
+**Resolution**
+
+1.  Confirm whether the user is authenticating via SSO for their primary organization when attempting to access the secondary organization.
+2.  Log in directly using a username and password, bypassing SSO, to access the secondary organization.
+3.  Confirm the secondary organization is now visible and accessible.
+
+After logging in directly with a username and password, confirm the secondary organization appears and is accessible. If access is restored, the issue is resolved.
+
+<!-- end:00059682 -->
+
+<!-- case:00059738 status:draft synced:false bucket:"Single Sign-On (SSO) & IdP Configuration" -->
+### Account Locked After an External Email Domain Change
+
+Changing a company's email domain outside of Contentstack may result in a user being locked out of their account, even though their organization's SSO configuration is unaffected by the change.
+
+**Root Cause**
+
+The account became locked following the external email domain change, even though the organization's SSO configuration itself continued to work correctly under its existing SSO name.
+
+**Resolution**
+
+1.  Confirm the organization's SSO configuration and SSO name are unaffected by the external email domain change.
+2.  Reset the account lock for the affected user.
+3.  Advise the user to log in using the Login with SSO option with the organization's existing SSO name.
+
+After resetting the account lock, confirm the user can log in using the organization's SSO name. If login succeeds, the issue is resolved.
+
+<!-- end:00059738 -->
 
 ## Multi-Factor Authentication (2FA) & Security
 
@@ -811,6 +965,26 @@ OAuth authorization in Automate is tied to the individual user account that orig
 
 After switching to Management Tokens, or after confirming the platform fix is reflected in your environment, confirm Automate workflows run without interruption.
 
+<!-- case:00059465 status:draft synced:false bucket:"SCIM & Automated User Provisioning" -->
+### Identifying an Unrecognized UID That Modified Your Stack
+
+An unrecognized UID may appear in stack change history (for example, updating webhooks) without matching any user in the organization's user list.
+
+**Root Cause**
+
+The UID did not belong to a human user. It belonged to a Management Token used for automated scripts and CI/CD pipelines, which had broad read/write permissions and had been created some time earlier.
+
+**Resolution**
+
+1.  Search the organization's user list for the UID; if no match is found, it likely belongs to a Management Token rather than a user account.
+2.  Contact Contentstack Support with the UID and the affected stack to confirm which Management Token it corresponds to.
+3.  Review the identified token's permissions and creation date, and confirm whether it should still have the access it currently has.
+4.  Rotate or revoke the token if its continued access is no longer appropriate.
+
+After identifying the token associated with the UID, confirm its permissions align with its intended use. If the unexplained changes stop after reviewing or rotating the token, the issue is resolved.
+
+<!-- end:00059465 -->
+
 ## Browser & Client-Specific Login Issuees
 
 ### “Next” Button Not Visible After Scanning the MFA QR Code Until the Browser Is Zoomed Out
@@ -865,3 +1039,24 @@ The behavior is consistent with a session or authentication token caching issue 
     
 
 After clearing the cache and logging back in, confirm content blocks render correctly and login no longer fails. If the issue recurs at scale, capture a HAR file (from the browser's Network tab) before clearing the cache to help identify why the session failed to refresh automatically.
+
+## Academy & Certification Access
+
+<!-- case:00059608 status:draft synced:false bucket:"Academy & Certification Access" -->
+### Certification Assessment Fails to Submit With Incomplete Lessons
+
+Submitting a certification assessment in Contentstack Academy may fail with an error, even after successfully completing the assessment itself.
+
+**Root Cause**
+
+Incomplete lessons within the learning path can prevent successful assessment submission, even if the assessment itself was completed.
+
+**Resolution**
+
+1.  Review the full learning path associated with the certification and confirm every course and lesson is marked as completed.
+2.  Complete any remaining incomplete lessons.
+3.  Retry submitting the certification assessment.
+
+After completing all lessons in the learning path, retry the assessment submission. If it completes without error, the issue is resolved.
+
+<!-- end:00059608 -->
