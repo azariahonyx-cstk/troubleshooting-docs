@@ -226,6 +226,26 @@ Authentication fails due to incorrect region settings in the CLI config, or the 
 
 csdx auth:login succeeds, csdx auth:whoami prints the logged-in email, and csdx config:get:region shows the expected region. Escalate through CLI support path with CLI version, exact login command used, region config output, and auth logs.
 
+<!-- case:00059347 status:draft synced:false bucket:"Authentication, Regions & Networking" -->
+### OAuth2 Token Requests Failing Due to Content-Type Mismatch
+
+Calling a custom OAuth2 token endpoint (such as AWS Cognito) from an App SDK plugin may fail when the request uses the wrong Content-Type header.
+
+**Root Cause**
+
+The request was sent with `Content-Type: application/json` and a JSON-formatted body, but Cognito-style OAuth2 token endpoints expect `Content-Type: application/x-www-form-urlencoded`. The mismatched content type causes the token endpoint to reject or misinterpret the request.
+
+**Resolution**
+
+1.  Inspect the outgoing token request and confirm the Content-Type header being sent.
+2.  Update the request to use `Content-Type: application/x-www-form-urlencoded` instead of `application/json`.
+3.  Reformat the request body as URL-encoded form data (for example, `grant_type=client_credentials&scope=...`) instead of a JSON object.
+4.  Retry the token request.
+
+After updating the Content-Type header and body format, retry the OAuth2 token request. If the token endpoint returns a valid access token, the issue is resolved. Escalate with the exact request headers and response body if it persists.
+
+<!-- end:00059347 -->
+
 ## Querying, References & Content Retrieval
 
 ### Identifying Unpublished Entries via Management SDK
@@ -368,6 +388,25 @@ Global field payload may appear missing due to model visibility, permission, or 
 3.  Re-publish content type/entries if model updates were recent.
 
 Entry response includes expected global field object for the published target. Escalate with content type UID, field UID, and role/token details.
+
+<!-- case:00059450 status:draft synced:false bucket:"Querying, References & Content Retrieval" -->
+### Mixed-Locale Content on Nested Includes With Variants
+
+Fetching an entry with nested included references and multiple variant parameters may return a mix of locales — variant fields resolve to a fallback locale while other fields correctly return the requested locale.
+
+**Root Cause**
+
+Two conflicting request settings caused this. Variant identifiers were being passed three different ways in the same request — a query parameter, a stack header, and the SDK's `.variants()` method — which conflicts. Separately, `include_fallback=true` was set even though the entry already existed in the requested locale; fallback only applies when localized content is genuinely missing, so setting it here mixed locale sources instead of resolving consistently.
+
+**Resolution**
+
+1.  Remove duplicate variant parameters from the request and pass variant identifiers using only the SDK's `.variants()` method.
+2.  Remove `include_fallback=true` from the request if the entry already exists in the target locale — fallback is only needed for genuinely missing localized content.
+3.  Retry fetching the entry with its nested includes and variant fields.
+
+After correcting the variant parameter usage and removing the unnecessary fallback flag, retry the fetch. If all fields — including variant fields — consistently return the requested locale, the issue is resolved. Escalate with the exact request parameters and headers used if mixed-locale results persist.
+
+<!-- end:00059450 -->
 
 ## Caching, Sync & Performance Limits
 
