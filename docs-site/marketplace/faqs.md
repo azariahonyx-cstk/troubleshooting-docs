@@ -232,6 +232,45 @@ The Trados plugin UI requires an existing release containing the source entries 
 
 After creating the source release and selecting it in the plugin, verify that the "Create Project" button is enabled. If the project is created successfully, the issue is resolved.
 
+<!-- case:00057081 status:draft synced:false bucket:"Custom App Development & Extensions" -->
+### Metadata Creation Failed on High-Reference-Count Entries
+
+Saving an entry with a high volume of references (approximately 30 or more) in the Interstack Reference sidebar extension may trigger a "Metadata creation failed" error.
+
+**Root Cause**
+
+The Interstack Reference Custom Field/Sidebar Extension relies on entry metadata, which had a strict 10 KB technical cap. As reference content scaled, entries exceeded this payload limit and triggered the error, though it did not fully block saving.
+
+**Resolution**
+
+1.  If you encounter a "Metadata creation failed" error on an entry with many references, note that the extension is subject to an entry metadata size cap.
+2.  Confirm your Contentstack environment reflects the increased 15 KB metadata limit, since a fix raising the cap from 10 KB was deployed.
+3.  If entries still exceed the current limit, reduce the number of references stored via the sidebar extension per entry, or split content across multiple entries.
+4.  Contact Contentstack Support if the error persists after confirming the limit increase is in effect.
+
+After confirming the updated metadata limit is in effect, save the affected entry again. If the "Metadata creation failed" error no longer appears, the issue is resolved. Escalate with your reference count and entry UID if it persists.
+
+<!-- end:00057081 -->
+
+<!-- case:00059710 status:draft synced:false bucket:"Custom App Development & Extensions" -->
+### Block IDs Group Field Not Updating via setData()
+
+Calling setData() to update a Block IDs Group field from a custom extension may fail to apply the update in real time, requiring a page refresh and creating extra entry versions.
+
+**Root Cause**
+
+App SDK v2.2.0 does not support updating Group fields via setData(), resulting in delayed updates, additional entry versions, and the need to manually refresh the page.
+
+**Resolution**
+
+1.  Upgrade the Contentstack App SDK to v2.4.1 or later, which adds support for updating Group fields using setData().
+2.  Call setData() within the onChange event to update the Block IDs Group field in real time.
+3.  Test the update in a development branch before rolling the SDK upgrade out to the main branch.
+
+After upgrading the App SDK and calling setData() within onChange, update the Group field again. If the update applies in real time without requiring a page refresh or creating an extra entry version, the issue is resolved.
+
+<!-- end:00059710 -->
+
 ## Performance, Webhooks & Network Errors
 
 ### Webhook Failures for Marketplace Apps
@@ -428,3 +467,99 @@ Both defects were introduced by the backend rollout of Brightcove Marketplace ap
 After retrying, confirm both single- and multi-video selection save successfully. If selection completes without errors, the issue is resolved. Escalate with the Brightcove account ID and video IDs if selection still fails.
 
 <!-- end:00060653 -->
+
+<!-- case:00058544 status:draft synced:false bucket:"Vendor-Specific Integrations" -->
+### XTM Delivery Failures During Large Translation Batches
+
+Delivering translations through the XTM app during large batch operations (multiple entries across multiple languages) may intermittently fail, with roughly 1 in 25 deliveries requiring manual redelivery.
+
+**Root Cause**
+
+Several contributing factors were identified: the app lacks retry/backoff handling for HTTP 429 rate-limit responses on the Management API's write limit, translated strings pushed into Enum fields can fail validation with error 119 when they don't match the configured enum options, and transient 401 errors were occasionally observed during entry retrieval on specific locale branches. The exact trigger for any single failure could not be conclusively isolated, since the issue was not reliably reproducible afterward.
+
+**Resolution**
+
+1.  If a delivery fails, use XTM's "redelivery" option to manually retry the affected entry.
+2.  Before redelivering, check whether any of the affected fields are Enum-type fields receiving translated values that don't match the configured enum options - this triggers error 119.
+3.  If failures recur, gather the Entry UID, translation timestamp, source and target locales, and XTM Project ID and Project Name for escalation.
+4.  Share these details with Contentstack Support to trace the failure through the delivery logs.
+
+After manually redelivering the affected entry, confirm the translation completes without error. If deliveries continue failing intermittently, escalate with the Entry UID, timestamps, and XTM Project ID so the pattern can be traced through the logs.
+
+<!-- end:00058544 -->
+
+<!-- case:00058226 status:draft synced:false bucket:"Vendor-Specific Integrations" -->
+### XTM Projects Fail to Create for Referenced Entries
+
+Triggering an XTM translation batch that includes referenced entries may fail silently, with the batch halting instead of creating the project.
+
+**Root Cause**
+
+Field selections configured on the master entry were being incorrectly applied to its referenced entries. When a referenced entry did not contain a field selected on the master (for example, a title field), the XTM app returned a "No fields are included for translation" error and terminated the entire batch before it reached XTM.
+
+**Resolution**
+
+1.  Confirm you are on the latest Marketplace XTM App release, which validates field selections independently per content type in a batch.
+2.  Re-trigger the translation batch for the referenced entries that previously failed.
+3.  If the batch still halts, confirm which fields are selected on the master entry and whether the referenced entry's content type includes matching fields.
+
+After updating to the latest XTM App release, re-trigger the translation batch. If the project is created successfully without a silent halt, the issue is resolved. Escalate with the content type UIDs involved if it persists.
+
+<!-- end:00058226 -->
+
+<!-- case:00058134 status:draft synced:false bucket:"Vendor-Specific Integrations" -->
+### XTM References Pulled From Wrong Source Locale
+
+Requesting an XTM translation of a non-master language with references included may pull the referenced entries from the master language instead of the selected non-master source locale.
+
+**Root Cause**
+
+This was a confirmed bug in the XTM connector: when translating a non-master language with references, the connector defaulted to pulling referenced entries from the master language rather than the locale actually selected for translation.
+
+**Resolution**
+
+1.  Confirm you are on the XTM connector release from June 23 or later, which corrects this behavior.
+2.  Re-trigger the translation request for the non-master language with references included.
+3.  Verify the referenced entries in the resulting project come from the selected source locale rather than the master language.
+
+After confirming the updated connector release, re-run the translation request. If referenced entries now come from the selected non-master locale, the issue is resolved. Escalate with your XTM connector version if it persists.
+
+<!-- end:00058134 -->
+
+<!-- case:00058580 status:draft synced:false bucket:"Vendor-Specific Integrations" -->
+### XTM Creates Duplicate Entry Versions on Translation Receipt
+
+Receiving completed translations through the XTM integration may create two identical versions of the same entry instead of one.
+
+**Root Cause**
+
+Repeated processing of the same translation webhook caused the integration to create duplicate versions of the entry when translations were received.
+
+**Resolution**
+
+1.  Confirm you are on the updated XTM translation integration, which prevents duplicate version creation from repeated webhook processing.
+2.  Re-run the translation receipt flow for an affected entry.
+3.  Verify only one new version is created upon receiving the completed translation.
+
+After confirming the updated integration is in effect, receive a completed translation and check the entry's version history. If only one new version is created, the issue is resolved. Escalate with the entry's version history if duplicates continue to appear.
+
+<!-- end:00058580 -->
+
+<!-- case:00059787 status:draft synced:false bucket:"Vendor-Specific Integrations" -->
+### XTM Translations Not Written Back After Workflow Change
+
+An entry may keep displaying its original content even after the XTM app shows all languages as completed, with the completed translation never written back.
+
+**Root Cause**
+
+The entry's submission workflow was changed mid-translation - a new workflow stage was introduced and the original submission stage fell out of use - which prevented the completed translation from being written back to the entry. This is a submission/workflow-method mismatch, not a platform defect.
+
+**Resolution**
+
+1.  Avoid changing an entry's submission workflow stage while a translation is in progress for that entry.
+2.  If a translation appears complete in XTM but is not reflected on the entry, re-trigger the translation.
+3.  Submit the re-triggered translation directly through the XTM app rather than through the Workflow method, to avoid the stage mismatch.
+
+After re-triggering the translation directly through the XTM app, confirm the entry now displays the translated content. If the entry updates correctly, the issue is resolved. Escalate with the entry's workflow stage history if it persists.
+
+<!-- end:00059787 -->
