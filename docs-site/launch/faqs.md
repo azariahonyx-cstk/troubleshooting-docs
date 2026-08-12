@@ -577,6 +577,26 @@ Launch Edge Functions require code to be WinterCG-compliant. Some adapters or th
 
 Trigger the webhook or adapter logic and verify the response status. The issue is resolved when the 404 error is replaced by a successful data exchange and the function executes successfully in the logs.
 
+<!-- case:00059507 status:draft synced:false bucket:"Edge Functions & Frameworks" -->
+### Live Preview Loading Issues Caused by CDN Failover Routing
+
+Enabling Live Preview may cause Launch deployments to appear stuck in a queued state, with static assets intermittently failing to load or triggering SDK-related errors.
+
+**Root Cause**
+
+A CDN failover cookie in the routing configuration in front of the Launch environment caused Next.js static assets to be served from a backup origin instead of the active staging origin during Live Preview sessions, disrupting asset loading and Live Preview initialization.
+
+**Resolution**
+
+1.  Review the CDN routing configuration in front of the Launch environment for failover cookies or rules that could redirect traffic to a backup origin.
+2.  Confirm whether static assets are being served from a backup origin during Live Preview sessions rather than the active origin.
+3.  Update the routing logic to bypass failover behavior specifically for Contentstack Live Preview requests.
+4.  Retry Live Preview after updating the routing configuration.
+
+After bypassing the failover routing for Live Preview requests, retry loading Live Preview. If assets load correctly and deployments no longer appear stuck in a queued state, the issue is resolved. Escalate with your CDN routing configuration details if it persists.
+
+<!-- end:00059507 -->
+
 ## Performance, Network & Security Errors
 
 ### Compression and Caching for Client-Side Rendered (CSR) Apps
@@ -823,6 +843,25 @@ Launch Cloud Functions enforce a hard 30-second maximum execution timeout. A syn
 After switching to the async start-and-poll pattern, call the long-running function again and confirm the frontend no longer times out while waiting for a response. If the function completes and the result is retrieved successfully via polling, the issue is resolved. Escalate with the function's typical execution time and the error code observed if it persists.
 
 <!-- end:00060727 -->
+
+<!-- case:00059745 status:draft synced:false bucket:"Performance, Network & Security Errors" -->
+### Intermittent 502 Errors Loading Launch-Hosted Assets
+
+Loading assets on a Launch-hosted environment may intermittently return 502 errors across multiple pages, with no consistent pattern tied to a specific file or route.
+
+**Root Cause**
+
+The errors were traced to a known, transient platform-level issue within the Launch infrastructure rather than a defect in the application or in specific assets.
+
+**Resolution**
+
+1.  Confirm the pattern: 502 errors appear intermittently across multiple pages or asset requests, without a consistent link to one specific file or route.
+2.  Rule out application-level causes by checking whether the errors are reproducible directly against the origin outside of Launch.
+3.  Contact Contentstack Support with the affected Project ID, environment name (for example, staging or production), and a list of affected URLs.
+
+After reporting the issue with the affected Project ID and environment, monitor asset loading. If the 502 errors stop occurring, the issue is resolved. Escalate with fresh timestamps and affected URLs if the errors recur.
+
+<!-- end:00059745 -->
 
 ## Redirects & Routing
 
