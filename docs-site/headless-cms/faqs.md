@@ -2019,6 +2019,82 @@ The Multi Line Textbox is a plain text field, so Contentstack does not explicitl
 
 2.  Save and publish the entry.
 
+<!-- case:00051245 status:draft synced:false bucket:"Content Editing & UI Workflows" -->
+### Restricting Entry Deletion to a Single Review Stage
+
+Restricting a role from deleting an entry outside a specific workflow stage may not be enforceable directly, since moving the entry back to an earlier stage (such as Draft) restores the role's delete permission.
+
+**Root Cause**
+
+Native conditional deletion rules that depend on the entry's current workflow stage are not available. Delete permissions are role-based rather than stage-based, so a role that can delete in one stage can delete in any stage it has access to.
+
+**Resolution**
+
+1.  Create a dedicated workflow stage (for example, "Request for Deletion") that entries must pass through before deletion.
+2.  Create a specialized role with delete permission scoped to that dedicated stage only.
+3.  Strip delete permissions from all other standard roles via ACL configuration.
+4.  Route deletion requests through the dedicated stage for a privileged user to review and execute.
+
+After configuring the dedicated stage and role, attempt to delete an entry from an unauthorized stage. If the deletion is blocked outside the dedicated review stage, the issue is resolved.
+
+<!-- end:00051245 -->
+
+<!-- case:00057875 status:draft synced:false bucket:"Content Editing & UI Workflows" -->
+### Timezone Dropdown Unresponsive When Editing Existing Entries
+
+Editing an existing entry may not allow the time zone to be changed, even though new entries can set the time zone without issue.
+
+**Root Cause**
+
+A state management issue in the date-time field UI component prevents the timezone dropdown from properly initializing for existing entries, effectively making it read-only or unresponsive for pre-existing data.
+
+**Resolution**
+
+1.  Confirm the issue is limited to editing existing entries and does not occur when creating new entries.
+2.  Update to the current production release, which includes a fix for the timezone dropdown initialization.
+3.  Re-open the affected entry and attempt to change the time zone.
+
+After updating to the current release, edit an existing entry and change its time zone. If the change is accepted and reflected, the issue is resolved.
+
+<!-- end:00057875 -->
+
+<!-- case:00058874 status:draft synced:false bucket:"Content Editing & UI Workflows" -->
+### Breadcrumb Navigation Breaks When Auto Draft Is Enabled
+
+Navigating through nested components or references within an entry may leave the breadcrumb trail stuck at the top level instead of reflecting the current hierarchy.
+
+**Root Cause**
+
+This is another symptom of the Auto Draft (Auto-Save) Early Access feature interacting unexpectedly with existing UI behavior — in this case, breadcrumb navigation fails to update while Asset breadcrumbs continue to work correctly.
+
+**Resolution**
+
+1.  Confirm the Auto Draft (Auto-Save) Early Access feature is enabled for the stack.
+2.  Navigate to Settings > Early Access Features and disable Auto Draft.
+3.  Re-test breadcrumb navigation through nested components and references.
+
+After disabling Auto Draft, navigate through nested components and references again. If the breadcrumb trail correctly reflects the hierarchy, the issue is resolved.
+
+<!-- end:00058874 -->
+
+<!-- case:00059308 status:draft synced:false bucket:"Content Editing & UI Workflows" -->
+### Intermittent Entry Lock After Reload With Auto-Save Enabled
+
+An entry may intermittently remain locked after a page reload when drafts and auto-save are in use, blocking further edits.
+
+**Root Cause**
+
+Root cause was not identified in the source case data — the lock was not consistently reproducible. The resolution below reflects the steps that resolved the reported symptom.
+
+**Resolution**
+
+1.  If an entry remains locked after reload, disable the auto-saving feature in the stack settings, under Settings > Entries.
+2.  Re-open the previously locked entry and confirm it can be edited normally.
+
+After disabling auto-save, reload and re-open the affected entry. If it is no longer locked, the issue is resolved. Escalate with the entry UID and a timestamp if the lock recurs.
+
+<!-- end:00059308 -->
+
 After inserting the RTL mark, reload the entry and confirm the field renders right-to-left. If the direction displays correctly, the issue is resolved. Escalate with the field UID and a sample of the affected text if the mark does not force RTL rendering.
 
 <!-- end:00060538 -->
@@ -3133,6 +3209,104 @@ The root cause was identified as two teams editing and publishing the same entri
 2.  Coordinate publishing so that only one team edits and publishes a given set of entries within the same Release window.
 
 3.  Redeploy the Release after confirming no conflicting edits are in progress.
+
+<!-- case:00059275 status:draft synced:false bucket:"Publishing, Releases, Environments and Operations" -->
+### Taxonomy Republishing on Every Publish Regardless of References
+
+Publishing any entry may trigger a republish of all taxonomies and terms, even when publishing without references, resulting in a large increase in publishing events and rate limit hits.
+
+**Root Cause**
+
+This was a confirmed bug in the taxonomy_publish feature, introduced as part of a platform-wide rollout. Taxonomy was being republished on every entry publish regardless of whether "Send with References" was selected — behavior beyond what the feature itself was intended to do.
+
+**Resolution**
+
+1.  Confirm whether the organization has the taxonomy_publish feature enabled.
+2.  If experiencing a sharp increase in publish events or rate limit hits correlated with taxonomy use, contact Contentstack Support to request the feature be disabled for the organization.
+3.  Monitor publish volume after the feature is disabled to confirm the excess republishing stops.
+
+After the taxonomy_publish feature is disabled for the organization, monitor publish event volume. If it returns to expected levels without unrelated taxonomy republishing, the issue is resolved.
+
+<!-- end:00059275 -->
+
+<!-- case:00059334 status:draft synced:false bucket:"Publishing, Releases, Environments and Operations" -->
+### Taxonomy Auto-Republished via Send with References
+
+Taxonomy items may continue to appear as unpublished references and be automatically included every time an entry is published using the "Send with References" option.
+
+**Root Cause**
+
+This is related to the existing taxonomy auto-publish flow, where taxonomy terms are automatically included whenever an entry is published with "Send with References" — triggering unwanted taxonomy publishing and CDN purge operations on every publish.
+
+**Resolution**
+
+1.  If taxonomy items are unexpectedly appearing as unpublished references on every "Send with References" publish, contact Contentstack Support to request a backend configuration change for your organization.
+2.  Confirm the configuration change excludes taxonomy items and terms from the automatic publish flow triggered by "Send with References."
+3.  Re-publish an entry with "Send with References" and confirm taxonomy items are no longer included as references.
+
+Note: taxonomy data remains visible on the frontend after this change — only the automatic republish/CDN purge behavior triggered on every entry publish is removed.
+
+After the configuration change is applied, publish an entry using Send with References. If taxonomy items are no longer published as references, the issue is resolved.
+
+<!-- end:00059334 -->
+
+<!-- case:00059514 status:draft synced:false bucket:"Publishing, Releases, Environments and Operations" -->
+### Locale Conflict Between Sibling Variants Returns Base Entry
+
+A specific personalized variant may return the base entry instead of its expected content when queried with a particular locale, while other variants under the same entry work correctly.
+
+**Root Cause**
+
+This was a confirmed bug: the requested locale was being skipped while adding publish details during variant publishing, caused by a conflict with another variant of the same entry that had already been published to that locale. This interfered with the publish locale metadata for the affected variant.
+
+**Resolution**
+
+1.  If a variant unexpectedly returns the base entry for a specific locale while other variants work correctly, check whether a sibling variant of the same entry has already been published to that same locale.
+2.  Contact Contentstack Support if this conflict is confirmed, referencing the affected variant, the conflicting sibling variant, and the locale involved.
+3.  Once a fix is applied, republish the affected variant in the affected locale to regenerate its publish locale details.
+
+After republishing the affected variant in the affected locale, query it again with the locale parameter. If it returns the expected variant content rather than the base entry, the issue is resolved.
+
+<!-- end:00059514 -->
+
+<!-- case:00059633 status:draft synced:false bucket:"Publishing, Releases, Environments and Operations" -->
+### Recursive Redirect Loop at Root Path Cached by CDN
+
+A site's homepage may become completely inaccessible when a recursive redirect loop at the root path gets cached by the CDN, persisting even after the underlying condition is addressed.
+
+**Root Cause**
+
+A bug in application code related to locale-specific routing triggered a recursive redirect loop at the root path (/). Because the loop occurred at the root, the CDN cached the bad redirect behavior, breaking direct access to the homepage even beyond the initial trigger. This was an application logic issue, not a platform infrastructure failure.
+
+**Resolution**
+
+1.  If the homepage becomes inaccessible due to a redirect loop, trigger an emergency redeployment of the affected environment to clear the edge cache at the root path.
+2.  Review application code for locale-specific routing conditions that could produce a recursive redirect loop.
+3.  Correct the routing logic so locale handling cannot re-trigger the loop, then test and deploy the fix.
+4.  Capture the Project ID and Environment UID early when reporting similar incidents, to speed up investigation.
+
+After redeploying to clear the cached redirect and correcting the routing logic, load the homepage directly. If it loads without a redirect loop, the issue is resolved.
+
+<!-- end:00059633 -->
+
+<!-- case:00059640 status:draft synced:false bucket:"Publishing, Releases, Environments and Operations" -->
+### Slowness During Bulk Add-to-Release and Publish Operations
+
+Bulk actions such as add to release and publish may become slow platform-wide for a period of time.
+
+**Root Cause**
+
+Temporary resource spikes on a few dependent services used by Bulk Actions caused one of those microservices to experience resource constraints, contributing to the degraded performance.
+
+**Resolution**
+
+1.  If bulk actions such as add-to-release or publish are broadly slow, check the Contentstack status page for any active incidents.
+2.  If none are listed, report the slowness to Contentstack Support with the approximate time window and affected operations.
+3.  Contentstack's platform team increases resources allocated to the affected dependent service and monitors the environment.
+
+After the resource allocation is increased, retry the previously slow bulk actions. If performance returns to normal, the issue is resolved.
+
+<!-- end:00059640 -->
 
 After coordinating publishing and redeploying the Release, confirm the target environment reflects the expected content without reverting. If the content persists as published, the issue is resolved. Escalate with the Release name and the affected entry UIDs if the content continues to revert.
 
@@ -5510,6 +5684,25 @@ Descending sort is case-sensitive and orders values by character code rather tha
 
 3.  Alternatively, perform a case-insensitive sort at the application level after retrieving the entries.
 
+<!-- case:00059418 status:draft synced:false bucket:"API Delivery, GraphQL & Assets" -->
+### API 500 Errors Traced to an Invalid Regex Exception
+
+Delivery API and Management API responses may degrade or intermittently return 500 Internal Server Error, particularly affecting traffic from a specific region.
+
+**Root Cause**
+
+The 500 errors were triggered by an invalid regex exception thrown by the database layer.
+
+**Resolution**
+
+1.  If you observe degraded Delivery or Management API performance alongside 500 Internal Server Error responses, capture the affected region, approximate time window, and sample request/response details.
+2.  Report the pattern to Contentstack Support for log-based investigation of the database layer.
+3.  Once the invalid regex condition is identified and corrected, retest the previously affected API calls.
+
+After the fix is applied, retry API calls that previously returned 500 errors. If they now return successfully without degraded performance, the issue is resolved.
+
+<!-- end:00059418 -->
+
 After applying a consistent casing convention or sorting case-insensitively at the application level, confirm the entries display in the expected alphabetical order. If the ordering matches expectations, the issue is resolved. Escalate with the field UID and a sample of the affected values if the ordering still appears incorrect.
 
 <!-- end:00060720 -->
@@ -6728,6 +6921,44 @@ An indexing configuration mismatch caused some indexes to be automatically creat
 
 3.  Contact Contentstack Support with these details so the indexing configuration can be checked and the affected indexes recreated with correct mappings.
 
+<!-- case:00059673 status:draft synced:false bucket:"Webhooks & External Integrations" -->
+### Automate Lambda Step Reports Success Despite a Lambda Error
+
+An Automate Lambda step may report success even when the underlying Lambda function returns an error.
+
+**Root Cause**
+
+The "Skip on Error" option was enabled on the Execute Lambda Function step, which causes Automate to treat Lambda errors as non-fatal and report the step as successful regardless of the actual Lambda outcome.
+
+**Resolution**
+
+1.  Open the Execute Lambda Function step configuration in the affected Automate flow.
+2.  Disable the "Skip on Error" option so Lambda errors correctly fail the step.
+3.  Review the Lambda function's own error conditions - for example, confirm required data such as a taxonomy assignment is present on the processed entry before execution, or handle its absence within the Lambda.
+
+After disabling Skip on Error and addressing the underlying Lambda error condition, re-run the flow. If the step now fails when the Lambda returns an error, and succeeds when the entry has the required data, the issue is resolved.
+
+<!-- end:00059673 -->
+
+<!-- case:00059762 status:draft synced:false bucket:"Webhooks & External Integrations" -->
+### Automate Workflow Uses an Incorrect Teams API Endpoint
+
+An Automate workflow calling the Teams API may fail even when the request otherwise appears correctly formed.
+
+**Root Cause**
+
+The workflow was configured to call an incorrect Organization Teams API endpoint.
+
+**Resolution**
+
+1.  Review the Teams API endpoint configured in the affected Automate workflow step.
+2.  Update the request to use the correct Organization Teams API endpoint.
+3.  Re-run the workflow and confirm the API call returns the expected response.
+
+After correcting the endpoint, re-run the Automate workflow. If the Teams API call succeeds and returns the expected response, the issue is resolved.
+
+<!-- end:00059762 -->
+
 After Contentstack Support recreates the affected indexes, publish an entry and confirm the publish queue clears without a backlog and the webhook executes as expected. Escalate with the stack API key and the affected entry UIDs if webhook executions still fail to trigger.
 
 <!-- end:00060794 -->
@@ -7888,6 +8119,101 @@ The onEntryChange callback was gated behind a livePreviewReady condition and wra
 
 4.  Confirm onEntryChange triggers both on initial load and when edits are made in the entry editor.
 
+<!-- case:00059271 status:draft synced:false bucket:"Custom Extensions, Live Preview & Analytics" -->
+### Live Preview "Open in a New Tab" Closes Automatically
+
+Opening Live Preview in a new tab (for example, to use a second monitor) may cause the new tab to load briefly and then close automatically, returning focus to the original tab with Live Preview reopened in the side panel instead.
+
+**Root Cause**
+
+Root cause was not identified in the source case data. The resolution below reflects the fix that resolved the reported symptom.
+
+**Resolution**
+
+1.  Update to the current platform release, which includes a fix for this behavior (tracked under Jira VP-2060).
+2.  Re-test opening Live Preview in a new tab from the entry editor.
+
+After updating to the current release, open Live Preview in a new tab. If it remains open in its own tab instead of auto-closing, the issue is resolved.
+
+<!-- end:00059271 -->
+
+<!-- case:00059453 status:draft synced:false bucket:"Custom Extensions, Live Preview & Analytics" -->
+### UI Location Field Fails to Persist Data
+
+A custom UI Location field may suddenly fail in production, showing a "Field not found" error when loading or updating field values, with data no longer persisting.
+
+**Root Cause**
+
+This was a regression in App SDK v2.4.0 affecting data persistence for custom fields in certain configurations.
+
+**Resolution**
+
+1.  If a UI Location field starts showing a "Field not found" error and failing to persist data, check which App SDK version the application is consuming.
+2.  As a workaround, pin the application to App SDK v2.3.0 until a permanent fix is available.
+3.  Monitor for a future App SDK release that addresses the v2.4.0 regression, and re-test after upgrading.
+
+After pinning to App SDK v2.3.0, confirm the UI Location field loads and persists data correctly. If the error no longer appears, the issue is resolved.
+
+<!-- end:00059453 -->
+
+<!-- case:00059484 status:draft synced:false bucket:"Custom Extensions, Live Preview & Analytics" -->
+### Visual Builder Fails With a Missing live_preview Stack Setting
+
+Opening the Visual Builder or Visual Experience page may throw a "Something Went Wrong" error that persists across incognito sessions and survives a cache purge.
+
+**Root Cause**
+
+The live_preview object was unexpectedly missing from the stack settings document, which caused the Visual Builder page to fail to load.
+
+**Resolution**
+
+1.  If Visual Builder throws "Something Went Wrong" and the error persists after clearing cache and testing in incognito, check whether the stack's live_preview settings object exists.
+2.  As an immediate per-stack workaround, restore the missing live_preview object via a Management API call to POST /v3/stacks/settings, setting live_preview.enabled: true with an empty default environment/URL.
+3.  Verify the Visual Builder loads correctly in a fresh incognito session after the workaround.
+4.  For a permanent, org-wide fix across many stacks, contact Contentstack Support rather than repeating the per-stack API workaround manually.
+
+After restoring the live_preview settings object, reload the Visual Builder page. If it loads without the "Something Went Wrong" error, the issue is resolved.
+
+<!-- end:00059484 -->
+
+<!-- case:00059623 status:draft synced:false bucket:"Custom Extensions, Live Preview & Analytics" -->
+### live_preview Hash Required for Preview Service API Draft Retrieval
+
+Retrieving draft content through the Preview Service API using only preview_token and preview_timestamp, without a live_preview hash, may fail with error code 382.
+
+**Root Cause**
+
+The live_preview hash is a required parameter for Preview Service API requests. It is generated as part of an active Live Preview session, and there is currently no documented or supported method to programmatically generate or retrieve it outside of the Contentstack UI.
+
+**Resolution**
+
+1.  Confirm the request includes a valid live_preview hash alongside preview_token and preview_timestamp.
+2.  If a live_preview hash cannot be obtained (for example, for fully programmatic access to draft content), use the Content Management API instead, where appropriate permissions are available.
+3.  Do not rely on the Preview Service API for draft retrieval workflows that cannot generate a live_preview hash through an active Live Preview session.
+
+After including a valid live_preview hash in the request, retry the Preview Service API call. If it returns the expected draft content without error 382, the issue is resolved.
+
+<!-- end:00059623 -->
+
+<!-- case:00059684 status:draft synced:false bucket:"Custom Extensions, Live Preview & Analytics" -->
+### Live Preview Blocked for Viewer Roles Without Environment Access
+
+A custom Viewer role with no publish rights may be unable to open Live Preview on an entry, with access blocked or the Visual Editor showing an access error.
+
+**Root Cause**
+
+Live Preview requires environments to be explicitly assigned in the role settings, even for users with no publish rights — the environment selection controls which preview URL/context is loaded. The "publishing environments" label in role settings can be misleading for viewer-type roles, causing this configuration to be skipped under the assumption it's irrelevant for non-publishers.
+
+**Resolution**
+
+1.  Open the affected custom Viewer role under Stack > Settings > Roles.
+2.  Assign the required environments to the role, even though the label may read as being about publishing.
+3.  Log in as the affected user and re-attempt to open Live Preview on an entry.
+
+After assigning the required environments to the Viewer role, retry opening Live Preview. If access is restored, the issue is resolved. No engineering change is needed for this configuration.
+
+<!-- end:00059684 -->
+
 After redeploying with these changes, open the entry in edit mode and confirm both the initial page load and subsequent edits reflect in Live Preview. If updates render immediately without requiring a manual refresh, the issue is resolved. Escalate with your SDK version and SSR framework details if it persists.
 
 <!-- end:00058802 -->
@@ -8724,6 +9050,102 @@ The request payload for roles created programmatically was missing the sub_acl k
 
 3.  Contact Contentstack Support with the role UID and stack API key if the role details still fail to load after retrying.
 
+<!-- case:00058830 status:draft synced:false bucket:"Authentication, Tokens & Access" -->
+### Stack Fails to Load Due to Intermittent Authorization Inconsistency
+
+A specific stack may intermittently fail to load in the Contentstack web app for some or all team members, even with correct role assignments.
+
+**Root Cause**
+
+An intermittent authorization inconsistency during user session synchronization caused certain user roles to drop or fail to resolve correctly, blocking access and preventing the environment dashboard from loading.
+
+**Resolution**
+
+1.  As a temporary workaround, recreate or re-invite the affected users via your identity provider.
+2.  Report the issue to Contentstack Support with the affected stack details if it recurs, since a permanent fix requires backend session and role synchronization.
+3.  If Support confirms a Redis synchronization was performed, confirm active user session and role data are aligned by re-testing stack access.
+
+After the synchronization fix is applied, confirm all affected team members can load the stack and environment dashboard normally.
+
+<!-- end:00058830 -->
+
+<!-- case:00059574 status:draft synced:false bucket:"Authentication, Tokens & Access" -->
+### 2FA SMS Codes Stop After Maximum Verification Attempts
+
+A user may stop receiving two-factor authentication SMS codes during login, even though the system is processing SMS requests successfully.
+
+**Root Cause**
+
+The user had reached the maximum number of SMS verification attempts, which temporarily prevents additional codes from being sent.
+
+**Resolution**
+
+1.  Confirm SMS requests are being processed successfully on the system side before assuming a delivery failure.
+2.  Check whether the user has reached the maximum number of SMS verification attempts.
+3.  Contact the Organization Owner to request temporary MFA disablement for the affected account.
+4.  Once access is restored, re-enable and reconfigure MFA for the account.
+
+After MFA is temporarily disabled and access is restored, reconfigure MFA and confirm the account is no longer blocked by the SMS attempt limit.
+
+<!-- end:00059574 -->
+
+<!-- case:00059625 status:draft synced:false bucket:"Authentication, Tokens & Access" -->
+### Teams API Response Structure Varies by api_version Header
+
+The Teams API response for fetching organization teams may appear inconsistent or unexpected depending on whether a specific header is included in the request.
+
+**Root Cause**
+
+The response structure varies depending on the api_version header: without it, the API returns the teams list directly; with api_version: 1.1, the response includes an additional count field alongside the teams data. Team API access itself is not restricted to the Stack Owner — any user with a valid authentication token and the required organization/stack permissions can call it.
+
+**Resolution**
+
+1.  Confirm which api_version header value, if any, is being sent with the Teams API request.
+2.  Adjust your parsing logic to expect a count field when api_version: 1.1 is used, or the plain teams list when it is omitted.
+3.  If a 403 Forbidden response occurs, verify the calling token has valid organization/stack permissions - this endpoint is not restricted to the Stack Owner specifically.
+
+After adjusting for the api_version header behavior, confirm the Teams API response is parsed correctly. If the expected structure is returned, the issue is resolved.
+
+<!-- end:00059625 -->
+
+<!-- case:00059672 status:draft synced:false bucket:"Authentication, Tokens & Access" -->
+### Organization User Export Restricted to Owner/Admin Roles
+
+Exporting organization user details for an audit may not be available, even when the user list itself can be viewed.
+
+**Root Cause**
+
+Exporting organization user data is restricted to Organization Owner/Admin roles, independent of whether a user can view the user list.
+
+**Resolution**
+
+1.  Confirm whether the requesting user holds the Organization Owner or Admin role.
+2.  If not, have an Owner or Admin export the user list, or export it directly via the Contentstack UI or the CLI command csdx cm:export-to-csv.
+3.  Share the exported file for the intended audit purpose.
+
+After exporting via the UI or CLI as an Owner/Admin, confirm the file contains the required organization user details.
+
+<!-- end:00059672 -->
+
+<!-- case:00059806 status:draft synced:false bucket:"Authentication, Tokens & Access" -->
+### User Not Taggable or Selectable as a Reviewer
+
+A user may be able to log in and access Contentstack but cannot be tagged in comments or added as a reviewer.
+
+**Root Cause**
+
+Root cause was not identified in the source case data. The resolution below reflects the steps that resolved the reported symptom.
+
+**Resolution**
+
+1.  Remove the affected user from the stack.
+2.  Re-invite the user to the stack.
+3.  Verify the user's role and permissions if the issue persists after re-inviting.
+
+After removing and re-inviting the user, confirm they can now be tagged in comments and added as a reviewer. If so, the issue is resolved.
+
+<!-- end:00059806 -->
+
 After retrying, open the affected role in the Contentstack UI and confirm the Content Type Management permissions display correctly. If the role details load as expected, the issue is resolved. Escalate with the role UID and stack API key if it persists.
 
 <!-- end:00050794 -->
@@ -9165,6 +9587,27 @@ The Images API (images.contentstack.io) has its own rate limit, separate from th
 3.  Audit all integrations and automated processes that make image requests and add throttling where unconstrained calls are identified.
     
 4.  Review images.contentstack.io request metrics via Contentstack Support to understand peak consumption patterns.
+
+<!-- case:00059690 status:draft synced:false bucket:"Assets & Metadata Management" -->
+### Deleting a Never-Published Asset Doesn't Purge Its CDN URL
+
+An asset that is deleted without ever having been published may remain publicly accessible via its CDN URL after deletion.
+
+**Root Cause**
+
+Unlike unpublishing, deleting an asset that was never published does not automatically trigger a CDN cache purge event, so the asset's URL remains live on the CDN even though it no longer exists in Contentstack.
+
+**Resolution**
+
+1.  If a deleted asset's CDN URL remains accessible, confirm whether the asset had ever been published before deletion.
+2.  If it was never published, contact Contentstack Support to request a manual CDN cache purge for the specific asset URL.
+3.  For assets that may need removal urgently (for example, legal or compliance requirements), request the purge as soon as the asset is deleted rather than assuming deletion alone removes CDN access.
+
+Note: if the asset had been published and was later unpublished rather than deleted, see the related entry on unpublished assets remaining accessible via CDN URL, which covers a Secure Public URLs-based preventive option.
+
+After the manual CDN purge is completed, confirm the previously accessible asset URL is no longer reachable.
+
+<!-- end:00059690 -->
     
 5.  If the Images API limit is consistently insufficient for production traffic, contact Contentstack Support to discuss a limit increase.
     
@@ -9981,6 +10424,82 @@ The CMA returns flattened extension metadata for the Get Single Asset API, while
 
 3.  Alternatively, update your integration's field mapping to handle the CDA's default nested metadata wrapper.
 
+<!-- case:00059286 status:draft synced:false bucket:"Localization via CMA" -->
+### Localized Publish Blocked by Non-Localizable Taxonomy Fields
+
+Publishing a localized entry may be blocked when a non-localizable taxonomy field is involved, even though the taxonomy is expected to fall back to the master language automatically.
+
+**Root Cause**
+
+A platform enhancement introduced stricter validation for taxonomy references across locales. Publish-time fallback does not happen automatically — delivery fallback for taxonomy only applies when include_fallback=true is passed via the API, per the Taxonomy Localization documentation.
+
+**Resolution**
+
+1.  If a localized publish is blocked due to a non-localizable taxonomy field, review the Taxonomy Localization documentation and changelog for the current validation behavior.
+2.  Do not assume taxonomy will fall back to the master language automatically at publish time.
+3.  Pass include_fallback=true in API requests where taxonomy fallback is needed for delivery, understanding this applies to retrieval, not to bypassing publish-time validation.
+
+After reviewing the current taxonomy localization validation behavior and adjusting API calls accordingly, retry publishing the localized entry. If it publishes without being blocked, the issue is resolved.
+
+<!-- end:00059286 -->
+
+<!-- case:00059376 status:draft synced:false bucket:"Localization via CMA" -->
+### CDA Returns Content for a Locale Never Explicitly Published
+
+Fetching entry details for a locale that has not been explicitly published may still return content, unexpectedly.
+
+**Root Cause**
+
+This is expected behavior: when the request includes include_fallback=true, Contentstack walks up the fallback chain and returns content from the nearest available published locale (typically the master locale) when the requested locale has no published content. Additionally, child locale entries automatically inherit master locale data when a master entry is created, which is why content can appear even for locales that were never explicitly touched.
+
+**Resolution**
+
+1.  If content unexpectedly appears for a locale that was never explicitly published, check whether include_fallback=true is set in the request.
+2.  Use include_fallback=false to receive only explicitly published locale content (this returns a 404 if the locale isn't published).
+3.  Use include_fallback=true to intentionally return master locale content as a fallback, if that behavior is desired.
+
+After adjusting the include_fallback parameter to match the intended behavior, re-run the request. If the response matches expectations for the target locale, the issue is resolved.
+
+<!-- end:00059376 -->
+
+<!-- case:00059511 status:draft synced:false bucket:"Localization via CMA" -->
+### Localizing an Entry Intermittently Returns a 404 Error
+
+Attempting to localize an entry from one locale to another may intermittently return a 404 error, even though localization should be possible.
+
+**Root Cause**
+
+This is consistent with a short synchronization delay rather than a persistent defect - the error resolved on its own and was not reproducible afterward.
+
+**Resolution**
+
+1.  If localization returns a 404 error, wait briefly and retry the localization action, since this can reflect a short synchronization delay.
+2.  If the error persists beyond a brief retry, capture the approximate timestamp, a HAR file, browser console logs or screenshots, and a screen recording of the localization attempt.
+3.  Share these details with Contentstack Support for further investigation if the issue is reproducible.
+
+After retrying the localization action, confirm the entry localizes successfully. If the 404 error was transient, the issue is resolved without further action.
+
+<!-- end:00059511 -->
+
+<!-- case:00059580 status:draft synced:false bucket:"Localization via CMA" -->
+### Non-Localizable Field Shows as Editable in a Localized Entry
+
+A non-localizable field inside a Group field may show a message indicating it can be edited independently of the master locale, even when the field exists consistently across all locales.
+
+**Root Cause**
+
+The non-localizable field within the localized entry's instance is not linked to the corresponding instance in the master entry. An instance is considered linked only when the uid in _metadata matches between the master and localized entry, and the localized instance's _metadata includes non_localizable_content: true. Without that link, the field is treated as independently editable, even if it should be shared.
+
+**Resolution**
+
+1.  Add a new instance directly in the master entry - it will automatically be inherited by the localized entry along with its non-localizable fields.
+2.  Alternatively, update the localized entry so the uid in _metadata matches the corresponding instance in the master entry, and add non_localizable_content: true to link the two instances.
+3.  After linking, confirm future changes to non-localizable fields in the master entry are reflected in the linked localized instance.
+
+After linking the instance via matching _metadata uid and non_localizable_content: true, confirm the field is no longer independently editable in the localized entry.
+
+<!-- end:00059580 -->
+
 After enabling the flag or updating the field mapping, re-request the asset metadata via the CDA and confirm the structure matches what your integration expects. If field mappings resolve correctly, the issue is resolved. Escalate with the stack API key and the affected asset UID if the response structure still does not match after enabling the flag.
 
 <!-- end:00060690 -->
@@ -10390,6 +10909,121 @@ This error occurs when a field is marked as non-localizable after data has alrea
 2.  Recreate the localized entry from the master locale: after unlocalizing, localize the entry again by switching to the locale and making the necessary translations.
     
 3.  This process ensures a clean mapping of fields across locales, realigning the entry structure with the current content type schema.
+
+<!-- case:00056490 status:draft synced:false bucket:"CMA Behavior, Limits & Miscellaneous" -->
+### Migrated Entries Show an Unexpected 'Unsaved Changes' Prompt
+
+Entries created through migration may show an unexpected "unsaved changes" prompt, even without any manual edits.
+
+**Root Cause**
+
+A missing related_content field in the migration API payload caused entries to appear as having unsaved changes.
+
+**Resolution**
+
+1.  Review the migration script's API payload for entries showing the unexpected prompt.
+2.  Add the missing related_content field to the payload.
+3.  Re-run the migration for affected entries and confirm the prompt no longer appears.
+
+After including the related_content field in the migration payload, re-migrate the affected entries. If the unsaved changes prompt no longer appears, the issue is resolved.
+
+<!-- end:00056490 -->
+
+<!-- case:00058872 status:draft synced:false bucket:"CMA Behavior, Limits & Miscellaneous" -->
+### Legacy Reference Fields Incorrectly Flagged as Broken on Deploy
+
+Deploying a release may fail validation with an error on legacy reference fields, even though the referenced entries are valid and existing.
+
+**Root Cause**
+
+A conflict between an Enhanced Reference Validation update and non-upgraded legacy "Old Reference Field" structures caused the issue. Older APIs stored single-reference values as arrays for backward compatibility, and the new validator logic misread that array format, incorrectly flagging valid, existing references as broken.
+
+**Resolution**
+
+1.  Identify legacy reference fields (single-reference fields storing values as arrays) affected by deploy validation errors.
+2.  Confirm you are on a platform version that includes the validator fix for legacy reference field handling.
+3.  Re-add previously affected entries to a Release to trigger a fresh validation and update their Deploy Ready status.
+
+After re-adding affected entries to a Release, confirm they pass validation and process correctly.
+
+<!-- end:00058872 -->
+
+<!-- case:00059180 status:draft synced:false bucket:"CMA Behavior, Limits & Miscellaneous" -->
+### Search Indexing Lags Behind High-Volume Entry Creation
+
+Entries created in large volume during a migration may not appear in UI search results immediately, even though they exist in the system.
+
+**Root Cause**
+
+A large volume of entries created within a short period causes synchronization delays between the primary database and the search layer that powers list/search views. Entries exist and are returned by direct API calls, but can take time to become searchable.
+
+**Resolution**
+
+1.  If newly migrated entries are missing from search results, wait - indexing typically catches up within a few hours for large batches.
+2.  For future migrations, throttle the entry creation process: create entries in smaller batches or introduce delays between requests.
+3.  Avoid single large bursts of entry creation to reduce indexing lag.
+
+After allowing indexing time to catch up, confirm the previously missing entries now appear in search results. For future migrations, confirm batched/throttled creation reduces the delay.
+
+<!-- end:00059180 -->
+
+<!-- case:00059472 status:draft synced:false bucket:"CMA Behavior, Limits & Miscellaneous" -->
+### Entry Slowness From a High-Instance-Count Group Field
+
+An entry containing a multi-instance Group field with a very high number of instances (roughly 800 or more) may load and render slowly.
+
+**Root Cause**
+
+The observed slowness is specific to the affected entry due to the sheer data volume and complexity of rendering that many Group field instances, not a platform-wide issue.
+
+**Resolution**
+
+1.  Identify entries with an unusually high number of instances in a multi-instance Group field.
+2.  Restructure the content model by distributing the content across multiple entries instead of one large entry.
+3.  Re-test entry load and render performance after restructuring.
+
+After distributing the content across multiple entries, confirm load and render performance improves for the previously slow entry.
+
+<!-- end:00059472 -->
+
+<!-- case:00059515 status:draft synced:false bucket:"CMA Behavior, Limits & Miscellaneous" -->
+### Error 194 From Stray Spaces in a cURL Request
+
+Updating a stack setting (such as enforce_unique_urls) via the Management API may return Error 194, even when the request appears correct.
+
+**Root Cause**
+
+Stray spaces were present after the backslash line-continuation characters in the cURL command, which malformed the request.
+
+**Resolution**
+
+1.  Review the cURL command for the failing stack settings update.
+2.  Remove any spaces immediately after backslash (\\) line-continuation characters.
+3.  Re-run the corrected cURL command.
+
+After removing the stray spaces, re-run the request. If the stack setting updates successfully without Error 194, the issue is resolved.
+
+<!-- end:00059515 -->
+
+<!-- case:00059699 status:draft synced:false bucket:"CMA Behavior, Limits & Miscellaneous" -->
+### No Native Bulk Rename or Reorder for Taxonomy Terms
+
+Bulk renaming or moving taxonomy terms may not have a direct option available through the UI or a single bulk API endpoint.
+
+**Root Cause**
+
+Contentstack does not currently support native bulk rename or bulk reorder operations for taxonomy terms.
+
+**Resolution**
+
+1.  Use the CMA's Update Taxonomy Term endpoint to rename individual taxonomy terms.
+2.  Use the CMA's Move Taxonomy Term endpoint to reorder or move taxonomy terms within the hierarchy.
+3.  Script these calls across multiple terms if a bulk-style operation is needed.
+4.  Consider submitting a feature request for native bulk taxonomy management if this is a recurring need.
+
+After scripting the CMA endpoint calls across the required terms, confirm the taxonomy terms are renamed or reordered as expected.
+
+<!-- end:00059699 -->
     
 4.  If unlocalizing would cause significant content loss, first export the localized content via CMA as a backup before unlocalizing.
     
