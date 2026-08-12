@@ -949,6 +949,25 @@ Each Contentstack organization has a maximum limit on the number of Personalize 
 
 Project limit increases are applied at the organization level by Contentstack Support. There is no self-service option for adjusting this limit.
 
+<!-- case:00059488 status:draft synced:false bucket:"Platform Settings & Permissions" -->
+### Admin Role Required to Modify Variant Group Content Types
+
+Linking or adding a content type to a Variant Group may fail with a "Failed to update" error when the acting user does not have the Admin role.
+
+**Root Cause**
+
+Modifications to Variant Groups — including linking or adding content types — are currently restricted to users with the Admin role. Non-admin and custom roles do not have sufficient permissions to make these changes, regardless of other stack-level access granted to the role.
+
+**Resolution**
+
+1.  Confirm the acting user's role in the organization; Variant Group changes require the Admin role specifically.
+2.  Assign the Admin role to the user, or have an existing Admin perform the change instead.
+3.  Retry linking or adding the content type to the Variant Group.
+
+After assigning the Admin role, retry linking the content type to the Variant Group. If the update completes without a "Failed to update" error, the issue is resolved. Escalate with the affected Variant Group UID and user role if it persists.
+
+<!-- end:00059488 -->
+
 ## External CDN & Architecture
 
 ### Variant Resolution Broken When External CDN (Akamai) Sits in Front of Launch
