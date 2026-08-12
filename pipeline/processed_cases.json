@@ -2,12 +2,12 @@
   "00045271": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "Resolution is entirely Contentstack-side infrastructure fixes (Cloudflare Worker/FL2 engine upgrade, deployment timing change) and rules out client causes (429, 499 confirmed as expected client-initiated closures) — no discrete action a reader could take to resolve or avoid the issue themselves."
+    "reason": "Resolution is entirely Contentstack-side infrastructure fixes (Cloudflare Worker/FL2 engine upgrade, deployment timing change) and rules out client causes (429, 499 confirmed as expected client-initiated closures) \u2014 no discrete action a reader could take to resolve or avoid the issue themselves."
   },
   "00057737": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "No confirmed resolution or workaround — case auto-closed due to customer inactivity with no fix on Contentstack's side and no actionable troubleshooting steps for the reader."
+    "reason": "No confirmed resolution or workaround \u2014 case auto-closed due to customer inactivity with no fix on Contentstack's side and no actionable troubleshooting steps for the reader."
   },
   "00057858": {
     "on": "2026-07-10",
@@ -24,12 +24,12 @@
   "00059832": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "Resolution notes contain no discrete troubleshooting steps or root cause—only 'Customer confirmed he was able to login,' which is under 30 words and too vague to extract an actionable resolution."
+    "reason": "Resolution notes contain no discrete troubleshooting steps or root cause\u2014only 'Customer confirmed he was able to login,' which is under 30 words and too vague to extract an actionable resolution."
   },
   "00059897": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "Internal support-portal ticketing issue resolved via internal COPS ticket — not a product/technical problem, and resolution has no reader-actionable steps."
+    "reason": "Internal support-portal ticketing issue resolved via internal COPS ticket \u2014 not a product/technical problem, and resolution has no reader-actionable steps."
   },
   "00059958": {
     "on": "2026-07-10",
@@ -41,22 +41,22 @@
   "00059964": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "Case concerns screen-recording sharing/access permissions between the customer and support, not a Contentstack product problem or technical resolution — no extractable troubleshooting content."
+    "reason": "Case concerns screen-recording sharing/access permissions between the customer and support, not a Contentstack product problem or technical resolution \u2014 no extractable troubleshooting content."
   },
   "00059976": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "How-to enquiry about intended Validate/Publish button behavior, not a technical problem with a resolution — no confirmed bug or reader-actionable fix."
+    "reason": "How-to enquiry about intended Validate/Publish button behavior, not a technical problem with a resolution \u2014 no confirmed bug or reader-actionable fix."
   },
   "00059995": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "No confirmed resolution or technical detail in case notes — resolution reason is a placeholder ('Will keep them updated'), case text too vague to extract any problem or fix."
+    "reason": "No confirmed resolution or technical detail in case notes \u2014 resolution reason is a placeholder ('Will keep them updated'), case text too vague to extract any problem or fix."
   },
   "00060009": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "This is a preventive how-to/guidance request (upcoming SAML certificate renewal) rather than an active technical problem — the customer had not yet performed the renewal and no fix or workaround was confirmed."
+    "reason": "This is a preventive how-to/guidance request (upcoming SAML certificate renewal) rather than an active technical problem \u2014 the customer had not yet performed the renewal and no fix or workaround was confirmed."
   },
   "00090001": {
     "on": "2026-07-10",
@@ -110,7 +110,7 @@
   "00090008": {
     "on": "2026-07-10",
     "outcome": "rejected",
-    "reason": "Resolution was a manual backend action by the TSO team (reissuing an exam link) with no self-service step a reader could take — equivalent to 'support fixed it internally,' not a repeatable troubleshooting fix."
+    "reason": "Resolution was a manual backend action by the TSO team (reissuing an exam link) with no self-service step a reader could take \u2014 equivalent to 'support fixed it internally,' not a repeatable troubleshooting fix."
   },
   "00090009": {
     "on": "2026-07-10",
@@ -199,17 +199,17 @@
   "00099011": {
     "on": "2026-07-23",
     "outcome": "rejected",
-    "reason": "How-to question (customer asked how to create a CDP audience segment) — not a technical problem, per rejection taxonomy."
+    "reason": "How-to question (customer asked how to create a CDP audience segment) \u2014 not a technical problem, per rejection taxonomy."
   },
   "00099012": {
     "on": "2026-07-23",
     "outcome": "rejected",
-    "reason": "Pure incident report — internal infrastructure issue resolved backend-side by Contentstack with no customer-side action or reader-actionable troubleshooting steps."
+    "reason": "Pure incident report \u2014 internal infrastructure issue resolved backend-side by Contentstack with no customer-side action or reader-actionable troubleshooting steps."
   },
   "00099013": {
     "on": "2026-07-23",
     "outcome": "rejected",
-    "reason": "Account management/identity-verification case — 2FA lockout was resolved by Support manually re-verifying identity and resetting the phone number on the account; there is no technical defect or self-service action a reader can perform."
+    "reason": "Account management/identity-verification case \u2014 2FA lockout was resolved by Support manually re-verifying identity and resetting the phone number on the account; there is no technical defect or self-service action a reader can perform."
   },
   "00099014": {
     "on": "2026-07-23",
@@ -290,7 +290,7 @@
   "00060506": {
     "on": "2026-08-05",
     "outcome": "FLAG",
-    "reason": "Resolution notes present generic DNS/CAA/CNAME troubleshooting guidance for stuck domain prevalidation, but there is no confirmation the steps were actually applied or that they fixed this customer's case (no 'customer confirmed' language) — uncertain publishability."
+    "reason": "Resolution notes present generic DNS/CAA/CNAME troubleshooting guidance for stuck domain prevalidation, but there is no confirmation the steps were actually applied or that they fixed this customer's case (no 'customer confirmed' language) \u2014 uncertain publishability."
   },
   "00060512": {
     "on": "2026-08-05",
@@ -300,22 +300,22 @@
   "00060817": {
     "on": "2026-08-05",
     "outcome": "SKIP",
-    "reason": "Administrative duplicate closure referencing case 00060803 and an unspecified infrastructure RCA — no discrete technical content in this case's own notes."
+    "reason": "Administrative duplicate closure referencing case 00060803 and an unspecified infrastructure RCA \u2014 no discrete technical content in this case's own notes."
   },
   "00060558": {
     "on": "2026-08-05",
     "outcome": "SKIP",
-    "reason": "Informational Q&A about SSL intermediate/root certificate continuity during a scheduled renewal — no technical problem or reader-actionable troubleshooting steps, just a confirmed fact."
+    "reason": "Informational Q&A about SSL intermediate/root certificate continuity during a scheduled renewal \u2014 no technical problem or reader-actionable troubleshooting steps, just a confirmed fact."
   },
   "00060818": {
     "on": "2026-08-05",
     "outcome": "SKIP",
-    "reason": "Pure clarification question about how Contentstack defines Production vs Developer stacks — no technical problem or fix, a simple how-to/informational answer."
+    "reason": "Pure clarification question about how Contentstack defines Production vs Developer stacks \u2014 no technical problem or fix, a simple how-to/informational answer."
   },
   "00060285": {
     "on": "2026-08-05",
     "outcome": "SKIP",
-    "reason": "Font-color rendering issue was never reproduced platform-side and self-resolved on the customer's end with no confirmed root cause — closed as no-longer-reproducing per the 'could not be reproduced' skip criterion."
+    "reason": "Font-color rendering issue was never reproduced platform-side and self-resolved on the customer's end with no confirmed root cause \u2014 closed as no-longer-reproducing per the 'could not be reproduced' skip criterion."
   },
   "00060591": {
     "on": "2026-08-05",
@@ -326,7 +326,7 @@
   "00058456": {
     "on": "2026-08-05",
     "outcome": "SKIP",
-    "reason": "Two sub-issues, neither actionable: performance investigation was abandoned (no root cause, no response), and the audience limit increase was a manual backend change by a Contentstack TAM — no reader-actionable troubleshooting step for either."
+    "reason": "Two sub-issues, neither actionable: performance investigation was abandoned (no root cause, no response), and the audience limit increase was a manual backend change by a Contentstack TAM \u2014 no reader-actionable troubleshooting step for either."
   },
   "00060727": {
     "on": "2026-08-05",
@@ -343,42 +343,42 @@
   "00029591": {
     "on": "2026-08-05",
     "outcome": "SKIP",
-    "reason": "New Feature Request (make asset Description field mandatory); Resolution Reason 'New Feature/Enhancement Released' — response is feature-availability guidance, not a troubleshooting fix for a confirmed technical problem."
+    "reason": "New Feature Request (make asset Description field mandatory); Resolution Reason 'New Feature/Enhancement Released' \u2014 response is feature-availability guidance, not a troubleshooting fix for a confirmed technical problem."
   },
   "00050508": {
     "on": "2026-08-05",
     "outcome": "SKIP",
-    "reason": "Duplicate of case 00029591 processed in this same run (identical New Feature Request: mandatory asset Description field) — also independently a Never-publishable feature request with no workaround."
+    "reason": "Duplicate of case 00029591 processed in this same run (identical New Feature Request: mandatory asset Description field) \u2014 also independently a Never-publishable feature request with no workaround."
   },
   "00060559": {
     "on": "2026-08-05",
     "outcome": "SKIP",
-    "reason": "Investigation stalled — customer never provided the requested diagnostic artifacts (content type export, entry export, screenshot, screen recording); no root cause identified or resolution applied."
+    "reason": "Investigation stalled \u2014 customer never provided the requested diagnostic artifacts (content type export, entry export, screenshot, screen recording); no root cause identified or resolution applied."
   },
   "00060673": {
     "on": "2026-08-05",
     "outcome": "FLAG",
-    "reason": "Strong publishable content (confirmed root cause: internal auth/key-rotation issue; confirmed customer-side fix) but Microservice 'AgentOS/Automate' has no docs-site category mapping in pipeline/microservice_to_docsite.json — flagged per unmapped-microservice rule, no target file to draft into."
+    "reason": "Strong publishable content (confirmed root cause: internal auth/key-rotation issue; confirmed customer-side fix) but Microservice 'AgentOS/Automate' has no docs-site category mapping in pipeline/microservice_to_docsite.json \u2014 flagged per unmapped-microservice rule, no target file to draft into."
   },
   "00060718": {
     "on": "2026-08-05",
     "outcome": "SKIP",
-    "reason": "Investigation could not proceed — no diagnostic info received from customer (image file, Stack UID, upload method, cURL, screenshot); no root cause or fix confirmed."
+    "reason": "Investigation could not proceed \u2014 no diagnostic info received from customer (image file, Stack UID, upload method, cURL, screenshot); no root cause or fix confirmed."
   },
   "00060486": {
     "on": "2026-08-05",
     "outcome": "FLAG",
-    "reason": "Strong publishable content (clear root cause: Data Store Execution Level scope doesn't support read-after-write within a single execution; clear resolution steps) but Microservice 'AgentOS/Automate' has no docs-site category mapping — flagged per unmapped-microservice rule, no target file to draft into."
+    "reason": "Strong publishable content (clear root cause: Data Store Execution Level scope doesn't support read-after-write within a single execution; clear resolution steps) but Microservice 'AgentOS/Automate' has no docs-site category mapping \u2014 flagged per unmapped-microservice rule, no target file to draft into."
   },
   "00060814": {
     "on": "2026-08-05",
     "outcome": "SKIP",
-    "reason": "Administrative duplicate closure — case explicitly continued under case 00060819 instead; no technical content of its own."
+    "reason": "Administrative duplicate closure \u2014 case explicitly continued under case 00060819 instead; no technical content of its own."
   },
   "00059626": {
     "on": "2026-08-05",
     "outcome": "SKIP",
-    "reason": "Issue self-resolved on the customer's end without a confirmed root cause; investigation could not proceed due to no further customer response — no actionable fix identified."
+    "reason": "Issue self-resolved on the customer's end without a confirmed root cause; investigation could not proceed due to no further customer response \u2014 no actionable fix identified."
   },
   "00044058": {
     "on": "2026-08-05",
@@ -388,12 +388,12 @@
   "00060307": {
     "on": "2026-08-05",
     "outcome": "SKIP",
-    "reason": "Auto-closed due to inactivity with zero technical detail in the resolution notes beyond closure boilerplate — no root cause or fix documented despite being logged as a Bug."
+    "reason": "Auto-closed due to inactivity with zero technical detail in the resolution notes beyond closure boilerplate \u2014 no root cause or fix documented despite being logged as a Bug."
   },
   "00060857": {
     "on": "2026-08-06",
     "outcome": "SKIP",
-    "reason": "Feature-enablement/administrative request (Studio Early Access for sandbox orgs) put on hold pending a future rollout wave — not a technical problem, no fix or workaround."
+    "reason": "Feature-enablement/administrative request (Studio Early Access for sandbox orgs) put on hold pending a future rollout wave \u2014 not a technical problem, no fix or workaround."
   },
   "00058802": {
     "on": "2026-08-06",
@@ -416,12 +416,12 @@
   "00059598": {
     "on": "2026-08-06",
     "outcome": "FLAG",
-    "reason": "Strong publishable content (explicit HTTP 422 error, confirmed root cause: webhook count exceeding platform limit from field mappings, customer-confirmed fix) but Microservice 'Marketplace - Public Apps' maps to docs-site category 'marketplace' in pipeline/microservice_to_docsite.json, and docs-site/marketplace/faqs.md does not exist on main — no target file to draft into on this branch. Note: an unmerged PR #31 (docs-site/marketplace-batch-1, open since 2026-08-05) already proposes creating this file for a different case (00060653); once that PR merges, this case can be drafted into the same file on a future run."
+    "reason": "Strong publishable content (explicit HTTP 422 error, confirmed root cause: webhook count exceeding platform limit from field mappings, customer-confirmed fix) but Microservice 'Marketplace - Public Apps' maps to docs-site category 'marketplace' in pipeline/microservice_to_docsite.json, and docs-site/marketplace/faqs.md does not exist on main \u2014 no target file to draft into on this branch. Note: an unmerged PR #31 (docs-site/marketplace-batch-1, open since 2026-08-05) already proposes creating this file for a different case (00060653); once that PR merges, this case can be drafted into the same file on a future run."
   },
   "00060528": {
     "on": "2026-08-06",
     "outcome": "FLAG",
-    "reason": "Uncertain publishability — case is primarily a Q&A about Lytics identifier/primary-key type requirements with real technical guidance (cast primary_key to string), but there is no explicit customer confirmation that applying the fix resolved the issue; a human should weigh in on whether this crosses the how-to/troubleshooting line."
+    "reason": "Uncertain publishability \u2014 case is primarily a Q&A about Lytics identifier/primary-key type requirements with real technical guidance (cast primary_key to string), but there is no explicit customer confirmation that applying the fix resolved the issue; a human should weigh in on whether this crosses the how-to/troubleshooting line."
   },
   "00060768": {
     "on": "2026-08-06",
@@ -432,22 +432,22 @@
   "00060681": {
     "on": "2026-08-06",
     "outcome": "SKIP",
-    "reason": "Internal support-portal dashboard visibility/sync bug (case not appearing on customer's portal), not a Contentstack product/technical problem — same pattern as previously skipped case 00059897."
+    "reason": "Internal support-portal dashboard visibility/sync bug (case not appearing on customer's portal), not a Contentstack product/technical problem \u2014 same pattern as previously skipped case 00059897."
   },
   "00060762": {
     "on": "2026-08-06",
     "outcome": "SKIP",
-    "reason": "Aprimo connector cannot select video/mp4 files due to a confirmed third-party SDK limitation (Aprimo Content Selector SDK does not return adaptive-streaming Public Links); customer was informed of the limitation with no fix or workaround applied — fails the resolution/workaround-applied criterion."
+    "reason": "Aprimo connector cannot select video/mp4 files due to a confirmed third-party SDK limitation (Aprimo Content Selector SDK does not return adaptive-streaming Public Links); customer was informed of the limitation with no fix or workaround applied \u2014 fails the resolution/workaround-applied criterion."
   },
   "00060840": {
     "on": "2026-08-06",
     "outcome": "SKIP",
-    "reason": "Pure account-administration request (new user dashboard access) — customer directed to their Org Owner/Admin; no technical problem or fix."
+    "reason": "Pure account-administration request (new user dashboard access) \u2014 customer directed to their Org Owner/Admin; no technical problem or fix."
   },
   "00060871": {
     "on": "2026-08-06",
     "outcome": "SKIP",
-    "reason": "Administrative duplicate closure — resolution notes state 'dup of 00059955'; no technical content of its own."
+    "reason": "Administrative duplicate closure \u2014 resolution notes state 'dup of 00059955'; no technical content of its own."
   },
   "00060779": {
     "on": "2026-08-05",
@@ -556,5 +556,893 @@
     "on": "2026-08-05",
     "outcome": "SKIP",
     "reason": "Auto-Closed - No Response; no root cause identified, only a request for a discovery call that went unanswered."
+  },
+  "00058892": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Already hand-documented via KB Article Slack thread reply from Azariah Onyx (posted 2026-06-17); not redrafted."
+  },
+  "00059489": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Already hand-documented via KB Article Slack thread reply from Azariah Onyx (posted 2026-06-17); not redrafted."
+  },
+  "00059406": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Already hand-documented via KB Article Slack thread reply from Azariah Onyx (posted 2026-06-17); not redrafted."
+  },
+  "00059394": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Already hand-documented via KB Article Slack thread reply from Azariah Onyx (posted 2026-06-17); not redrafted."
+  },
+  "00059435": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Already hand-documented via KB Article Slack thread reply from Azariah Onyx (posted 2026-06-17); not redrafted."
+  },
+  "00035931": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "New Feature Request, Request Deferred, customer churned, no technical detail"
+  },
+  "00059445": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Pure informational/account-admin answer (log retention policy); no technical problem or fix"
+  },
+  "00059429": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; no root cause or fix documented before closure"
+  },
+  "00030359": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "New Feature Request, Request Accepted/On Roadmap, customer churned, no technical detail"
+  },
+  "00030659": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "New Feature Request, Request Accepted/On Roadmap, customer churned, no technical detail"
+  },
+  "00030005": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "New Feature Request, Request Accepted/On Roadmap, no workaround, no technical detail"
+  },
+  "00059453": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Custom Extensions, Live Preview & Analytics (reused)"
+  },
+  "00059503": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Informational clarification of role/team scoping limitations; no bug, no problem to troubleshoot"
+  },
+  "00059012": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; proposed workaround never confirmed"
+  },
+  "00059488": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/personalize/faqs.md",
+    "bucket": "Platform Settings & Permissions (reused)"
+  },
+  "00059465": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/administration/faqs.md",
+    "bucket": "SCIM & Automated User Provisioning (reused)"
+  },
+  "00059357": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Pure pre-adoption Q&A about Polaris pricing/compliance; no technical problem"
+  },
+  "00058091": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Duplicate of case 00057875 (same Jira EXP-717 timezone bug); publishing 00057875 as the representative"
+  },
+  "00059361": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Pure informational Q&A about CDN-managed SSL cert renewal; no technical problem"
+  },
+  "00059390": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/cli-faqs.md",
+    "bucket": "TypeScript Generation (TSGen) & Plugins (reused)"
+  },
+  "00057161": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Blank Microservice field - no docs-site mapping possible despite strong RCA content (502 forced-logout root cause + fix)"
+  },
+  "00058974": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice TSO has no docs-site mapping despite confirmed backend fix"
+  },
+  "00059286": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Localization via CMA (reused)"
+  },
+  "00059475": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Informational account-setup guidance; no technical problem"
+  },
+  "00059507": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/launch/faqs.md",
+    "bucket": "Edge Functions & Frameworks (reused)"
+  },
+  "00059464": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Resolution Notes are unfilled template placeholders - no actual root cause or fix was ever documented"
+  },
+  "00059449": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Unconfirmed hypothesis (403/permissions); could not reproduce; no confirmed fix"
+  },
+  "00059510": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "No root cause or resolution detail documented beyond 'issue was resolved'"
+  },
+  "00059477": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/administration/faqs.md",
+    "bucket": "Single Sign-On (SSO) & IdP Configuration (reused)"
+  },
+  "00059515": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "CMA Behavior, Limits & Miscellaneous (reused)"
+  },
+  "00059553": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice AgentOS/Automate has no docs-site mapping entry (renamed from AgentOS - Automate; docs-site/agent-os is empty)"
+  },
+  "00059367": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Too thin - no diagnosed root cause, generic reinvite suggestion"
+  },
+  "00059550": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Config-limit tweak assisted by support, not a generalizable self-service troubleshooting pattern"
+  },
+  "00059542": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Pure feature-enablement administrative request, not a technical problem"
+  },
+  "00059546": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "No root cause or resolution detail documented"
+  },
+  "00059359": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice AgentOS/Automate has no docs-site mapping entry"
+  },
+  "00058544": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/marketplace/faqs.md",
+    "bucket": "Vendor-Specific Integrations (reused)"
+  },
+  "00059536": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Explicit pointer/duplicate of case 00059334 (same Taxonomy Send-with-References issue)"
+  },
+  "00059472": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "CMA Behavior, Limits & Miscellaneous (reused)"
+  },
+  "00059327": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; no root cause identified, generic error with no follow-through"
+  },
+  "00059170": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; no reproduction info ever provided, no confirmed root cause"
+  },
+  "00058474": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Resolution Notes contain no technical detail, only a restatement of the customer's request"
+  },
+  "00059579": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Schema review/confirmation service; no product issue found"
+  },
+  "00057875": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Content Editing & UI Workflows (reused)"
+  },
+  "00030054": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Answered only with a documentation link to an existing, already-supported feature"
+  },
+  "00059276": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice TSO has no docs-site mapping despite a genuinely useful root cause (separate Partner Academy registration required)"
+  },
+  "00059594": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice Academy has no docs-site mapping entry"
+  },
+  "00059533": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "No root cause or resolution detail beyond 'resolved on call'"
+  },
+  "00059518": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice Academy has no docs-site mapping entry"
+  },
+  "00059547": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; root cause never confirmed, no response from customer"
+  },
+  "00059574": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Authentication, Tokens & Access (reused)"
+  },
+  "00059437": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "How-to/feature-usage question with guidance + doc link, no underlying bug"
+  },
+  "00059441": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; hypothesis never confirmed"
+  },
+  "00059548": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Pure informational Q&A about third-party connector availability"
+  },
+  "00059513": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Outage note with no reproducible symptom or actionable detail beyond 'we fixed it'"
+  },
+  "00059587": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Customer self-resolved without ever sharing root cause or fix detail"
+  },
+  "00059578": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice Miscellaneous has no docs-site mapping; also unresolved at time of closure"
+  },
+  "00059516": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "No Contentstack-side root cause found; self-resolved for unclear reason"
+  },
+  "00051245": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Content Editing & UI Workflows (reused)"
+  },
+  "00057081": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/marketplace/faqs.md",
+    "bucket": "Custom App Development & Extensions (reused)"
+  },
+  "00059551": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice AgentOS/Automate has no docs-site mapping entry"
+  },
+  "00059593": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice Academy has no docs-site mapping entry"
+  },
+  "00059526": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice TSO has no docs-site mapping entry"
+  },
+  "00059003": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; no technical content"
+  },
+  "00059376": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Localization via CMA (reused)"
+  },
+  "00059461": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Administrative quota-increase escalation, not a self-service troubleshooting pattern; underlying trash-count bug left unresolved"
+  },
+  "00059565": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Expected behavior, not a problem"
+  },
+  "00059617": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Pure administrative quota-increase request, not a technical problem"
+  },
+  "00059351": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Duplicate of existing administration/faqs.md entry \"Dashboard Fails to Load or Cannot Access Entry Error Despite Admin Permissions\" - same resolution action (remove and re-add the user)"
+  },
+  "00043759": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Could not reproduce; no confirmed root cause or fix"
+  },
+  "00034733": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Feature-availability/roadmap Q&A (SDK migration status), not a problem with a fix"
+  },
+  "00030496": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "New Feature Request, Request Deferred, no response, no technical detail"
+  },
+  "00058708": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; Resolution Notes contain no root cause or fix detail at all"
+  },
+  "00059562": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "No root cause or resolution detail documented beyond 'able to login'"
+  },
+  "00059466": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Informational capability/limitation clarification (no content-model version history); no bug or workaround"
+  },
+  "00059308": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Content Editing & UI Workflows (reused)"
+  },
+  "00059511": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Localization via CMA (reused)"
+  },
+  "00059180": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "CMA Behavior, Limits & Miscellaneous (reused)"
+  },
+  "00058835": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice Miscellaneous has no docs-site mapping despite a clear, well-documented Live Preview SSR/module-federation root cause and fix"
+  },
+  "00059614": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Product limitation clarification (Personalize only on main branch); no bug or workaround"
+  },
+  "00059623": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Custom Extensions, Live Preview & Analytics (reused)"
+  },
+  "00059608": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/administration/faqs.md",
+    "bucket": "Academy & Certification Access (new)"
+  },
+  "00059621": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/administration/faqs.md",
+    "bucket": "Single Sign-On (SSO) & IdP Configuration (reused)"
+  },
+  "00056490": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "CMA Behavior, Limits & Miscellaneous (reused)"
+  },
+  "00059646": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice AgentOS/Automate has no docs-site mapping entry"
+  },
+  "00059655": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice AgentOS/Automate has no docs-site mapping entry (part of a recurring Automate-credit-onboarding cluster with 00059647/00059648/00059654)"
+  },
+  "00059633": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Publishing, Releases, Environments and Operations (reused)"
+  },
+  "00059418": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "API Delivery, GraphQL & Assets (reused)"
+  },
+  "00059647": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice AgentOS/Automate has no docs-site mapping entry (part of the recurring Automate-credit-onboarding cluster)"
+  },
+  "00058830": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Authentication, Tokens & Access (reused)"
+  },
+  "00058823": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Unresolved - customer's email was never associated with the stack and no response was received after follow-up; no reusable content"
+  },
+  "00059524": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Duplicate of existing administration/faqs.md entry \"Regaining Access After Losing or Breaking Your MFA Device\" - different trigger (SMS non-delivery + no backup codes vs lost device) but identical underlying issue and resolution (no self-service bypass, contact Org Owner to disable MFA)"
+  },
+  "00059463": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Informational clarification of a third-party (Bynder) data limitation; no Contentstack-side fix"
+  },
+  "00058874": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Content Editing & UI Workflows (reused)"
+  },
+  "00059564": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Informational/inconclusive - findings pending further internal validation at time of closure"
+  },
+  "00059572": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice AgentOS/Automate has no docs-site mapping entry"
+  },
+  "00059648": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice AgentOS/Automate has no docs-site mapping entry (part of the recurring Automate-credit-onboarding cluster)"
+  },
+  "00059654": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice AgentOS/Automate has no docs-site mapping entry (part of the recurring Automate-credit-onboarding cluster)"
+  },
+  "00059672": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Authentication, Tokens & Access (reused)"
+  },
+  "00059669": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice TSO has no docs-site mapping entry"
+  },
+  "00059682": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/administration/faqs.md",
+    "bucket": "Single Sign-On (SSO) & IdP Configuration (reused)"
+  },
+  "00058488": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; unconfirmed race-condition hypothesis, could not reproduce"
+  },
+  "00059534": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/administration/faqs.md",
+    "bucket": "Basic Login, Passwords & Account Lockouts (reused)"
+  },
+  "00059309": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Feature-support question closed pending follow-up with no resolution reached"
+  },
+  "00059580": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Localization via CMA (reused)"
+  },
+  "00059275": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Publishing, Releases, Environments and Operations (reused)"
+  },
+  "00058226": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/marketplace/faqs.md",
+    "bucket": "Vendor-Specific Integrations (reused)"
+  },
+  "00058134": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/marketplace/faqs.md",
+    "bucket": "Vendor-Specific Integrations (reused)"
+  },
+  "00059701": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Administrative closure/duplicate redirect to case 00040642; no technical content of its own"
+  },
+  "00059677": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Duplicate of existing administration/faqs.md entry \"Next Button Not Visible After Scanning the MFA QR Code Until the Browser Is Zoomed Out\""
+  },
+  "00059335": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice \"Marketplace - Core & DevHub\" has no docs-site target file yet; owner is Ankita Behere (ankita-cstk / U03339X2TQE) per updated mapping. Content: Block IDs Group extension behaviors (population timing, stale block_ids after master-locale deletion) confirmed as expected platform behavior"
+  },
+  "00059656": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Duplicate of case 00059334 (identical Taxonomy Send-with-References issue and fix)"
+  },
+  "00059325": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "No root cause or resolution detail documented beyond 'able to login'"
+  },
+  "00059666": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/cli-faqs.md",
+    "bucket": "Migration, Cloning & Architecture (reused)"
+  },
+  "00058872": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "CMA Behavior, Limits & Miscellaneous (reused)"
+  },
+  "00058361": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Could not reproduce; issue stopped occurring organically with no identified root cause"
+  },
+  "00059136": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice AgentOS/Automate has no docs-site mapping entry"
+  },
+  "00059529": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice \"Marketplace - Core & DevHub\" has no docs-site target file yet; owner is Ankita Behere (ankita-cstk / U03339X2TQE) per updated mapping. Content: Category custom field always saves the full Salesforce category object by design; no built-in filtering, workaround is scoping fields at the Salesforce SCAPI level"
+  },
+  "00059641": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/administration/faqs.md",
+    "bucket": "Single Sign-On (SSO) & IdP Configuration (reused)"
+  },
+  "00059699": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "CMA Behavior, Limits & Miscellaneous (reused)"
+  },
+  "00058580": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/marketplace/faqs.md",
+    "bucket": "Vendor-Specific Integrations (reused)"
+  },
+  "00059619": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "No resolution or explanation was ever documented - notes only restate the question"
+  },
+  "00059625": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Authentication, Tokens & Access (reused)"
+  },
+  "00059733": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Insufficient detail - no explanation of the original problem or why the activation link resolved it"
+  },
+  "00059483": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice Miscellaneous has no docs-site mapping entry"
+  },
+  "00059640": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Publishing, Releases, Environments and Operations (reused)"
+  },
+  "00059738": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/administration/faqs.md",
+    "bucket": "Single Sign-On (SSO) & IdP Configuration (reused)"
+  },
+  "00059697": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "No root cause or fix detail documented beyond 'resolved'"
+  },
+  "00058861": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice Miscellaneous has no docs-site mapping entry; also a Support Portal tooling request, not product troubleshooting content"
+  },
+  "00059355": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice AgentOS/Automate has no docs-site mapping entry"
+  },
+  "00059259": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice AgentOS/Automate has no docs-site mapping entry; also inconclusive (handled in a separate thread)"
+  },
+  "00059673": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Webhooks & External Integrations (reused)"
+  },
+  "00059708": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Duplicate of case 00059563 within this run - same underlying issue and resolution (invited user must use the org dedicated SSO login page instead of standard login)"
+  },
+  "00059502": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/administration/faqs.md",
+    "bucket": "Single Sign-On (SSO) & IdP Configuration (reused)"
+  },
+  "00059630": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice 'CMS - Webhooks' does not exactly match any 'mapped' entry, despite genuinely useful latency-troubleshooting recommendations"
+  },
+  "00059690": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Assets & Metadata Management (reused)"
+  },
+  "00059450": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/sdk-faqs.md",
+    "bucket": "Querying, References & Content Retrieval (reused)"
+  },
+  "00059714": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Root cause was the customer's own network, not a Contentstack platform issue; no reusable technical fix"
+  },
+  "00059762": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Webhooks & External Integrations (reused)"
+  },
+  "00059271": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Custom Extensions, Live Preview & Analytics (reused)"
+  },
+  "00059311": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/cli-faqs.md",
+    "bucket": "Export/Import Commands & Data Formats (reused)"
+  },
+  "00059347": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/sdk-faqs.md",
+    "bucket": "Authentication, Regions & Networking (reused)"
+  },
+  "00059537": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice AgentOS/Automate has no docs-site mapping entry"
+  },
+  "00059484": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Custom Extensions, Live Preview & Analytics (reused)"
+  },
+  "00059665": {
+    "on": "2026-08-12",
+    "outcome": "FLAG",
+    "reason": "Microservice AgentOS/Automate has no docs-site mapping entry; also purely administrative Q&A"
+  },
+  "00059695": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Pre-migration advisory guidance, not a problem with a fix - no issue actually occurred"
+  },
+  "00059745": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/launch/faqs.md",
+    "bucket": "Performance, Network & Security Errors (reused)"
+  },
+  "00059684": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Custom Extensions, Live Preview & Analytics (reused)"
+  },
+  "00058572": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Root cause attributed mid-investigation but no confirmed shipped fix or resolution documented"
+  },
+  "00059700": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; only generic SSO troubleshooting steps given, no confirmed root cause"
+  },
+  "00059514": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Publishing, Releases, Environments and Operations (reused)"
+  },
+  "00059806": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Authentication, Tokens & Access (reused)"
+  },
+  "00059409": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Feature request closed with no response; no technical detail"
+  },
+  "00059809": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Root cause was the customer's own Citrix/VPN connectivity, not a Contentstack platform issue"
+  },
+  "00059795": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Case opened by mistake for a different vendor; no real Contentstack content"
+  },
+  "00057923": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Duplicate of case 00057875 (same Jira EXP-717 timezone bug)"
+  },
+  "00059710": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/marketplace/faqs.md",
+    "bucket": "Custom App Development & Extensions (reused)"
+  },
+  "00059717": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "No root cause or fix identified; ambiguous self-resolution"
+  },
+  "00059787": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/marketplace/faqs.md",
+    "bucket": "Vendor-Specific Integrations (reused)"
+  },
+  "00059667": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "No detail documented on the issue or its resolution"
+  },
+  "00059334": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Publishing, Releases, Environments and Operations (reused)"
+  },
+  "00059487": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "No confirmed root cause - only speculative troubleshooting suggestions (account lock, IdP provisioning), never confirmed"
+  },
+  "00059491": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Purely advisory/consultative guidance; no product issue, bug, or unexpected behavior identified"
+  },
+  "00059193": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Follow-up acknowledgment of a prior RCA; no new technical content of its own"
+  },
+  "00059563": {
+    "on": "2026-08-12",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/administration/faqs.md",
+    "bucket": "Single Sign-On (SSO) & IdP Configuration (reused)"
+  },
+  "00059559": {
+    "on": "2026-08-12",
+    "outcome": "SKIP",
+    "reason": "Resolution Notes contain unfilled template placeholders for investigation/fix steps; no actual root cause or resolution documented despite the 500 error code"
   }
 }

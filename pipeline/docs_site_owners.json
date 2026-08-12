@@ -1,0 +1,38 @@
+{
+  "personalize": {
+    "name": "Azariah Onyx",
+    "github": "azariahonyx-cstk",
+    "slack": "U08J59FH1RU"
+  },
+  "headless-cms": {
+    "name": "Janice Rodrigues",
+    "github": "janice-cstk",
+    "slack": "U01DT8DNEKC"
+  },
+  "sdk-cli": {
+    "name": "Aravindh Somasundaram",
+    "github": "aravindh-cstk",
+    "slack": "U08B0HMCXUP"
+  },
+  "agent-os": {
+    "name": "Ankita Behere",
+    "github": "ankita-cstk",
+    "slack": "U03339X2TQE"
+  },
+  "marketplace-core-devhub": {
+    "name": "Ankita Behere",
+    "github": "ankita-cstk",
+    "slack": "U03339X2TQE"
+  },
+  "administration": {
+    "name": "Romy Verico Dias",
+    "github": "romy-cstk",
+    "slack": "U072YTMAQUU"
+  },
+  "launch": null,
+  "marketplace": {
+    "name": "Anaum Hasan",
+    "github": "AnaumHasan",
+    "slack": "U0444CECE5N"
+  }
+}
