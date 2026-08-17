@@ -556,5 +556,109 @@
     "on": "2026-08-05",
     "outcome": "SKIP",
     "reason": "Auto-Closed - No Response; no root cause identified, only a request for a discovery call that went unanswered."
+  },
+  "00061038": {
+    "on": "2026-08-17",
+    "outcome": "FLAG",
+    "reason": "Content would likely publish (webhook fixed via temporary custom header, customer confirmed working) but Microservice 'CMS - Webhooks' has no entry in pipeline/microservice_to_docsite.json's mapped or unmapped lists — flagged per unmapped-microservice rule, no target file to draft into."
+  },
+  "00061073": {
+    "on": "2026-08-17",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; customer never provided requested diagnostic details (project UID, automation UIDs, stack API key, content type UID, screenshots) — no root cause or fix confirmed before closure."
+  },
+  "00060940": {
+    "on": "2026-08-17",
+    "outcome": "SKIP",
+    "reason": "Root cause identified (custom title field conflicts with built-in title system field) but customer never confirmed whether the recommended rename resolved the issue; case Auto-Closed due to inactivity with no confirmed fix."
+  },
+  "00037970": {
+    "on": "2026-08-17",
+    "outcome": "SKIP",
+    "reason": "New Feature Request (JSON RTE serializer attribute stripping / performance work) with Resolution Reason 'New Feature/Enhancement Released' — feature/performance work shipped, no discrete troubleshooting step a reader could take."
+  },
+  "00060565": {
+    "on": "2026-08-17",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; resolution notes contain only closure boilerplate with zero technical detail or root cause."
+  },
+  "00060928": {
+    "on": "2026-08-17",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "API Delivery, GraphQL & Assets (reused)"
+  },
+  "00061126": {
+    "on": "2026-08-17",
+    "outcome": "SKIP",
+    "reason": "Informational Q&A about Launch GitHub connection ownership/admin-transfer limitations — no error, bug, or active technical problem, just a preventive clarification of intended product behavior."
+  },
+  "00060632": {
+    "on": "2026-08-17",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Publishing, Releases, Environments and Operations (reused)"
+  },
+  "00060427": {
+    "on": "2026-08-17",
+    "outcome": "SKIP",
+    "reason": "Subject references an image-cropping issue but Resolution Notes describe an unrelated 'No branch found' error still marked In Progress/Awaiting Customer Response for diagnostic logs — no confirmed root cause or resolution at time of closure."
+  },
+  "00061050": {
+    "on": "2026-08-17",
+    "outcome": "SKIP",
+    "reason": "Resolution notes contain no root cause or fix, only an offer for a live technical call to troubleshoot SSO configuration — nothing reader-actionable."
+  },
+  "00060813": {
+    "on": "2026-08-17",
+    "outcome": "SKIP",
+    "reason": "Resolution is entirely Contentstack-side infrastructure investigation (transient ALB/ingress connection stall) explicitly confirming no customer-side changes are required — no discrete action a reader could take."
+  },
+  "00061107": {
+    "on": "2026-08-17",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Custom Extensions, Live Preview & Analytics (reused)"
+  },
+  "00060884": {
+    "on": "2026-08-17",
+    "outcome": "FLAG",
+    "reason": "Root cause documented (network-side ETIMEDOUT between Vercel build environment and Contentstack, confirmed not a Contentstack-side issue) with a recommended interim workaround (retry-with-backoff/increased timeout), but Auto-Closed - No Response with no customer confirmation the workaround was applied or resolved the issue — uncertain publishability, a human should weigh in."
+  },
+  "00058904": {
+    "on": "2026-08-17",
+    "outcome": "SKIP",
+    "reason": "New Feature Request (Brightcove selector Video ID search) with Resolution Reason 'New Feature/Enhancement Released' — feature shipped, no reader-actionable troubleshooting step."
+  },
+  "00052560": {
+    "on": "2026-08-17",
+    "outcome": "SKIP",
+    "reason": "New Feature Request (entry versioning behavior) closed due to no customer response; Resolution Reason 'Request Accepted/On Roadmap' — no workaround exists today."
+  },
+  "00061115": {
+    "on": "2026-08-17",
+    "outcome": "SKIP",
+    "reason": "Administrative duplicate closure — resolution notes state 'Duplicate case from 00060363'; no technical content of its own."
+  },
+  "00061108": {
+    "on": "2026-08-17",
+    "outcome": "SKIP",
+    "reason": "Administrative duplicate closure — resolution notes state 'Duplicate for #00060363', pointing to the same underlying case as 00061115 processed in this run; no technical content of its own."
+  },
+  "00061110": {
+    "on": "2026-08-17",
+    "outcome": "SKIP",
+    "reason": "Issue self-resolved and could not be reproduced at time of closure ('currently responding normally, no errors observed') — no root cause identified, fails the could-not-be-reproduced skip criterion."
+  },
+  "00060914": {
+    "on": "2026-08-17",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/administration/faqs.md",
+    "bucket": "Single Sign-On (SSO) & IdP Configuration (reused)"
+  },
+  "00061036": {
+    "on": "2026-08-17",
+    "outcome": "SKIP",
+    "reason": "No technical root cause identified for the initial invitation/setup failure — resolution was simply the Org Admin resending the invitation, which then worked; no discrete troubleshooting step tied to a specific technical cause."
   }
 }
