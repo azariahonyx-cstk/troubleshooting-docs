@@ -3138,6 +3138,25 @@ After coordinating publishing and redeploying the Release, confirm the target en
 
 <!-- end:00060730 -->
 
+<!-- case:00060632 status:draft synced:false bucket:"Publishing, Releases, Environments and Operations" -->
+### Publish Preview Validation Excludes Referenced Assets From Queue
+
+Publishing an entry with selected references through the Publish Preview Validation feature may leave the associated assets out of the publish queue entirely.
+
+**Root Cause**
+
+Publish Preview Validation is an internal feature still under active development and is disabled by default. Without it enabled for an organization, referenced assets are not routed into the publish queue alongside the entry and its other selected references when publishing with selected references.
+
+**Resolution**
+
+1.  Confirm you're hitting this issue: publish an entry with selected references and check whether associated assets appear in the publish queue alongside the entry.
+
+2.  Contact Contentstack Support with your stack API key and the affected entry UID to request enabling Publish Preview Validation for your organization as an exception, noting that the feature is not yet generally available for production use.
+
+After the feature is enabled for your organization, retry publishing the entry with selected references. If the associated assets now appear in the publish queue, the issue is resolved. Escalate with the stack API key and entry UID if assets are still skipped.
+
+<!-- end:00060632 -->
+
 ## API Delivery, GraphQL & Assets
 
 ### Referenced Entries Not Included in CDA Response
@@ -5513,6 +5532,27 @@ Descending sort is case-sensitive and orders values by character code rather tha
 After applying a consistent casing convention or sorting case-insensitively at the application level, confirm the entries display in the expected alphabetical order. If the ordering matches expectations, the issue is resolved. Escalate with the field UID and a sample of the affected values if the ordering still appears incorrect.
 
 <!-- end:00060720 -->
+
+<!-- case:00060928 status:draft synced:false bucket:"API Delivery, GraphQL & Assets" -->
+### GraphQL Queries Also Subject to 100-Reference Delivery Limit
+
+Fetching entries with deeply nested references through GraphQL may fail with a 422 error citing the reference resolution limit, even though this limit is often assumed to apply only to REST-based Content Delivery API queries.
+
+**Root Cause**
+
+GraphQL uses the same underlying content delivery engine as the REST Content Delivery API and is bound by the same constraints: a maximum of 100 total resolved reference paths per request, plus an additional 10-level nesting depth limit. Queries that request broad or deeply nested reference structures exceed these thresholds and return error 141 (HTTP 422).
+
+**Resolution**
+
+1.  Limit the reference paths requested in the GraphQL query to only those required for the page.
+
+2.  Split large or deeply nested queries into multiple parallel requests and merge the results in the application layer.
+
+3.  Verify the total resolved reference count and nesting depth stay under the 100-reference / 10-level limits.
+
+After restructuring the query to stay within the reference and depth limits, re-run the request and confirm it returns a 200 response instead of a 422 error. Escalate with the stack API key and the specific GraphQL query if the error persists.
+
+<!-- end:00060928 -->
 
 ## Webhooks & External Integrations
 
@@ -7891,6 +7931,25 @@ The onEntryChange callback was gated behind a livePreviewReady condition and wra
 After redeploying with these changes, open the entry in edit mode and confirm both the initial page load and subsequent edits reflect in Live Preview. If updates render immediately without requiring a manual refresh, the issue is resolved. Escalate with your SDK version and SSR framework details if it persists.
 
 <!-- end:00058802 -->
+
+<!-- case:00061107 status:draft synced:false bucket:"Custom Extensions, Live Preview & Analytics" -->
+### Live Preview URLs Generate Incorrectly After Recent Platform Change
+
+Accessing Live Preview may generate malformed preview URLs, causing the preview iframe to fail to render or update draft content.
+
+**Root Cause**
+
+A recent platform-side change altered Live Preview URL generation logic, producing malformed URLs on affected configurations. Contentstack engineering identified the change and reverted it in the affected region.
+
+**Resolution**
+
+1.  Perform a hard reload of the page, or open a fresh Incognito/private window, to clear cached frontend assets.
+
+2.  Reload the Live Preview panel and confirm the preview URL renders the expected draft content.
+
+After clearing cached assets and reloading Live Preview, confirm the iframe renders and updates draft content correctly. Escalate with your stack API key and the affected entry UID via Support if malformed URLs persist.
+
+<!-- end:00061107 -->
 
 ## Authentication, Tokens & Access
 
