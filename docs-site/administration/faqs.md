@@ -425,6 +425,27 @@ After adding the roles attribute and confirming the IdP Role Identifier mapping,
 
 <!-- end:00060768 -->
 
+<!-- case:00060914 status:draft synced:false bucket:"Single Sign-On (SSO) & IdP Configuration" -->
+### New Okta SSO Users Stuck in Pending State After Login
+
+Authenticating via Okta SSO for the first time may leave newly invited users stuck in a Pending state, requiring a second login attempt to gain full access.
+
+**Root Cause**
+
+SSO role mapping does not always complete on the first authentication attempt for newly provisioned Okta users, leaving the account in a Pending state until a subsequent login re-triggers the mapping.
+
+**Resolution**
+
+1.  Confirm the affected user account shows a Pending status after the first SSO login attempt.
+
+2.  Have the user log in a second time to complete the SSO role mapping and gain full access.
+
+3.  Contact Contentstack Support with the organization ID and the affected user's SSO identifier if the Pending state persists after a second login.
+
+After the second login attempt, confirm the user's account status changes from Pending to active. Escalate with the organization ID and the user's SSO identifier if the account remains Pending.
+
+<!-- end:00060914 -->
+
 ## Multi-Factor Authentication (2FA) & Security
 
 ### Two-Factor Authentication Login Failure Due to Expired Training Instance
