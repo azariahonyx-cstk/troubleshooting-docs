@@ -556,5 +556,110 @@
     "on": "2026-08-05",
     "outcome": "SKIP",
     "reason": "Auto-Closed - No Response; no root cause identified, only a request for a discovery call that went unanswered."
+  },
+  "00061283": {
+    "on": "2026-08-24",
+    "outcome": "SKIP",
+    "reason": "Feature gap, not a malfunction — per-entry taxonomy term reordering isn't supported; a workaround (model as reference fields) was offered but this is how-to/design guidance, not a technical problem to troubleshoot."
+  },
+  "00061178": {
+    "on": "2026-08-24",
+    "outcome": "SKIP",
+    "reason": "Account-administration issue (login email not associated with any organization); resolved by having the org admin resend an invitation — no technical root cause or reader-actionable troubleshooting step."
+  },
+  "00061246": {
+    "on": "2026-08-24",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Content Editing & UI Workflows (reused)"
+  },
+  "00061266": {
+    "on": "2026-08-24",
+    "outcome": "SKIP",
+    "reason": "Investigation stalled — multiple follow-ups sent requesting diagnostic details (submission method, other affected tabs) but no further response from customer; no root cause or fix confirmed."
+  },
+  "00061371": {
+    "on": "2026-08-24",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/personalize/faqs.md",
+    "bucket": "Webhooks & External Integrations (new)"
+  },
+  "00061092": {
+    "on": "2026-08-24",
+    "outcome": "SKIP",
+    "reason": "Simple informational Q&A about whether the Lytics _split field is stable over a profile's lifetime — one-line clarification, no underlying technical problem."
+  },
+  "00061327": {
+    "on": "2026-08-24",
+    "outcome": "SKIP",
+    "reason": "How-to/RBAC configuration question — custom roles don't currently expose a granular Variants permission option; resolved by elevating the user to a more privileged built-in role, not a bug or error to troubleshoot."
+  },
+  "00061420": {
+    "on": "2026-08-24",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Content Editing & UI Workflows (reused)"
+  },
+  "00061263": {
+    "on": "2026-08-24",
+    "outcome": "SKIP",
+    "reason": "Vague engineering-side fix with no described root cause ('investigated with Engineering... asked to retry after the fix'); no discrete reader-actionable step. Also Microservice 'Miscellaneous' is a known unmapped catch-all with no docs-site category."
+  },
+  "00061319": {
+    "on": "2026-08-24",
+    "outcome": "SKIP",
+    "reason": "Informational clarification — confirmed no IP whitelisting is required on Contentstack's side for the customer's IP migration; no technical problem or troubleshooting steps."
+  },
+  "00061260": {
+    "on": "2026-08-24",
+    "outcome": "SKIP",
+    "reason": "No root cause documented for the underlying 500 error beyond 'stack was successfully imported by engineering'; follow-up request to connect GitHub for deployment went unanswered, no reader-actionable step."
+  },
+  "00059781": {
+    "on": "2026-08-24",
+    "outcome": "SKIP",
+    "reason": "Engineering deployed a fix to production for an export failure, but no root cause detail is documented and Auto-Closed - No Response with no customer confirmation — no discrete action a reader could take."
+  },
+  "00061229": {
+    "on": "2026-08-24",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/launch/faqs.md",
+    "bucket": "Project & Account Management (reused)"
+  },
+  "00025169": {
+    "on": "2026-08-24",
+    "outcome": "SKIP",
+    "reason": "Stale New Feature Request case (created 2023) closed on no response after multiple follow-ups; zero technical detail beyond the subject line, and Microservice is blank."
+  },
+  "00061264": {
+    "on": "2026-08-24",
+    "outcome": "SKIP",
+    "reason": "Documented platform limitation (Preview Sharing and Timeline cannot currently be used together) with no workaround — support for this combination is only 'planned for a future release'; closed on no response."
+  },
+  "00061304": {
+    "on": "2026-08-24",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Custom Extensions, Live Preview & Analytics (reused)"
+  },
+  "00061328": {
+    "on": "2026-08-24",
+    "outcome": "SKIP",
+    "reason": "Administrative limit adjustment — branch limit was manually restored from 3 to 10 by Contentstack; no root cause given for the reduction and no self-service action for the reader."
+  },
+  "00061153": {
+    "on": "2026-08-24",
+    "outcome": "SKIP",
+    "reason": "Auto-Closed - No Response; asset-abuse/referrer-restriction question left unresolved because the customer never responded with the site architecture details requested — no fix or guidance confirmed."
+  },
+  "00059400": {
+    "on": "2026-08-24",
+    "outcome": "SKIP",
+    "reason": "New Feature Request (expose _metadata.uid for Global Fields in Modular Blocks via GraphQL); Resolution Reason 'New Feature/Enhancement Released' — feature shipped, not a troubleshooting fix for a technical problem."
+  },
+  "00039526": {
+    "on": "2026-08-24",
+    "outcome": "SKIP",
+    "reason": "New Feature Request (make GraphQL system.uid non-nullable); Resolution Reason 'New Feature/Enhancement Released' — schema change shipped, closed on no response, not a troubleshooting fix."
   }
 }
