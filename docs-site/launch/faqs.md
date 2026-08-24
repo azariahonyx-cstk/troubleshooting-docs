@@ -1019,6 +1019,27 @@ Access to Launch projects requires organization-level Admin permissions. Users w
 
 The issue is resolved when the user can access Launch projects without encountering the “Access Limited” error.
 
+<!-- case:00061229 status:draft synced:false bucket:"Project & Account Management" -->
+### Developer Hub App URL Not Syncing With Launch Environment
+
+Changing a Launch project's environment URL may leave the linked Developer Hub App URL displaying the old address, even after reconnecting the Launch project and reconfiguring hosting settings.
+
+**Root Cause**
+
+Root cause was not identified in the source case data. The resolution below reflects the steps that resolved the reported symptom, which pointed to a sync issue between Developer Hub and Launch hosting settings rather than a DNS or App configuration error.
+
+**Resolution**
+
+1.  Switch the Developer Hub App's hosting mode from Hosting with Launch to Custom Hosting, and manually enter the new App URL.
+
+2.  Switch the hosting mode back from Custom Hosting to Hosting with Launch.
+
+3.  Verify the Developer Hub App URL now reflects the updated Launch environment URL.
+
+After toggling the hosting mode from Custom Hosting back to Hosting with Launch, confirm the Developer Hub App URL matches the current Launch environment URL. If it now displays correctly, the issue is resolved. Escalate with the Developer Hub App UID and Launch project UID if the URL still does not sync.
+
+<!-- end:00061229 -->
+
 ## Advanced Builds & Deployments
 
 ### Resolving Cloud Functions Deployment Errors
