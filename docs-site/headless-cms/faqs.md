@@ -2023,6 +2023,50 @@ After inserting the RTL mark, reload the entry and confirm the field renders rig
 
 <!-- end:00060538 -->
 
+<!-- case:00061246 status:draft synced:false bucket:"Content Editing & UI Workflows" -->
+### Unique Title Toggle Missing for API-Created Content Types
+
+Enforcing unique titles per locale may be unavailable when a content type was created through the Content Management API, since the Unique toggle does not appear in the Content Type Builder UI for API-created types.
+
+**Root Cause**
+
+Content types created through the CMA do not surface the Unique toggle for the Title field in the UI by design, since applying uniqueness that way is treated as a more deliberate action. The constraint can still be set directly via the API even though the UI control is hidden, but it only applies going forward and is not retroactively enforced against existing entries.
+
+**Resolution**
+
+1.  Confirm whether the affected content type was created via the Content Management API rather than the UI, since this determines whether the Unique toggle is hidden.
+
+2.  Set `unique: true` on the Title field directly via the Content Type CMA endpoint.
+
+3.  Manually rename or remove any pre-existing duplicate-titled entries, since the constraint does not retroactively flag them.
+
+4.  Save and release the content type update.
+
+After setting `unique: true` via the API and resolving any duplicate-titled entries, attempt to save a new entry with a duplicate title. If the save is blocked, the issue is resolved. Escalate with the content type UID if the constraint does not take effect.
+
+<!-- end:00061246 -->
+
+<!-- case:00061420 status:draft synced:false bucket:"Content Editing & UI Workflows" -->
+### Entry Forms Fail to Load Due to a Stale Field Visibility Rule
+
+Loading entry forms on a specific branch may fail entirely for all users, even while the same content type continues to load normally on other branches.
+
+**Root Cause**
+
+A field visibility rule on the content type referenced a global field that had since been deleted from the schema. Attempting to save the content type surfaced the error, even though no error displayed directly on the field carrying the rule.
+
+**Resolution**
+
+1.  Open the affected content type and review any field visibility rules for references to fields that no longer exist in the schema.
+
+2.  Remove the visibility rule referencing the deleted field.
+
+3.  Save the content type to apply the change.
+
+After removing the stale visibility rule and resaving the content type, reload an entry form on the affected branch. If entries load normally again, the issue is resolved. Escalate with the content type UID and branch name if forms still fail to load.
+
+<!-- end:00061420 -->
+
 ## Publishing, Releases, Environments and Operations
 
 ### Referenced Entry Not Publishing with Parent Entry
@@ -7891,6 +7935,27 @@ The onEntryChange callback was gated behind a livePreviewReady condition and wra
 After redeploying with these changes, open the entry in edit mode and confirm both the initial page load and subsequent edits reflect in Live Preview. If updates render immediately without requiring a manual refresh, the issue is resolved. Escalate with your SDK version and SSR framework details if it persists.
 
 <!-- end:00058802 -->
+
+<!-- case:00061304 status:draft synced:false bucket:"Custom Extensions, Live Preview & Analytics" -->
+### Visual Experiences Show Incorrect Content From Wrong Environment
+
+Visual Experiences and Live Preview may render incorrect or unexpected content when the environment configured for the experience does not match the intended target environment.
+
+**Root Cause**
+
+The Visual Experience was configured to use the Local environment instead of the intended Stage environment, causing the preview to display incorrectly for both the Visual Experience and Live Preview.
+
+**Resolution**
+
+1.  Open the affected Visual Experience configuration and check which environment it is set to use.
+
+2.  Update the environment setting from Local to the intended environment (for example, Stage).
+
+3.  Reload Live Preview and the Visual Experience to confirm the change takes effect.
+
+After updating the environment configuration, reload Live Preview and the Visual Experience. If both now render the expected content, the issue is resolved. Escalate with the Visual Experience UID and environment name if the preview still displays incorrectly.
+
+<!-- end:00061304 -->
 
 ## Authentication, Tokens & Access
 
