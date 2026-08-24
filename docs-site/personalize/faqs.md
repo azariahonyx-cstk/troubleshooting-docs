@@ -999,3 +999,26 @@ Contentstack Personalize uses geolocation data internally for audience evaluatio
 3\. Pass the resolved country code from your chosen geolocation source to the external API call as required by your implementation.
 
 Using a CDN or infrastructure-level geolocation header is the most performant approach for Next.js applications, as the country code is resolved at the network edge without an additional API call.
+
+## Webhooks & External Integrations
+
+<!-- case:00061371 status:draft synced:false bucket:"Webhooks & External Integrations" -->
+### Configuring Webhooks to Trigger on Variant Publish Events
+
+Publishing updates to a variant entry may not trigger downstream webhook-driven processes, even when publishing the equivalent base entry does trigger them.
+
+**Root Cause**
+
+Variant publish and unpublish events use separate webhook channels from the base entry's publish and unpublish channels. A webhook configured only for base entry events does not fire for variant-only updates.
+
+**Resolution**
+
+1.  Open the webhook configuration and review which publish/unpublish channels are currently selected.
+
+2.  Add the variant-specific publish/unpublish channels alongside the existing base entry channels, scoped at the content type or entry level so all variants within that scope are covered.
+
+3.  Save the webhook configuration.
+
+After adding the variant publish/unpublish channels to the webhook, publish an update to a variant entry. If the webhook now fires as expected, the issue is resolved. Escalate with the webhook UID and content type UID if variant-only updates still don't trigger it.
+
+<!-- end:00061371 -->
