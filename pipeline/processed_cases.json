@@ -556,5 +556,110 @@
     "on": "2026-08-05",
     "outcome": "SKIP",
     "reason": "Auto-Closed - No Response; no root cause identified, only a request for a discovery call that went unanswered."
+  },
+  "00061593": {
+    "on": "2026-08-31",
+    "outcome": "SKIP",
+    "reason": "Resolution notes state only 'Devops team fixed the issue' for a generic 5xx error on Live Preview sharing, with no discrete root cause or technical detail — no reader-actionable step, per the engineering-fixed-with-no-detail skip pattern (cf. case 00057858)."
+  },
+  "00061445": {
+    "on": "2026-08-31",
+    "outcome": "SKIP",
+    "reason": "Simple how-to Q&A about whether a permanent asset URL reflects an update without publishing — answered in one paragraph with no underlying technical problem."
+  },
+  "00061546": {
+    "on": "2026-08-31",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Webhooks & External Integrations (reused)"
+  },
+  "00061633": {
+    "on": "2026-08-31",
+    "outcome": "SKIP",
+    "reason": "Not a technical problem — customer lacked organization-level access to view Automate workflows; resolved by clarifying access requirements, no fix applied. Microservice 'AgentOS/Automate' is also unmapped."
+  },
+  "00061478": {
+    "on": "2026-08-31",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/launch/faqs.md",
+    "bucket": "Builds & Deployments (reused)"
+  },
+  "00060493": {
+    "on": "2026-08-31",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/administration/faqs.md",
+    "bucket": "OAuth & API Token Refresh Issues (new)"
+  },
+  "00027397": {
+    "on": "2026-08-31",
+    "outcome": "SKIP",
+    "reason": "New Feature Request (custom asset metadata); Resolution Reason 'New Feature/Enhancement Released' requires a paid AM2.0 package upgrade — no workaround for customers without it."
+  },
+  "00061521": {
+    "on": "2026-08-31",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Authentication, Tokens & Access (reused)"
+  },
+  "00061607": {
+    "on": "2026-08-31",
+    "outcome": "PUBLISH",
+    "target_file": "docs-site/headless-cms/faqs.md",
+    "bucket": "Webhooks & External Integrations (reused)"
+  },
+  "00061610": {
+    "on": "2026-08-31",
+    "outcome": "SKIP",
+    "reason": "Duplicate of case 00061607 processed in this same run — identical AWS EU regional webhook delivery disruption, same root cause and resolution, different customer."
+  },
+  "00061417": {
+    "on": "2026-08-31",
+    "outcome": "SKIP",
+    "reason": "Confirmed as expected REST Delivery API behavior (a nested asset reference inside a referenced entry requires an additional resolution call), not a bug or workaround — informational clarification with no discrete fix step."
+  },
+  "00061003": {
+    "on": "2026-08-31",
+    "outcome": "FLAG",
+    "reason": "Strong publishable content (confirmed platform bug — 'invalid rule' error when deleting an Automation — fixed and confirmed in Production) but Microservice 'AgentOS/Automate' has no docs-site category mapping in pipeline/microservice_to_docsite.json."
+  },
+  "00060966": {
+    "on": "2026-08-31",
+    "outcome": "FLAG",
+    "reason": "Strong publishable content (confirmed root cause: Get Stack API Key lookup used request-context auth instead of Management Token auth in the Automation stack dropdown; fixed and confirmed) but Microservice 'AgentOS/Automate' has no docs-site category mapping."
+  },
+  "00061317": {
+    "on": "2026-08-31",
+    "outcome": "SKIP",
+    "reason": "Administrative request to complete a vendor AI due-diligence questionnaire (DDQ) — not a technical problem or resolution."
+  },
+  "00061423": {
+    "on": "2026-08-31",
+    "outcome": "SKIP",
+    "reason": "No confirmed resolution — case closed while the customer was still awaiting a response from their own internal team on whether the suggested IdP Role Mapping check resolved the repeated access loss."
+  },
+  "00061568": {
+    "on": "2026-08-31",
+    "outcome": "SKIP",
+    "reason": "Pure internal log-retrieval request (Cloudflare logs for a time window) — no technical problem or troubleshooting content."
+  },
+  "00061280": {
+    "on": "2026-08-31",
+    "outcome": "SKIP",
+    "reason": "Request for historical context on an old, unrelated enhancement ticket — administrative, no technical problem or fix."
+  },
+  "00061597": {
+    "on": "2026-08-31",
+    "outcome": "SKIP",
+    "reason": "Duplicate of existing entry 'Login Failure Due to Missing or Incorrect SSO Details' in docs-site/administration/faqs.md (Single Sign-On bucket) — same symptom (incorrect SSO Name used instead of email) and same resolution (use the correct SSO Name)."
+  },
+  "00061511": {
+    "on": "2026-08-31",
+    "outcome": "SKIP",
+    "reason": "Informational request for static outbound IP addresses to allowlist — no confirmed customer response and no underlying technical problem, just a how-to/reference answer."
+  },
+  "00061548": {
+    "on": "2026-08-31",
+    "outcome": "SKIP",
+    "reason": "How-to/permission-configuration question about granting Polaris access without the Admin role — answered via existing team/role configuration, no underlying technical problem or bug."
   }
 }
