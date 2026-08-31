@@ -6732,6 +6732,50 @@ After Contentstack Support recreates the affected indexes, publish an entry and 
 
 <!-- end:00060794 -->
 
+<!-- case:00061546 status:draft synced:false bucket:"Webhooks & External Integrations" -->
+### Brandfolder Integration Stops Returning Assets in Contentstack
+
+Brandfolder integration may stop displaying assets in Contentstack when the underlying connection loses authentication or connectivity with Brandfolder.
+
+**Root Cause**
+
+An authentication or connectivity failure on the linked Brandfolder connection prevents the integration from retrieving and displaying assets.
+
+**Resolution**
+
+1.  Generate a new API key in Brandfolder.
+
+2.  Create a new Brandfolder connection in Contentstack using the new API key.
+
+3.  Set the new connection as the default connection for the integration.
+
+After setting the new connection as default, refresh the asset picker and confirm Brandfolder assets load correctly. If assets appear as expected, the issue is resolved. Escalate to Contentstack Support with the stack API key and the Brandfolder connection name if assets still fail to load.
+
+<!-- end:00061546 -->
+
+<!-- case:00061607 status:draft synced:false bucket:"Webhooks & External Integrations" -->
+### Publish Completes but Webhooks Don't Fire in AWS EU
+
+Publishing an entry may complete successfully and show as done in the Publish Queue while the corresponding publish webhook is never triggered, disrupting downstream site updates.
+
+**Root Cause**
+
+A regional webhook delivery disruption affecting the AWS EU region can prevent publish webhooks from firing even though the underlying entry publish completes successfully and the webhook configuration remains healthy.
+
+**Resolution**
+
+1.  Confirm the entry shows as successfully published in the Publish Queue.
+
+2.  Verify the webhook configuration is active and has not been disabled.
+
+3.  Note whether the affected stack is hosted in the AWS EU region and the approximate time window of the missed webhook deliveries.
+
+4.  Contact Contentstack Support with the stack API key, the affected webhook URL, and the time window if webhooks remain missing.
+
+After Contentstack Support confirms webhook delivery has resumed, republish an entry and confirm the webhook fires as expected. If it fires, the issue is resolved. Escalate with the stack API key and webhook execution logs if it persists.
+
+<!-- end:00061607 -->
+
 ## Custom Extensions, Live Preview & Analytics
 
 ### Resolving null User-Agent values in usage reporting
@@ -8727,6 +8771,27 @@ The request payload for roles created programmatically was missing the sub_acl k
 After retrying, open the affected role in the Contentstack UI and confirm the Content Type Management permissions display correctly. If the role details load as expected, the issue is resolved. Escalate with the role UID and stack API key if it persists.
 
 <!-- end:00050794 -->
+
+<!-- case:00061521 status:draft synced:false bucket:"Authentication, Tokens & Access" -->
+### Org Invite API UID Mismatch Breaks IdP Role Mapping
+
+Retrieving a user identifier through the Get All Org Invite API may return a UID that does not match the identifier shown in the Organization Admin panel, breaking IdP Role Mapping configuration.
+
+**Root Cause**
+
+The `GET /v3/stacks/users` endpoint returns a stack-level user identifier, while IdP Role Mapping requires the organization-level user identifier, so identifiers retrieved from the stack-scoped endpoint do not match the Organization Admin panel's values.
+
+**Resolution**
+
+1.  Identify the organization-level API endpoint for retrieving user identifiers instead of the stack-level `GET /v3/stacks/users` endpoint.
+
+2.  Query the organization-level endpoint to obtain the correct `user_uid` for each user.
+
+3.  Update the IdP Role Mapping configuration to use the organization-level `user_uid` values.
+
+After updating the role mapping with the organization-level `user_uid`, re-run the IdP Role Mapping sync and confirm the returned UID matches the Organization Admin panel. If the UIDs match, the issue is resolved. Escalate to Contentstack Support with the organization UID if the mismatch persists.
+
+<!-- end:00061521 -->
 
 ## CMA Rate Limiting & 429 Errors
 
