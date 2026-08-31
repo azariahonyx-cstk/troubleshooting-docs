@@ -408,6 +408,31 @@ These failures were caused by the container app limit being reached on the produ
 
 The issue is resolved when Cloud Functions deployments complete successfully across all affected environments and server logs are accessible, confirming the container app limit has been addressed.
 
+<!-- case:00061478 status:draft synced:false bucket:"Builds & Deployments" -->
+### Launch Deployment Fails With Error 109 Stack Not Found
+
+Deploying a Launch project connected to a starter kit such as Veda may fail with a "We can't find that Stack" (error 109) message when the configured API key does not match the intended stack.
+
+**Root Cause**
+
+Error 109 occurs when the Contentstack API key configured in the Launch project's environment variables belongs to a different stack than the one intended for deployment, such as when partner and test instances use different stack API keys.
+
+**Resolution**
+
+1.  Open the Launch project's environment variable settings.
+
+2.  Locate the Contentstack API key variable.
+
+3.  Verify the API key corresponds to the correct stack for the target environment (partner vs. test instance).
+
+4.  Update the API key value if it points to the wrong stack.
+
+5.  Redeploy the project.
+
+After redeploying with the corrected API key, confirm the build completes without the error 109 "We can't find that Stack" message. If the deployment succeeds, the issue is resolved. Escalate with the project ID and stack API key if error 109 persists.
+
+<!-- end:00061478 -->
+
 ## Domains, DNS & SSL
 
 ### Validating Domain Ownership via CNAME Records
