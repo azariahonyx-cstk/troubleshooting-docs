@@ -865,3 +865,26 @@ The behavior is consistent with a session or authentication token caching issue 
     
 
 After clearing the cache and logging back in, confirm content blocks render correctly and login no longer fails. If the issue recurs at scale, capture a HAR file (from the browser's Network tab) before clearing the cache to help identify why the session failed to refresh automatically.
+
+## OAuth & API Token Refresh Issues
+
+<!-- case:00060493 status:draft synced:false bucket:"OAuth & API Token Refresh Issues" -->
+### Concurrent OAuth Refresh Requests Cause 503 Errors
+
+Refreshing an OAuth access token from multiple concurrent requests may return intermittent 503 errors and break the refresh token chain.
+
+**Root Cause**
+
+Contentstack's OAuth refresh token endpoint previously accepted a refresh token multiple times when submitted concurrently instead of enforcing single-use behavior, which could invalidate the refresh chain and surface as intermittent 503 errors.
+
+**Resolution**
+
+1.  Confirm the symptom: intermittent 503 errors during OAuth token refresh, accompanied by a broken or invalidated refresh token chain, particularly under concurrent refresh requests.
+
+2.  Retry the OAuth flow to obtain a new refresh token if the chain has been broken.
+
+3.  Contact Contentstack Support with the affected client ID, approximate timestamps, and the 503 error details if the behavior continues.
+
+After retrying the OAuth flow, confirm that subsequent token refreshes complete without 503 errors. This behavior was fixed platform-wide with enforced single-use refresh tokens. Escalate with the client ID and timestamps if 503 errors persist.
+
+<!-- end:00060493 -->
